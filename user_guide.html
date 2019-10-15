@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap 4 project documentation theme for developers</title>
+    <title>BIAFLOWS NEUBIAS-WG5 documentation</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -115,14 +115,14 @@
                                     </div>
 									
 									
-									<p>Problem class specify a format for ground truth annotations (identical to expected workflow output), as well as the benchmark metrics to be evaluated on the annotated images of a project.</p>
+									<p>Problem class specify a format for ground truth annotations (identical to expected workflow output), as well as the benchmark metrics to be evaluated on the annotated images of a given Problem, see the <a href="https://www.biorxiv.org/content/10.1101/707489v1.supplementary-material">detailed section (5 and 7) on metrics in Supplementary material</a>.</p>
 									<p>Clicking on a problem redirects to the the problem images.</p>
                                 </div><!--//section-block-->
 								
 								<div id="problem-images" class="section-block">
 										<h6>Images</h6>
                                     <p>
-                                      This table lists all the images from the current project, where details can be displayed for each image:<br>
+                                      This table lists all the images for the current Problem, where details can be displayed for each image:<br>
 
 				      <img class="img-fluid" src="assets/images/biaflows-image-list.png" alt="screenshot">
 				    </p>
@@ -153,7 +153,12 @@ Finally, all images can be downloaded through the Download button in the Actions
 										  To overlay an annotation layer, click on <span class="fas fa-copy"></span> in the right toolbar. Annotation layers are either human ground-truths, or generated from the results of a workflow run (a.k.a. job). Several layers can be added hence overlaid on the original image, and they can be hidden by unselecting the checkbox under the <span class="far fa-eye"></span> symbol, or removed using <span class="fas fa-times"></span>. In addition, Layer opacity can be adjusted with the bottom slider. If you do not know which annotation layer to display, click on <button data-v-0c385051="" class="button is-small is-fullwidth layer-field" disabled="disabled">Add all favorites</button>.  Favorite jobs are workflow runs validated by their maintainer as representative results.</p>
 
 
-										<p>It is also possible to have multiple viewers opened at once and synchronize them (Fig. S2.5). It can be used to open the same image several times and compare different workflow results (annotation layers). To do so, select an image from the upper left drop down menu and click , then useto synchronize the views.</p>
+										<p>Multiple viewers:<br>
+										  It is also possible to have multiple viewers opened at once and synchronize them (e.g. 4 synchronized views where top left: original image, others: workflow results overlays):<br>
+										  <img class="img-fluid" src="assets/images/biaflows-image-multiple-viewer.jpg" alt="screenshot">
+										  
+
+										  This feature can be used to open the same image several times and compare different workflow results through the display of corresponding annotation layers. To do so, select an image from the upper left drop down menu and click on the big <span class="fas fa-plus"></span> blue button (bottom right corner), select a workflow in the annotation layers <span class="fas fa-copy"></span>, then use <span class="fas fa-link"></span> (in the right toolbar) to synchronize the views.</p>
 									
 										
                                     
