@@ -133,7 +133,7 @@
 
 										<p>Note: To visualize binary masks, it is recommended to set Gamma to 0.1 (see image viewer section).</p>
 <p>
-Finally, all images can be downloaded through the Download button in the Actions section of the Image description.</p>
+Finally, all images can be downloaded through the <button class="button is-small is-fullwidth layer-field" disabled="disabled">Download</button> button in the Actions section of the Image description.</p>
 
                                     
                                 </div><!--//section-block-->
@@ -159,24 +159,47 @@ Finally, all images can be downloaded through the Download button in the Actions
 										  
 
 										  This feature can be used to open the same image several times and compare different workflow results through the display of corresponding annotation layers. To do so, select an image from the upper left drop down menu and click on the big <span class="fas fa-plus"></span> blue button (bottom right corner), select a workflow in the annotation layers <span class="fas fa-copy"></span>, then use <span class="fas fa-link"></span> (in the right toolbar) to synchronize the views.</p>
-									
+
+
+										<p>
+										  The current image can be downloaded by clicking on the image information panel <span class="fas fa-info"></span> in the right toolbar, then on <button class="button is-small is-fullwidth layer-field" disabled="disabled">Download</button> (next to More information).  
+For 2D images, it is also possible to switch to previous/next image using corresponding buttons (<button class="button is-small">Previous image</button> / <button class="button is-small">Next image</button>) from this panel. 
+										</p>
+
+										<p>Finally, clicking on an annotation in the viewer will display some information (e.g. annotation area and perimeter), providing a link to the description of the workflow that generated it, or center the view based on this annotation.</p>
+
+
+										<p>Image adjustments:<br>
+Contrast and gamma correction can be adjusted from the panel <span class="fas fa-adjust"></span> (right toolbar). The image can also be video inverted from this panel.
 										
                                     
                                 </div><!--//section-block-->
 								
 								<div id="problem-workflow-run" class="section-block">
-										<h6>Workflow run</h6>
-                                    <p>
+
+
+								  <h2 class="section-title">Workflow runs</h2>
+								  
+                                    <p>This tab lists all workflow available to process the images of the current Problem (Fig. S2.6, left section). All workflows are versioned and deprecated versions are struck through.
                                         
                                     </p>
-                                    
+
+								  
+								  
+				    
                                 </div><!--//section-block-->
 								
 								<div id="problem-benchmarking" class="section-block">
-										<h6>Benchmarking</h6>
-                                    <p>
-                                        
-                                    </p>
+
+								  <h6>Benchmarking</h6>
+
+								  <p>
+								    <img class="img-fluid" src="assets/images/biaflows-workflow-runs.png" alt="screenshot">
+								    <img class="img-fluid" src="assets/images/biaflows-workflow-aggregated-results.png" alt="screenshot">
+								    <img class="img-fluid" src="assets/images/biaflows-workflows-detailed-results.png" alt="screenshot">
+								  </p>
+								  
+
                                     
                                 </div><!--//section-block-->
 								
