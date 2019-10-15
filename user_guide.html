@@ -184,10 +184,46 @@ Contrast and gamma correction can be adjusted from the panel <span class="fas fa
 
 
 								  <h2 class="section-title">Workflow runs</h2>
-								  
-                                    <p>This tab lists all workflow available to process the images of the current Problem (Fig. S2.6, left section). All workflows are versioned and deprecated versions are struck through.
+
+
+								  <h6>Workflows</h6>
+								  <p>This page lists all workflow currently available in the system.
+								   In principle, for each workflow, the most relevant workflow is the last executable version but all past versions are also displayed as reference. Workflows can be filtered by name from the search bar. 
+
+								    <div class="screenshot-holder">
+								      <img class="img-fluid" src="assets/images/biaflows-workflows-list.png" alt="screenshot">
+								    </div>
+
+								    Selecting a workflow brings some useful information (Fig. S2.12); in particular:
+
+								    Its input parameters and default values (expandable list)
+								    The problems using this workflow (with links to problems)
+								    GitHub and DockerHub links respectively for the workflow source code and Docker image builds
+								    The command line invoked by BIAFLOWS to launch the workflow image (Show info for developers)
+								    
+								    <div class="screenshot-holder">
+								      <img class="img-fluid" src="assets/images/biaflows-workflow-details.jpg" alt="screenshot">
+								    </div>
+								    
+					</p>			  
+								  <h6>Run a workflow</h6>
+<p>
+  A workflow can be launched by clicking on its name, and then (the user account requires execution rights). This opens a workflow parameter dialog box. Default parameters (Fig. S2.7) are set so as to bring meaningful results for the images of the project.
+  
 				      <div class="screenshot-holder">
 					<img class="img-fluid" src="assets/images/biaflows-workflow-run.png" alt="screenshot">
+				      </div>
+
+				      Upon launch, a job if flagged as running in the job list (Fig. S2.8) and a progress bar displays information on the current execution step. This progress bar can be recalled at any time by clicking   next to a running workflow.<br>
+
+				      Upon completion, the job status should either turn to success  or failed . <br>
+
+If a job is successful, workflow results (annotation layers for the image explorer) and benchmark metrics (benchmark tab) should be available for this run. <br>
+
+A complete report (log file) of the job is also accessible from Job attached file.<br>
+				      
+				      <div class="screenshot-holder">
+					<img class="img-fluid" src="assets/images/biaflows-workflow-log.jpg" alt="screenshot">
 					</div>
 				      
                                     </p>
@@ -201,16 +237,24 @@ Contrast and gamma correction can be adjusted from the panel <span class="fas fa
 
 								  <h6>Benchmarking</h6>
 
+								  <p>The Benchmarking tab (Fig. S2.9) is used to browse benchmark results (metrics) from past workflow runs (jobs). To generate a benchmark report click .
+
+								  By default, a report is generated for all starred jobs and all images from the project. Both selections can be refined from the Images and Jobs drop down menus and the choice selector:</p>
+								  
 								  <p>
 								    <div class="screenshot-holder">
 								      <img class="img-fluid" src="assets/images/biaflows-workflow-runs.png" alt="screenshot">
 								    </div>
+</p>
+								    <p>Metrics results and workflow parameters can be displayed from the right panel (). The metrics can be explored as aggregated (all images, Fig. S2.9) or on a per image basis (Fig. S2.10) by switching between tabs . 
 								    <div class="screenshot-holder">
 								      <img class="img-fluid" src="assets/images/biaflows-workflow-aggregated-results.png" alt="screenshot">
 								    </div>
+								    </p>
+								    <p>The detailed results by image view is useful to, e.g., detect jobs with poor metrics and inspect the associated annotation layer to understand where the workflow has failed. To quickly access an image, its thumbnail should be clicked from the list.
 								    <div class="screenshot-holder">
 								      <img class="img-fluid" src="assets/images/biaflows-workflows-detailed-results.png" alt="screenshot">
-								      </div>
+								    </div>
 								  </p>
 								  
 
