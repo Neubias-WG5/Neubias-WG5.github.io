@@ -68,12 +68,16 @@
                     <div class="doc-content col-md-9 col-12 order-1">
                         <div class="content-inner">
                             <section id="introduction-section" class="doc-section">
-                                <h2 class="section-title">Presentation</h2>
+                                <h2 class="section-title">Introduction</h2>
                                 <div class="section-block">
                                   <p><span style="color:#fe7f7f;">BIA</span>FLOWS online instance can be accessed at <a href="https://biaflows.neubias.org">https://biaflows.neubias.org</a>. It is possible to browse the content in read only mode from the guest account (username: guest; password: guest). Workflows cannot be launched from the guest account but all results from past workflow runs can be browsed. The platform has been tested for Chrome, Chromium, Safari and Firefox.
 				    <br>
 				    Any feedback is welcome through our Github repository Issues.</p>
-                                    </p>
+</p>
+
+<p>
+In addition to this documentation, BIAflows is described in our <a href="https://doi.org/10.1101/707489">bioxriv scientific paper</a>. 
+  </p>
 									<!--
                                     <a href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/prettydocs-free-bootstrap-theme-for-developers-and-startups/" class="btn btn-pink" target="_blank"><i class="fas fa-download"></i> Download PrettyDocs</a>
 									-->
@@ -116,7 +120,9 @@
                                         <img class="img-fluid" src="assets/images/biaflows-topmenu.jpg" alt="screenshot"></a>
 </div>
 
-                                <div id="problem-list" class="section-block">
+
+<div id="problem-list" class="section-block">
+  <h4>Problem list</h4>
 									<p>
 									Once you click on the Problems Section, it brings an overview of all <acronym title="Bio Image Analysis">BIA</acronym> problems available in <span style="color:#fe7f7f;">BIA</span>FLOWS. Each problem illustrates a common <acronym title="Bio Image Analysis">BIA</acronym> problem and gathers a set of annotated images and compatible workflows to process them. A <acronym title="Bio Image Analysis">BIA</acronym> problem class (e.g. Object Segmentation), is associated to every problem; <span style="color:#fe7f7f;">BIA</span>FLOWS currently supports 8 problem classes.</p>
 									
@@ -203,13 +209,12 @@ For 2D images, it is also possible to switch to previous/next image using corres
 
 								  <h2 class="section-title">Workflows</h2>
 
-
+								    
 								  <div class="screenshot-holder">
                                         <img class="img-fluid" src="assets/images/biaflows-topmenu-workflow.jpg" alt="screenshot"></a>
 </div>
-								  <h6>Workflow description</h4>
-								  <p>This page (accessible through the Workflows link in the website header) lists all workflow currently available in the system.
-								   For each workflow, the most relevant workflow is the last executable version but all past versions can also be displayed ("Show filters", then Only Last Realeases -> No). Workflows can be also filtered by various means, including the number of executions and by name from the search bar. 
+								  <h6>Workflow list</h4>
+								  <p>Each workflow is described on the platform in the Workflows setion. This page (accessible through the Workflows link in the website header) lists all workflow currently available in the system.  For each workflow, the most relevant workflow is the last executable version but all past versions can also be displayed ("Show filters", then Only Last Realeases -> No). Workflows can be also filtered by various means, including the number of executions and by name from the search bar. 
 
 								    <div class="screenshot-holder">
 								      <img class="img-fluid" src="assets/images/biaflows-workflows-list.png" alt="screenshot">
@@ -685,8 +690,8 @@ echo $y;
 	                        
 	                            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
 	                                <a class="nav-link scrollto" href="#introduction-section">Introduction</a>
-	                                <a class="nav-link scrollto" href="#login-section">Login Page</a>
-	                                <a class="nav-link scrollto" href="#home-section">Home Page</a>
+	                                <a class="nav-link scrollto" href="#login-section">BIAFLOWS Login</a>
+	                                <a class="nav-link scrollto" href="#home-section">BIAFLOWS Homepage</a>
 	                                <a class="nav-link scrollto" href="#problems-section">Problems</a>
                                     <nav class="doc-sub-menu nav flex-column">
                                         <a class="nav-link scrollto" href="#problem-list">Problems List</a>
@@ -695,6 +700,7 @@ echo $y;
 				    </nav><!--//nav-->
 				    <a class="nav-link scrollto" href="#problems-section">Workflows</a>
                                     <nav class="doc-sub-menu nav flex-column">
+				        <a class="nav-link scrollto" href="#problem-list">Workflow List</a>
                                         <a class="nav-link scrollto" href="#problem-workflow-run">Workflow runs</a>
                                         <a class="nav-link scrollto" href="#problem-benchmarking">Benchmarking</a>
 					</nav>
