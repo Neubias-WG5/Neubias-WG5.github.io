@@ -70,7 +70,9 @@
                             <section id="introduction-section" class="doc-section">
                                 <h2 class="section-title">Presentation</h2>
                                 <div class="section-block">
-                                    <p><span style="color:#fe7f7f;">BIA</span>FLOWS online instance can be accessed at <a href="https://biaflows.neubias.org">https://biaflows.neubias.org</a>. It is possible to browse the content in read only mode from the guest account (username: guest; password: guest). Workflows cannot be launched from the guest account but all results from past workflow runs can be browsed. The platform has been tested for Chrome, Chromium, Safari and Firefox 
+                                  <p><span style="color:#fe7f7f;">BIA</span>FLOWS online instance can be accessed at <a href="https://biaflows.neubias.org">https://biaflows.neubias.org</a>. It is possible to browse the content in read only mode from the guest account (username: guest; password: guest). Workflows cannot be launched from the guest account but all results from past workflow runs can be browsed. The platform has been tested for Chrome, Chromium, Safari and Firefox.
+				    <br>
+				    Any feedback is welcome through our Github repository Issues.</p>
                                     </p>
 									<!--
                                     <a href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/prettydocs-free-bootstrap-theme-for-developers-and-startups/" class="btn btn-pink" target="_blank"><i class="fas fa-download"></i> Download PrettyDocs</a>
@@ -96,7 +98,12 @@
 									<p>The Home Page provides an overview of  <span style="color:#fe7f7f;">BIA</span>FLOWS. This overview is also accessible at any time from the Help>How to use menu. This navigation scheme is summarized in the figure below:</p>
 									<div class="screenshot-holder">
                                         <img class="img-fluid" src="assets/images/figure2.jpg" alt="screenshot"></a>
-                                    </div>
+</div>
+
+
+<p>To access the different parts of <span style="color:#fe7f7f;">BIA</span>FLOWS, you can use the top bar.</p>
+
+  
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
 							
@@ -104,11 +111,14 @@
                             <section id="problems-section" class="doc-section">
 							
                                 <h2 class="section-title">Problems</h2>
-								
+
+				<div class="screenshot-holder">
+                                        <img class="img-fluid" src="assets/images/biaflows-topmenu.jpg" alt="screenshot"></a>
+</div>
+
                                 <div id="problem-list" class="section-block">
-									<h6>List</h6>
 									<p>
-									This section brings an overview of all <acronym title="Bio Image Analysis">BIA</acronym> problems available in <span style="color:#fe7f7f;">BIA</span>FLOWS. Each problem illustrates a common <acronym title="Bio Image Analysis">BIA</acronym> problem and gathers a set of annotated images and compatible workflows to process them. A <acronym title="Bio Image Analysis">BIA</acronym> problem class (e.g. Object Segmentation), is associated to every problem; <span style="color:#fe7f7f;">BIA</span>FLOWS currently supports 8 problem classes.</p>
+									Once you click on the Problems Section, it brings an overview of all <acronym title="Bio Image Analysis">BIA</acronym> problems available in <span style="color:#fe7f7f;">BIA</span>FLOWS. Each problem illustrates a common <acronym title="Bio Image Analysis">BIA</acronym> problem and gathers a set of annotated images and compatible workflows to process them. A <acronym title="Bio Image Analysis">BIA</acronym> problem class (e.g. Object Segmentation), is associated to every problem; <span style="color:#fe7f7f;">BIA</span>FLOWS currently supports 8 problem classes.</p>
 									
 									<div class="screenshot-holder">
                                         <img class="img-fluid" src="assets/images/problems-list.png" alt="screenshot"></a>
@@ -116,11 +126,11 @@
 									
 									
 									<p>Problem class specify a format for ground truth annotations (identical to expected workflow output), as well as the benchmark metrics to be evaluated on the annotated images of a given Problem, see the <a href="https://www.biorxiv.org/content/10.1101/707489v1.supplementary-material">detailed section (5 and 7) on metrics in Supplementary material</a>.</p>
-									<p>Clicking on a problem redirects to the the problem images.</p>
+									<p>Clicking on a problem redirects to the list of images for this Problem.</p>
                                 </div><!--//section-block-->
 								
 								<div id="problem-images" class="section-block">
-										<h6>Images</h6>
+										<h4>Images</h4>
                                     <p>
                                       This table lists all the images for the current Problem, where details can be displayed for each image:<br>
 				      <div class="screenshot-holder">
@@ -140,11 +150,12 @@ Finally, all images can be downloaded through the <button class="button is-small
                                 </div><!--//section-block-->
 								
 								<div id="problem-image-viewer" class="section-block">
-										<h6>Image Viewer</h6>
+										<h4>Image Viewer</h4>
 
 										<p>
-										  Navigation:<br> 
-										  Use mouse scroll to zoom in/out, click + drag to move around. For multidimensional images, C-Z-T slicers automatically appears (when applicable) to navigate through the slices.
+										  <h5>Navigation</h5>
+										  Use mouse scroll to zoom in/out, click + drag to move around. <br>
+										  For multidimensional images, C-Z-T slicers automatically appears (when applicable) to navigate through the slices.
 										  <div class="screenshot-holder">
 										    <img class="img-fluid" src="assets/images/biaflows-image-viewer.png" alt="screenshot">
 										    </div>
@@ -152,11 +163,11 @@ Finally, all images can be downloaded through the <button class="button is-small
 
 
 
-										<p>Layers:<br>
+										<h5>Layers</h5>>
 										  To overlay an annotation layer, click on <span class="fas fa-copy"></span> in the right toolbar. Annotation layers are either human ground-truths, or generated from the results of a workflow run (a.k.a. job). Several layers can be added hence overlaid on the original image, and they can be hidden by unselecting the checkbox under the <span class="far fa-eye"></span> symbol, or removed using <span class="fas fa-times"></span>. In addition, Layer opacity can be adjusted with the bottom slider. If you do not know which annotation layer to display, click on <button data-v-0c385051="" class="button is-small is-fullwidth layer-field" disabled="disabled">Add all favorites</button>.  Favorite jobs are workflow runs validated by their maintainer as representative results.</p>
 
 
-										<p>Multiple viewers:<br>
+										<h5>Multiple viewers</h5>
 										  It is also possible to have multiple viewers opened at once and synchronize them (e.g. 4 synchronized views where top left: original image, others: workflow results overlays):<br>
 										  <div class="screenshot-holder">
 										    <img class="img-fluid" src="assets/images/biaflows-image-multiple-viewer.jpg" alt="screenshot">
@@ -174,20 +185,30 @@ For 2D images, it is also possible to switch to previous/next image using corres
 										<p>Finally, clicking on an annotation in the viewer will display some information (e.g. annotation area and perimeter), providing a link to the description of the workflow that generated it, or center the view based on this annotation.</p>
 
 
-										<p>Image adjustments:<br>
-Contrast and gamma correction can be adjusted from the panel <span class="fas fa-adjust"></span> (right toolbar). The image can also be video inverted from this panel.
+										<h5>Image adjustments</h5>
+										  Contrast and gamma correction can be adjusted from the panel <span class="fas fa-adjust"></span> (right toolbar). The image can also be video inverted from this panel.
+
+										   <div class="screenshot-holder">
+										    <img class="img-fluid" src="assets/images/biaflows-image-viewer-adjust.jpg" alt="screenshot">
+										    </div>
 										
                                     
                                 </div><!--//section-block-->
-								
-								<div id="problem-workflow-run" class="section-block">
+					</section>			
+
+<section id="workflows-section" class="doc-section">
+							
+
+<div id="problem-workflow-run" class="section-block">
+
+								  <h2 class="section-title">Workflows</h2>
 
 
-								  <h2 class="section-title">Workflow runs</h2>
-
-
-								  <h6>Workflows</h6>
-								  <p>This page lists all workflow currently available in the system.
+								  <div class="screenshot-holder">
+                                        <img class="img-fluid" src="assets/images/biaflows-topmenu-workflow.jpg" alt="screenshot"></a>
+</div>
+								  <h6>Workflow description</h4>
+								  <p>This page (accessible through the Workflows link in the website header) lists all workflow currently available in the system.
 								   For each workflow, the most relevant workflow is the last executable version but all past versions can also be displayed ("Show filters", then Only Last Realeases -> No). Workflows can be also filtered by various means, including the number of executions and by name from the search bar. 
 
 								    <div class="screenshot-holder">
@@ -206,7 +227,7 @@ Contrast and gamma correction can be adjusted from the panel <span class="fas fa
 								    
 								    
 					</p>			  
-								  <h6>Run a workflow</h6>
+								  <h4>Workflow runs</h4>
 <p>
   In user mode (the user account requires execution rights, so not guest), a workflow can be launched by clicking on its name. This opens a workflow parameter dialog box where default parameters are set so as to bring meaningful results for the images of the project. Some parameter description can be obtained while moving the mouse cursor over its name. Click on the blue <button data-v-3442b694="" class="button is-link" disabled="disabled"> Run a workflow </button> button:
   
@@ -265,7 +286,7 @@ Contrast and gamma correction can be adjusted from the panel <span class="fas fa
 								
 								<div id="problem-benchmarking" class="section-block">
 
-								  <h6>Benchmarking</h6>
+								  <h4>Benchmarking</h4>
 
 								  <p>The Benchmarking Section is used to browse benchmark results (metrics) from past workflow runs. 
 
@@ -284,15 +305,6 @@ Contrast and gamma correction can be adjusted from the panel <span class="fas fa
 
                                     
                                 </div><!--//section-block-->
-								
-								<div id="problem-information" class="section-block">
-										<h6>Information</h6>
-                                    <p>
-                                        
-                                    </p>
-                                    
-                                </div><!--//section-block-->
-								
 								
 								
 								
@@ -320,7 +332,7 @@ Contrast and gamma correction can be adjusted from the panel <span class="fas fa
                                         </div>
                                     </div>
                                     <div class="code-block">
-                                        <h6>HTML Code Example</h6>
+                                        <h4>HTML Code Example</h4>
                                         <pre><code class="language-markup">&lt;!DOCTYPE html&gt; 
 &lt;html lang=&quot;en&quot;&gt; 
     ...
@@ -340,7 +352,7 @@ Contrast and gamma correction can be adjusted from the panel <span class="fas fa
                                 </div>
                                 <div id="css" class="section-block">
                                     <div class="code-block">
-                                        <h6>CSS Code Example</h6>
+                                        <h4>CSS Code Example</h4>
                                         <pre><code class="language-css">/* ======= Base Styling ======= */
 body {
     font-family: 'Open Sans', arial, sans-serif; 
@@ -353,7 +365,7 @@ body {
                                 </div>
                                 <div id="sass" class="section-block">
                                     <div class="code-block">
-                                        <h6>SCSS Code Example</h6>
+                                        <h4>SCSS Code Example</h4>
                                         <pre><code class="language-css">@mixin transform($property) {
   -webkit-transform: $property;
       -ms-transform: $property;
@@ -365,7 +377,7 @@ body {
                                 </div>
                                 <div id="less" class="section-block">
                                     <div class="code-block">
-                                        <h6>LESS Code Example</h6>
+                                        <h4>LESS Code Example</h4>
                                         <pre><code class="language-css">@base: #f04615;
 @width: 0.5;
 
@@ -378,7 +390,7 @@ body {
                                 </div>
                                 <div id="javascript" class="section-block">
                                     <div class="code-block">
-                                        <h6>JavaScript Code Example</h6>
+                                        <h4>JavaScript Code Example</h4>
                                         <pre><code class="language-javascript">&lt;script&gt; 
     function myFunction(a, b) { 
         return a * b; 
@@ -390,7 +402,7 @@ body {
                                 </div>
                                 <div id="python" class="section-block">
                                     <div class="code-block">
-                                        <h6>Python Code Example</h6>
+                                        <h4>Python Code Example</h4>
                                         <pre><code class="language-python">&gt;&gt;&gt; x = int(input(&quot;
 Please enter an integer: &quot;)) Please enter an integer: 42 
 &gt;&gt;&gt; if x &lt; 0: 
@@ -407,7 +419,7 @@ Please enter an integer: &quot;)) Please enter an integer: 42
                                 </div>
                                 <div id="php" class="section-block">
                                     <div class="code-block">
-                                        <h6>PHP Code Example</h6>
+                                        <h4>PHP Code Example</h4>
                                         <pre><code class="language-php">&lt;?php 
 $txt = &quot;Hello world!&quot;; 
 $x = 5; 
@@ -423,7 +435,7 @@ echo $y;
                                 </div>
                                 <div id="handlebars" class="section-block">
                                     <div class="code-block">
-                                        <h6>Handlebars Code Example</h6>
+                                        <h4>Handlebars Code Example</h4>
                                         <pre><code class="language-handlebars">Handlebars.registerHelper('list', function(items, options) { 
   var out = &quot;&lt;ul&gt;&quot;; 
   
@@ -435,7 +447,7 @@ echo $y;
 });</code></pre>
                                     </div>
                                     <div class="code-block">
-                                        <h6>Git Code Example</h6>
+                                        <h4>Git Code Example</h4>
                                         <pre><code class="language-git">$ git add Documentation.txt</code></pre>
                                     </div>
                                 </div>
@@ -497,7 +509,7 @@ echo $y;
                                     </p>
                                 </div>
                                 <div class="section-block">
-                                    <h6>Basic Table</h6>
+                                    <h4>Basic Table</h4>
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
@@ -530,7 +542,7 @@ echo $y;
                                             </tbody>
                                         </table>
                                     </div>
-                                    <h6>Striped Table</h6>
+                                    <h4>Striped Table</h4>
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>
@@ -563,7 +575,7 @@ echo $y;
                                             </tbody>
                                         </table>
                                     </div>
-                                    <h6>Bordered Table</h6>
+                                    <h4>Bordered Table</h4>
                                     <div class="table-responsive">
                                         <table class="table table-bordered">
                                             <thead>
@@ -605,7 +617,7 @@ echo $y;
                                     </p>
                                     <div class="row">
                                         <div class="col-md-6 col-12">
-                                            <h6>Basic Buttons</h6>
+                                            <h4>Basic Buttons</h4>
                                             <ul class="list list-unstyled">
                                                 <li><a href="#" class="btn btn-primary">Primary Button</a></li>
                                                 <li><a href="#" class="btn btn-pink">pink Button</a></li>
@@ -615,7 +627,7 @@ echo $y;
                                             </ul>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <h6>CTA Buttons</h6>
+                                            <h4>CTA Buttons</h4>
                                             <ul class="list list-unstyled">
                                                 <li><a href="#" class="btn btn-primary btn-cta"><i class="fas fa-download"></i> Download Now</a></li>
                                                 <li><a href="#" class="btn btn-pink btn-cta"><i class="fas fa-code-branch"></i> Fork Now</a></li>
@@ -632,14 +644,14 @@ echo $y;
                                 <div class="section-block">
                                     <div class="row">
                                         <div class="col-md-6 col-12">
-                                            <h6>Responsive Video 16:9</h6>
+                                            <h4>Responsive Video 16:9</h4>
                                            
                                             <div class="embed-responsive embed-responsive-16by9">
                                                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ejBkOjEG6F0?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <h6>Responsive Video 4:3</h6>
+                                            <h4>Responsive Video 4:3</h4>
                                             
                                             <div class="embed-responsive embed-responsive-4by3">
                                                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ejBkOjEG6F0?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
@@ -654,11 +666,11 @@ echo $y;
                                     </p>
                                 </div>
                                 <div class="section-block">
-                                    <h6>Elegant Icon Font</h6>
+                                    <h4>Elegant Icon Font</h4>
                                     <a href="https://www.elegantthemes.com/blog/resources/elegant-icon-font" target="_blank"><img class="img-fluid" src="assets/images/demo/elegant-icon-font.jpg" alt="elegant icons" /></a>
                                 </div>
                                 <div class="section-block">
-                                    <h6>FontAwesome Icon Font</h6>
+                                    <h4>FontAwesome Icon Font</h4>
                                     <a href="https://fortawesome.github.io/Font-Awesome/" target="_blank"><img class="img-fluid" src="assets/images/demo/fontawesome-icons.png" alt="fontawesome" /></a>
                                 </div>
                                 
@@ -680,10 +692,12 @@ echo $y;
                                         <a class="nav-link scrollto" href="#problem-list">Problems List</a>
                                         <a class="nav-link scrollto" href="#problem-images">Images</a>
                                         <a class="nav-link scrollto" href="#problem-image-viewer">Image Viewer</a>
+				    </nav><!--//nav-->
+				    <a class="nav-link scrollto" href="#problems-section">Workflows</a>
+                                    <nav class="doc-sub-menu nav flex-column">
                                         <a class="nav-link scrollto" href="#problem-workflow-run">Workflow runs</a>
                                         <a class="nav-link scrollto" href="#problem-benchmarking">Benchmarking</a>
-                                        <a class="nav-link scrollto" href="#problem-information">Information</a>
-                                    </nav><!--//nav-->
+					</nav>
 	                            </nav><!--//doc-menu-->
 	                        
                         </div>
