@@ -76,7 +76,7 @@
 </p>
 
 <p>
-In addition to this documentation, BIAflows is described in our <a href="https://doi.org/10.1101/707489">bioxriv scientific paper</a>. 
+In addition to this documentation, <span style="color:#fe7f7f;">BIA</span>FLOWS is described in our <a href="https://doi.org/10.1101/707489">bioxriv scientific paper</a>. 
   </p>
 									<!--
                                     <a href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/prettydocs-free-bootstrap-theme-for-developers-and-startups/" class="btn btn-pink" target="_blank"><i class="fas fa-download"></i> Download PrettyDocs</a>
@@ -158,7 +158,7 @@ Finally, all images can be downloaded through the <button class="button is-small
 								<div id="problem-image-viewer" class="section-block">
 										<h4>Image Viewer</h4>
 
-										<p>
+										<p>You can click on an image in the image list to open the Image Viewer.
 										  <h5>Navigation</h5>
 										  Use mouse scroll to zoom in/out, click + drag to move around. <br>
 										  For multidimensional images, C-Z-T slicers automatically appears (when applicable) to navigate through the slices.
@@ -169,7 +169,7 @@ Finally, all images can be downloaded through the <button class="button is-small
 
 
 
-										<h5>Layers</h5>>
+										<h5>Layers</h5>
 										  To overlay an annotation layer, click on <span class="fas fa-copy"></span> in the right toolbar. Annotation layers are either human ground-truths, or generated from the results of a workflow run (a.k.a. job). Several layers can be added hence overlaid on the original image, and they can be hidden by unselecting the checkbox under the <span class="far fa-eye"></span> symbol, or removed using <span class="fas fa-times"></span>. In addition, Layer opacity can be adjusted with the bottom slider. If you do not know which annotation layer to display, click on <button data-v-0c385051="" class="button is-small is-fullwidth layer-field" disabled="disabled">Add all favorites</button>.  Favorite jobs are workflow runs validated by their maintainer as representative results.</p>
 
 
@@ -205,7 +205,6 @@ For 2D images, it is also possible to switch to previous/next image using corres
 <section id="workflows-section" class="doc-section">
 							
 
-<div id="problem-workflow-run" class="section-block">
 
 								  <h2 class="section-title">Workflows</h2>
 
@@ -213,7 +212,8 @@ For 2D images, it is also possible to switch to previous/next image using corres
 								  <div class="screenshot-holder">
                                         <img class="img-fluid" src="assets/images/biaflows-topmenu-workflow.jpg" alt="screenshot"></a>
 </div>
-								  <h6>Workflow list</h4>
+<div id="workflows-list" class="section-block">
+								  <h4>Workflow list</h4>
 								  <p>Each workflow is described on the platform in the Workflows setion. This page (accessible through the Workflows link in the website header) lists all workflow currently available in the system.  For each workflow, the most relevant workflow is the last executable version but all past versions can also be displayed ("Show filters", then Only Last Realeases -> No). Workflows can be also filtered by various means, including the number of executions and by name from the search bar. 
 
 								    <div class="screenshot-holder">
@@ -227,11 +227,15 @@ For 2D images, it is also possible to switch to previous/next image using corres
 								    </div>
 
 								    In particular, one can consult each workflow's input parameters and default values (expandable list),
-								    the list of problems using this workflow (with links to problems), GitHub and DockerHub links respectively for the workflow source code and Docker image builds, the command line invoked by BIAFLOWS to launch the workflow image (Execute command).
+								    the list of problems using this workflow (with links to problems), GitHub and DockerHub links respectively for the workflow source code and Docker image builds, the command line invoked by <span style="color:#fe7f7f;">BIA</span>FLOWS to launch the workflow image (Execute command).
 								    
 								    
 								    
-					</p>			  
+								  </p>
+
+</div>
+
+								  <div id="workflows-workflow-runs" class="section-block">
 								  <h4>Workflow runs</h4>
 <p>
   In user mode (the user account requires execution rights, so not guest), a workflow can be launched by clicking on its name. This opens a workflow parameter dialog box where default parameters are set so as to bring meaningful results for the images of the project. Some parameter description can be obtained while moving the mouse cursor over its name. Click on the blue <button data-v-3442b694="" class="button is-link" disabled="disabled"> Run a workflow </button> button:
@@ -289,7 +293,7 @@ For 2D images, it is also possible to switch to previous/next image using corres
 				    
                                 </div><!--//section-block-->
 								
-								<div id="problem-benchmarking" class="section-block">
+								<div id="workflows-benchmarking" class="section-block">
 
 								  <h4>Benchmarking</h4>
 
@@ -694,15 +698,15 @@ echo $y;
 	                                <a class="nav-link scrollto" href="#home-section">BIAFLOWS Homepage</a>
 	                                <a class="nav-link scrollto" href="#problems-section">Problems</a>
                                     <nav class="doc-sub-menu nav flex-column">
-                                        <a class="nav-link scrollto" href="#problem-list">Problems List</a>
+                                        <a class="nav-link scrollto" href="#problem-list">List of Problems</a>
                                         <a class="nav-link scrollto" href="#problem-images">Images</a>
                                         <a class="nav-link scrollto" href="#problem-image-viewer">Image Viewer</a>
 				    </nav><!--//nav-->
-				    <a class="nav-link scrollto" href="#problems-section">Workflows</a>
+				    <a class="nav-link scrollto" href="#workflows-section">Workflows</a>
                                     <nav class="doc-sub-menu nav flex-column">
-				        <a class="nav-link scrollto" href="#problem-list">Workflow List</a>
-                                        <a class="nav-link scrollto" href="#problem-workflow-run">Workflow runs</a>
-                                        <a class="nav-link scrollto" href="#problem-benchmarking">Benchmarking</a>
+				        <a class="nav-link scrollto" href="#workflows-list">List of Workflows</a>
+                                        <a class="nav-link scrollto" href="#workflows-workflow-runs">Workflow runs</a>
+                                        <a class="nav-link scrollto" href="#workflows-benchmarking">Benchmarking</a>
 					</nav>
 	                            </nav><!--//doc-menu-->
 	                        
