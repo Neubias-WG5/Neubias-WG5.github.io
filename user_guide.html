@@ -70,33 +70,22 @@
                             <section id="introduction-section" class="doc-section">
                                 <h2 class="section-title">Introduction</h2>
                                 <div class="section-block">
-                                  <p><span style="color:#fe7f7f;">BIA</span>FLOWS online instance can be accessed at <a href="https://biaflows.neubias.org">https://biaflows.neubias.org</a>. It is possible to browse the content in read only mode from the guest account (username: guest; password: guest). Workflows cannot be launched from the guest account but all results from past workflow runs can be browsed. The platform has been tested for Chrome, Chromium, Safari and Firefox.
-				    <br>
+                                  <p><span style="color:#fe7f7f;">BIA</span>FLOWS online instance can be accessed at <a href="https://biaflows.neubias.org">https://biaflows.neubias.org</a>. It is possible to browse the content in read only mode from the guest account (username: guest; password: guest). Workflows cannot be launched from the guest account but all results from past workflow runs can be browsed. The platform has been tested for Chrome, Chromium, Safari and Firefox.</p>
+				    <p>
 				    Any feedback is welcome by <a href="mailto:biaflows@neubias.org">e-mail</a> or through our Github repository Issues.</p>
-</p>
-
-<p>
-In addition to this documentation, <span style="color:#fe7f7f;">BIA</span>FLOWS is described in our <a href="https://doi.org/10.1101/707489">bioxriv scientific paper</a>. 
-  </p>
-									<!--
-                                    <a href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/prettydocs-free-bootstrap-theme-for-developers-and-startups/" class="btn btn-pink" target="_blank"><i class="fas fa-download"></i> Download PrettyDocs</a>
-									-->
-                                </div>
+					<p>
+					In addition to this documentation, <span style="color:#fe7f7f;">BIA</span>FLOWS is described in our <a href="https://doi.org/10.1101/707489">bioxriv scientific paper</a>. 
+					</p>
+                            </div>
                             </section><!--//doc-section-->
-							
-							
-							
-
                             <section id="login-section" class="doc-section">
                                 <h2 class="section-title">Login</h2>
                                 <div class="section-block">
                                   <p>Login using guest/guest in order to access to <span style="color:#fe7f7f;">BIA</span>FLOWS.
-
 				    <div class="screenshot-holder">
-										    <img class="img-fluid" src="assets/images/biaflows-login.jpg" alt="screenshot">
+						<img class="img-fluid" src="assets/images/biaflows-login.jpg" alt="screenshot" width="320">
 				    </div>
-				    
-                                    </p>
+                    </p>
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
 							
@@ -104,13 +93,13 @@ In addition to this documentation, <span style="color:#fe7f7f;">BIA</span>FLOWS 
                             <section id="home-section" class="doc-section">
                                 <h2 class="section-title">Homepage</h2>
                                 <div class="section-block">
-									<p>The Homepage provides an overview of  <span style="color:#fe7f7f;">BIA</span>FLOWS. This overview is also accessible at any time from the Help>How to use menu. This navigation scheme is summarized in the figure below:</p>
+									<p>The Homepage provides an overview of the navigation in <span style="color:#fe7f7f;">BIA</span>FLOWS ( this overview is also accessible at any time from the Help>How to use menu). The navigation is summarized in the figure below:</p>
 									<div class="screenshot-holder">
                                         <img class="img-fluid" src="assets/images/figure2.jpg" alt="screenshot"></a>
 </div>
 
 
-<p>To access the different parts of <span style="color:#fe7f7f;">BIA</span>FLOWS, you can use the top bar menu.</p>
+<p><span style="color:#fe7f7f;">BIA</span>FLOWS main sections (Problems, Workflows) are accessible from the top bar menu.</p>
 
   
                                 </div><!--//section-block-->
@@ -129,15 +118,15 @@ In addition to this documentation, <span style="color:#fe7f7f;">BIA</span>FLOWS 
 <div id="problem-list" class="section-block">
   <h4>Problem list</h4>
 									<p>
-									Once you click on the Problems Section, it brings an overview of all <acronym title="Bio Image Analysis">BIA</acronym> problems available in <span style="color:#fe7f7f;">BIA</span>FLOWS. Each problem illustrates a common <acronym title="Bio Image Analysis">BIA</acronym> problem and gathers a set of annotated images and compatible workflows to process them. A <acronym title="Bio Image Analysis">BIA</acronym> problem class (e.g. Object Segmentation), is associated to every problem; <span style="color:#fe7f7f;">BIA</span>FLOWS currently supports 8 problem classes.</p>
+									The Problems section brings an overview of all <acronym title="Bio Image Analysis">BIA</acronym> problems currently available in <span style="color:#fe7f7f;">BIA</span>FLOWS. Each Problem recapitulates a common <acronym title="Bio Image Analysis">BIA</acronym> Problem by gathering a set of ground truth annotated images and compatible workflows to process them. A <acronym title="Bio Image Analysis">BIA</acronym> Problem class (e.g. object segmentation) is associated to every Problem; <span style="color:#fe7f7f;">BIA</span>FLOWS currently supports 8 Problem classes: Object counting, Object detection, Landmark detection, Object segmentation, Particle tracking, Object tracking, Pixel classification, Filament tree tracing, Filament networks tracing</p>
 									
 									<div class="screenshot-holder">
                                         <img class="img-fluid" src="assets/images/problems-list.png" alt="screenshot"></a>
                                     </div>
 									
 									
-									<p>Problem class specify a format for ground truth annotations (identical to expected workflow output), as well as the benchmark metrics to be evaluated on the annotated images of a given Problem, see the <a href="https://www.biorxiv.org/content/10.1101/707489v1.supplementary-material">detailed section (5 and 7) on metrics in Supplementary material</a>.</p>
-									<p>Clicking on a problem redirects to the list of images for this Problem.</p>
+									<p>A Problem class specifies the format of ground truth annotations (e.g. binary mask), as well as the benchmark metrics to be evaluated on all annotated images available for that Problem. The annotation format is identical to the output expected by the workflows of a Problem. See <a href="https://www.biorxiv.org/content/10.1101/707489v1.supplementary-material">detailed section (5 and 7) on metrics in Supplementary material</a>.</p>
+									<p>Clicking on a Problem redirects to the list of images available for this Problem.</p>
                                 </div><!--//section-block-->
 								
 								<div id="problem-images" class="section-block">
@@ -145,17 +134,17 @@ In addition to this documentation, <span style="color:#fe7f7f;">BIA</span>FLOWS 
                                     <p>
                                       This table lists all the images for the current Problem, where details can be displayed for each image:<br>
 				      <div class="screenshot-holder">
-					<img class="img-fluid" src="assets/images/biaflows-image-list.png" alt="screenshot">
+					<img class="img-fluid" src="assets/images/biaflows-image-list.png" alt="screenshot" width="480">
 					</div>
 				    </p>
 				    
 				    <p> Images can be filtered by name by typing a keyword in the search bar and visualized by clicking on their thumbnails.</p>
 
-										<p>In case ground truth annotations are stored as image masks (this depends on the problem class), the masks can be displayed by adapting filters (click on "Show filters" then select Type > Groundtruth). If ground truth annotations are in a different format (e.g. SWC, text file), they can be accessed through the Attached Files in the Image description.  </p>
+										<p>In case ground truth annotations are stored as image masks (this depends on the problem class), the masks can be displayed by toggling a filter (click on "Show filters" then select Type > Groundtruth). If ground truth annotations are in a different format (e.g. SWC or text file), they can be accessed through the Attached Files available from Image description.</p>
 
-										<p>Note: To visualize binary masks, it is recommended to set Gamma to 0.1 (see image viewer section).</p>
+										<p><u>Note</u>: To visualize binary masks (and 16 bit images), it is recommended to set Gamma from 0.1 to 0.2 (see Image Viewer section).</p>
 <p>
-Finally, all images can be downloaded through the <button class="button is-small is-fullwidth layer-field" disabled="disabled">Download</button> button in the Actions section of the Image description.</p>
+Finally, all images can be downloaded from the <button class="button is-small is-fullwidth layer-field" disabled="disabled">Download</button> button in the Actions section of Image description.</p>
 
                                     
                                 </div><!--//section-block-->
@@ -168,31 +157,31 @@ Finally, all images can be downloaded through the <button class="button is-small
 										  Use mouse scroll to zoom in/out, click + drag to move around. <br>
 										  For multidimensional images, C-Z-T slicers automatically appears (when applicable) to navigate through the slices.
 										  <div class="screenshot-holder">
-										    <img class="img-fluid" src="assets/images/biaflows-image-viewer.png" alt="screenshot">
+										    <img class="img-fluid" src="assets/images/biaflows-image-viewer.png" alt="screenshot" width="640">
 										    </div>
 					</p>
 
 
 
 										<h5>Layers</h5>
-										To overlay an annotation layer, click on <span class="fas fa-copy"></span> in the right toolbar. Annotation layers are either human ground-truths, or generated from the results of a workflow run. Several layers can be added hence overlaid on the original image, and they can be hidden by unselecting the checkbox under the <span class="far fa-eye"></span> symbol, or removed using <span class="fas fa-times"></span>. In addition, Layer opacity can be adjusted with the bottom slider. If you do not know which annotation layer to display, click on <button data-v-0c385051="" class="button is-small is-fullwidth layer-field" disabled="disabled">Add all favorites</button>.  Favorite jobs are workflow runs validated by their maintainer as representative results.<br>
+										To overlay an annotation layer, click on <span class="fas fa-copy"></span> in the right toolbar. Annotation layers are generated from the results of a workflow run. Several layers can be overlaid on the original image, and they can be hidden by unselecting the checkbox under the <span class="far fa-eye"></span> symbol, or removed using <span class="fas fa-times"></span>. In addition, Layer opacity can be adjusted with the bottom slider. If you do not know which annotation layer to display, click on <button data-v-0c385051="" class="button is-small is-fullwidth layer-field" disabled="disabled">Add all favorites</button>. Favorite workflow runs were validated by their maintainer as providing representative results.<br>
 
 
 										<div class="screenshot-holder">
-										    <img class="img-fluid" src="assets/images/biaflows-image-viewer-layer.jpg" alt="screenshot">
+										    <img class="img-fluid" src="assets/images/biaflows-image-viewer-layer.jpg" alt="screenshot" width="640">
 										    </div>
 
 </p>
 
 
 										<h5>Multiple viewers</h5>
-										  It is also possible to have multiple viewers opened at once and synchronize them (e.g. 4 synchronized views where top left: original image, others: workflow results overlays):<br>
+										  It is also possible to have multiple viewers opened at once and synchronized (e.g. 4 synchronized views where top left is the original image and others are workflow runs overlays):<br>
 										  <div class="screenshot-holder">
-										    <img class="img-fluid" src="assets/images/biaflows-image-multiple-viewer.jpg" alt="screenshot">
+										    <img class="img-fluid" src="assets/images/biaflows-image-multiple-viewer.jpg" alt="screenshot" width="640">
 										    </div>
 										  
 
-										  This feature can be used to open the same image several times and compare different workflow results through the display of corresponding annotation layers. To do so, select an image from the upper left drop down menu and click on the big <span class="fas fa-plus"></span> blue button (bottom right corner), select a workflow in the annotation layers <span class="fas fa-copy"></span>, then use <span class="fas fa-link"></span> (in the right toolbar) to synchronize the views.</p>
+										  This feature can be used to open the same image several times and compare different workflow runs through the display of corresponding annotation layers. To do so, select an image from the upper left drop down menu and click on the big <span class="fas fa-plus"></span> blue button (bottom right corner), select a workflow in the annotation layers <span class="fas fa-copy"></span>, then use <span class="fas fa-link"></span> (in the right toolbar) to synchronize the views.</p>
 
 
 										<p>
@@ -207,7 +196,7 @@ For 2D images, it is also possible to switch to previous/next image using corres
 										  Contrast and gamma correction can be adjusted from the panel <span class="fas fa-adjust"></span> (right toolbar). The image can also be video inverted from this panel.
 
 										   <div class="screenshot-holder">
-										    <img class="img-fluid" src="assets/images/biaflows-image-viewer-adjust.jpg" alt="screenshot">
+										    <img class="img-fluid" src="assets/images/biaflows-image-viewer-adjust.jpg" alt="screenshot" width="240">
 										    </div>
 										
                                     
@@ -226,7 +215,7 @@ For 2D images, it is also possible to switch to previous/next image using corres
 </div>
 <div id="workflows-list" class="section-block">
 								  <h4>Workflow list</h4>
-								  <p>Each workflow is described on the platform in the Workflows setion. This page (accessible through the Workflows link in the website header) lists all workflow currently available in the system.  For each workflow, the most relevant workflow is the last executable version but all past versions can also be displayed ("Show filters", then Only Last Realeases -> No). Workflows can be also filtered by various means, including the number of executions and by name from the search bar. 
+								  <p>This page lists all workflow currently available in the platform.  For each workflow, the most relevant workflow is the last executable version but all past versions can also be displayed ("Show filters", then Only Last Realeases -> No). Workflows can also be filtered by name or by number of executions from the search bar. 
 
 								    <div class="screenshot-holder">
 								      <img class="img-fluid" src="assets/images/biaflows-workflows-list.png" alt="screenshot">
@@ -238,8 +227,7 @@ For 2D images, it is also possible to switch to previous/next image using corres
 								      <img class="img-fluid" src="assets/images/biaflows-workflow-details.jpg" alt="screenshot">
 								    </div>
 
-								    In particular, one can consult each workflow's input parameters and default values (expandable list),
-								    the list of problems using this workflow (with links to problems), GitHub and DockerHub links respectively for the workflow source code and Docker image builds, the command line invoked by <span style="color:#fe7f7f;">BIA</span>FLOWS to launch the workflow image (Execute command).
+								    In particular, it is possible to inspect a workflow input parameters and associated default values (expandable list), the list of Problems this workflow is availble from (with links to problems), GitHub and DockerHub links respectively for the workflow source code and <acronym title="An object encapsulating a workflow and its execution environment to ensure its reproducibility">Workflow Docker image</acronym>, and finally the command line invoked by <span style="color:#fe7f7f;">BIA</span>FLOWS to launch the Workflow Docker image (Execute command).
 								    
 								    
 								    
