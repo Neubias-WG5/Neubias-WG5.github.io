@@ -70,18 +70,18 @@
                             <section id="introduction-section" class="doc-section">
                                 <h2 class="section-title">Introduction</h2>
                                 <div class="section-block">
-                                  <p><span style="color:#fe7f7f;">BIA</span>FLOWS online instance can be accessed at <a href="https://biaflows.neubias.org">https://biaflows.neubias.org</a>. It is possible to browse the content in read only mode from the guest account (username: guest; password: guest). Workflows cannot be launched from the guest account but all results from past workflow runs can be browsed. The platform has been tested for Chrome, Chromium, Safari and Firefox.</p>
-				    <p>
-				    Any feedback is welcome by <a href="mailto:biaflows@neubias.org">e-mail</a> or through our Github repository Issues.</p>
-					<p>
-					In addition to this documentation, <span style="color:#fe7f7f;">BIA</span>FLOWS is described in our <a href="https://doi.org/10.1101/707489">bioxriv scientific paper</a>. 
-					</p>
+                                  <p><span style="color:#fe7f7f;">BIA</span>FLOWS online instance can be accessed at <a href="https://biaflows.neubias.org" target="_blank">https://biaflows.neubias.org</a>.</p>
+                                  <p>It is possible to browse the content in read only mode from the guest account (username: guest; password: guest).<br />
+                                  Workflows cannot be launched from the guest account but all results from past workflow runs can be browsed.</p>
+                                  <p>The platform has been tested for Chrome, Chromium, Safari and Firefox.</p>
+				    			  <p>In addition to this documentation, <span style="color:#fe7f7f;">BIA</span>FLOWS is described in our <a href="https://doi.org/10.1101/707489" target="_blank">bioxriv scientific paper</a>.</p>
+				    			  <p>Any feedback is welcome by <a href="mailto:biaflows@neubias.org">e-mail</a> or through our <a href="https://github.com/Neubias-WG5" target="_blank">GitHub repository</a> Issues.</p>
                             </div>
                             </section><!--//doc-section-->
                             <section id="login-section" class="doc-section">
                                 <h2 class="section-title">Login</h2>
                                 <div class="section-block">
-                                  <p>Login using guest/guest in order to access to <span style="color:#fe7f7f;">BIA</span>FLOWS.
+                                  <p>Login using guest/guest.
 				    <div class="screenshot-holder">
 						<img class="img-fluid" src="assets/images/biaflows-login.jpg" alt="screenshot" width="320">
 				    </div>
@@ -93,13 +93,12 @@
                             <section id="home-section" class="doc-section">
                                 <h2 class="section-title">Homepage</h2>
                                 <div class="section-block">
-									<p>The Homepage provides an overview of the navigation in <span style="color:#fe7f7f;">BIA</span>FLOWS ( this overview is also accessible at any time from the Help>How to use menu). The navigation is summarized in the figure below:</p>
+									<p>The Homepage provides an overview of the navigation in <span style="color:#fe7f7f;">BIA</span>FLOWS (also accessible at any time from Help > How to use).</p>
+									<p><span style="color:#fe7f7f;">BIA</span>FLOWS main sections (Workspace, Problems, Workflows) are accessible from the top bar menu.</p>
+									<p>The navigation is summarized in the figure below:</p>
 									<div class="screenshot-holder">
-                                        <img class="img-fluid" src="assets/images/figure2.jpg" alt="screenshot"></a>
+                                        <img class="img-fluid" src="assets/images/figure2.png" alt="screenshot"></a>
 </div>
-
-
-<p><span style="color:#fe7f7f;">BIA</span>FLOWS main sections (Problems, Workflows) are accessible from the top bar menu.</p>
 
   
                                 </div><!--//section-block-->
@@ -117,36 +116,33 @@
 
 <div id="problem-list" class="section-block">
   <h4>Problem list</h4>
-									<p>
-									The Problems section brings an overview of all <acronym title="Bio Image Analysis">BIA</acronym> problems currently available in <span style="color:#fe7f7f;">BIA</span>FLOWS. Each Problem recapitulates a common <acronym title="Bio Image Analysis">BIA</acronym> Problem by gathering a set of ground truth annotated images and compatible workflows to process them. A <acronym title="Bio Image Analysis">BIA</acronym> Problem class (e.g. object segmentation) is associated to every Problem; <span style="color:#fe7f7f;">BIA</span>FLOWS currently supports 8 Problem classes: Object counting, Object detection, Landmark detection, Object segmentation, Particle tracking, Object tracking, Pixel classification, Filament tree tracing, Filament networks tracing</p>
+									<p>The Problems section brings an overview of all <acronym title="Bio Image Analysis">BIA</acronym> problems currently available in <span style="color:#fe7f7f;">BIA</span>FLOWS. Each Problem recapitulates a common <acronym title="Bio Image Analysis">BIA</acronym> Problem by gathering a set of ground truth annotated images and compatible workflows to process them.</p>
+									<p>Clicking on a Problem redirects to the list of images available for this Problem.</p>
 									
 									<div class="screenshot-holder">
                                         <img class="img-fluid" src="assets/images/problems-list.png" alt="screenshot"></a>
                                     </div>
 									
+									<p>A Problem class (e.g. object segmentation) is associated to every Problem; <span style="color:#fe7f7f;">BIA</span>FLOWS currently supports 8 Problem classes: Object counting, Object detection, Landmark detection, Object segmentation, Particle tracking, Object tracking, Pixel classification, Filament tree tracing, Filament networks tracing.</p>
+
+									<p>A Problem class specifies the format of ground truth annotations (e.g. binary mask), as well as the benchmark metrics to be evaluated on all annotated images available for that Problem. The annotation format is identical to the output expected by the workflows of a Problem. See <a href="https://www.biorxiv.org/content/10.1101/707489v1.supplementary-material">details in sections (5 and 7) in Supplementary material</a> and contextual information in Benchmark results table.</p>
 									
-									<p>A Problem class specifies the format of ground truth annotations (e.g. binary mask), as well as the benchmark metrics to be evaluated on all annotated images available for that Problem. The annotation format is identical to the output expected by the workflows of a Problem. See <a href="https://www.biorxiv.org/content/10.1101/707489v1.supplementary-material">detailed section (5 and 7) on metrics in Supplementary material</a>.</p>
-									<p>Clicking on a Problem redirects to the list of images available for this Problem.</p>
                                 </div><!--//section-block-->
 								
 								<div id="problem-images" class="section-block">
 										<h4>Images</h4>
-                                    <p>
-                                      This table lists all the images for the current Problem, where details can be displayed for each image:<br>
+                                    <p>This table lists all the images for the current Problem, where details can be displayed for each image.<br>
+                                    <p> Images can be filtered by name by typing a keyword in the search bar and they can be visualized by clicking on their name or thumbnail.</p>
 				      <div class="screenshot-holder">
 					<img class="img-fluid" src="assets/images/biaflows-image-list.png" alt="screenshot" width="480">
 					</div>
 				    </p>
-				    
-				    <p> Images can be filtered by name by typing a keyword in the search bar and visualized by clicking on their thumbnails.</p>
+										<p>In case ground truth annotations are stored as image masks (this depends on the problem class), the masks can be displayed by toggling a filter (click on "Show filters" then select Type > Groundtruth). If ground truth annotations are in a different format (e.g. SWC or text file), they can be accessed through the Attached Files available from Image description (blue arrow).</p>
 
-										<p>In case ground truth annotations are stored as image masks (this depends on the problem class), the masks can be displayed by toggling a filter (click on "Show filters" then select Type > Groundtruth). If ground truth annotations are in a different format (e.g. SWC or text file), they can be accessed through the Attached Files available from Image description.</p>
+										<p>Finally, all images can be downloaded from the <button class="button is-small is-fullwidth layer-field" disabled="disabled">Download</button> button.</p>
 
-										<p><u>Note</u>: To visualize binary masks (and 16 bit images), it is recommended to set Gamma from 0.1 to 0.2 (see Image Viewer section).</p>
-<p>
-Finally, all images can be downloaded from the <button class="button is-small is-fullwidth layer-field" disabled="disabled">Download</button> button in the Actions section of Image description.</p>
-
-                                    
+										<p><u>Note</u>: To visualize 16 bit images, it is recommended to set Gamma from 0.1 to 0.2 (see Image Viewer section).</p>
+    
                                 </div><!--//section-block-->
 								
 								<div id="problem-image-viewer" class="section-block">
@@ -189,7 +185,7 @@ Finally, all images can be downloaded from the <button class="button is-small is
 For 2D images, it is also possible to switch to previous/next image using corresponding buttons (<button class="button is-small">Previous image</button> / <button class="button is-small">Next image</button>) from this panel. 
 										</p>
 
-										<p>Finally, clicking on an annotation in the viewer will display some information (e.g. annotation area and perimeter), providing a link to the description of the workflow that generated it, or center the view based on this annotation.</p>
+										<p>Finally, clicking on an annotation in the viewer will display some information (e.g. annotation area and perimeter).</p>
 
 
 										<h5>Image adjustments</h5>
@@ -227,7 +223,7 @@ For 2D images, it is also possible to switch to previous/next image using corres
 								      <img class="img-fluid" src="assets/images/biaflows-workflow-details.jpg" alt="screenshot">
 								    </div>
 
-								    In particular, it is possible to inspect a workflow input parameters and associated default values (expandable list), the list of Problems this workflow is availble from (with links to problems), GitHub and DockerHub links respectively for the workflow source code and <acronym title="An object encapsulating a workflow and its execution environment to ensure its reproducibility">Workflow Docker image</acronym>, and finally the command line invoked by <span style="color:#fe7f7f;">BIA</span>FLOWS to launch the Workflow Docker image (Execute command).
+								    In particular, it is possible to inspect a workflow input parameters and associated default values (expandable list), the list of Problems this workflow is availble from (with links to problems), GitHub and DockerHub links respectively for the workflow source code and <acronym title="A file encapsulating a workflow and its execution environment to ensure its reproducibility">Workflow Docker image</acronym>, and finally the command line invoked by <span style="color:#fe7f7f;">BIA</span>FLOWS to launch the Workflow Docker image (Execute command).
 								    
 								    
 								    
@@ -238,7 +234,7 @@ For 2D images, it is also possible to switch to previous/next image using corres
 								  <div id="workflows-workflow-runs" class="section-block">
 								  <h4>Workflow runs</h4>
 <p>
-  In user mode (the user account requires execution rights, so not guest), a workflow can be launched by clicking on its name. This opens a workflow parameter dialog box where default parameters are set so as to bring meaningful results for the images of the project. Some parameter description can be obtained while moving the mouse cursor over its name. Click on the blue <button data-v-3442b694="" class="button is-link" disabled="disabled"> Run a workflow </button> button:
+  In user mode (the user account requires execution rights that are not provided by the guest account), a workflow can be launched by clicking on its name. This opens a workflow parameter dialog box where default parameters are set so as to bring meaningful results for the images of the project. Some parameter description can be obtained while moving the mouse cursor over its name. Click on the blue <button data-v-3442b694="" class="button is-link" disabled="disabled"> Run a workflow </button> button:
   
 				      <div class="screenshot-holder">
 					<img class="img-fluid" src="assets/images/biaflows-workflow-run.png" alt="screenshot">
@@ -299,13 +295,13 @@ For 2D images, it is also possible to switch to previous/next image using corres
 
 								  <p>The Benchmarking Section is used to browse benchmark results (metrics) from past workflow runs. 
 
-								  By default, a report is generated for all starred jobs (as defined by the project manager of this Problem) and all images from the project. Both selections can be refined using Filters (by Images, by Metrics) and metrics can be explored as aggregated for all images or selected for individual images:</p>
+								  By default, a report is generated for all starred jobs (as defined by the project manager of this Problem) and all images from the Problem. Both selections can be refined using Filters (by Images, by Metrics) and metrics can be explored as aggregated for all images or selected for individual images:</p>
 								  
 								    <div class="screenshot-holder">
 								      <img class="img-fluid" src="assets/images/biaflows-workflow-aggregated-results.png" alt="screenshot">
-								    </div>nline documentation in progress).
+								    </div>
 								    </p>
-								    <p>The detailed results by image view is useful to, e.g., detect jobs with poor metrics and inspect the associated annotation layer to understand where the workflow has failed. To quickly access an image, its thumbnail should be clicked from the list.
+								    <p>The detailed results by image view is useful to, e.g., find jobs with poor metrics and inspect the associated annotation layer to understand where the workflow has failed. To quickly access an image, its thumbnail can be clicked from the list.
 								    <div class="screenshot-holder">
 								      <img class="img-fluid" src="assets/images/biaflows-workflows-detailed-results.png" alt="screenshot">
 								    </div>
@@ -334,7 +330,7 @@ For 2D images, it is also possible to switch to previous/next image using corres
   
 
 								  <p>Please <a href="mailto:biaflows@neubias.org?subject=New Content Submission BIAFLOWS">contact us if you want to submit new content</a> (image datasets, ground-truths, workflows, ...) to the official, curated, BIAFLOWS server.</p>
-								  <p>Please <a href="https://www.biorxiv.org/content/10.1101/707489v1.supplementary-material">read our supplementary material to add content to your own BIAFLOWS instance</a> (Section 3 & 4, online documentation in progress).</p>
+								  <p>Please <a href="https://www.biorxiv.org/content/10.1101/707489v1.supplementary-material" target="_blank">read our supplementary material to add content to your own BIAFLOWS instance</a> (Section 3 & 4).</p>
 								    
 
 
