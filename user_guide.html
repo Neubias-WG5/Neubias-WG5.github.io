@@ -70,10 +70,9 @@
                             <section id="introduction-section" class="doc-section">
                                 <h2 class="section-title">Introduction</h2>
                                 <div class="section-block">
-                                  <p>All resources related to <span style="color:#fe7f7f;">BIA</span>FLOWS can be accessed from the portal: <a href="https://neubias-wg5.github.io" target="_blank">https://neubias-wg5.github.io</a>.</p>
 								  <p><span style="color:#fe7f7f;">BIA</span>FLOWS online instance can be accessed from: <a href="https://biaflows.neubias.org" target="_blank">https://biaflows.neubias.org</a>. 
 								  <br />It is possible to browse the content in read only mode from the guest account (username: guest; password: guest).<br />
-                                  Workflows cannot be launched from the guest account but all results from past workflow runs can be browsed. 
+                                  Workflows cannot be launched from the guest account but all results from past workflow runs can be accessed. 
 								  <br />The platform has been tested for Chrome, Chromium, Safari and Firefox.</p>
 				    			  <p>Any feedback is welcome by <a href="mailto:biaflows@neubias.org">e-mail</a> or through our <a href="https://github.com/Neubias-WG5" target="_blank">GitHub repository</a> Issues.</p>
                             </div>
@@ -93,39 +92,35 @@
                             <section id="home-section" class="doc-section">
                                 <h2 class="section-title">Homepage</h2>
                                 <div class="section-block">
-									<p>The Homepage provides an overview of the navigation in <span style="color:#fe7f7f;">BIA</span>FLOWS (also accessible at any time from Help > How to use).</p>
-									<p><span style="color:#fe7f7f;">BIA</span>FLOWS main sections (Workspace, Problems, Workflows) are accessible from the top bar menu.</p>
+									<p>The homepage provides an overview of the navigation in <span style="color:#fe7f7f;">BIA</span>FLOWS (also accessible from Help > How to use).</p>
+									<p><span style="color:#fe7f7f;">BIA</span>FLOWS main sections (Workspace, Problems, Workflows) can be browsed from the top bar menu.</p>
 									<p>The navigation is summarized in the figure below:</p>
 									<div class="screenshot-holder">
                                         <img class="img-fluid" src="assets/images/figure2.png" alt="screenshot"></a>
-</div>
-
-  
+									</div>
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
-							
-
                             <section id="problems-section" class="doc-section">
 							
                                 <h2 class="section-title">Problems</h2>
 
-				<div class="screenshot-holder">
+					<div class="screenshot-holder">
                                         <img class="img-fluid" src="assets/images/biaflows-topmenu.jpg" alt="screenshot"></a>
-</div>
+					</div>
 
 
-<div id="problem-list" class="section-block">
-  <h4>Problem list</h4>
-									<p>The Problems section brings an overview of all <acronym title="Bio Image Analysis">BIA</acronym> problems currently available in <span style="color:#fe7f7f;">BIA</span>FLOWS. Each Problem recapitulates a common <acronym title="Bio Image Analysis">BIA</acronym> Problem by gathering a set of ground truth annotated images and compatible workflows to process them.</p>
+					<div id="problem-list" class="section-block">
+					<h4>Problem list</h4>
+									<p>The Problems section brings an overview of all <acronym title="Bio Image Analysis">BIA</acronym> problems currently available in <span style="color:#fe7f7f;">BIA</span>FLOWS online instance. Each Problem recapitulates a common <acronym title="Bio Image Analysis">BIA</acronym> Problem by gathering a set of ground truth annotated images and compatible workflows to process them.</p>
 									<p>Clicking on a Problem redirects to the list of images available for this Problem.</p>
 									
 									<div class="screenshot-holder">
                                         <img class="img-fluid" src="assets/images/problems-list.png" alt="screenshot"></a>
                                     </div>
 									
-									<p>A Problem class (e.g. object segmentation) is associated to every Problem; <span style="color:#fe7f7f;">BIA</span>FLOWS currently supports 8 Problem classes: Object counting, Object detection, Landmark detection, Object segmentation, Particle tracking, Object tracking, Pixel classification, Filament tree tracing, Filament networks tracing.</p>
+									<p>A Problem class (e.g. object segmentation) is associated to every Problem; <span style="color:#fe7f7f;">BIA</span>FLOWS currently supports 9 Problem classes: Object counting, Object detection, Landmark detection, Object segmentation, Particle tracking, Object tracking, Pixel classification, Filament tree tracing, and Filament networks tracing.</p>
 
-									<p>A Problem class specifies the format of ground truth annotations (e.g. binary mask), as well as the benchmark metrics to be evaluated on all annotated images available for that Problem. The annotation format is identical to the output expected by the workflows of a Problem. See <a href="https://www.biorxiv.org/content/10.1101/707489v1.supplementary-material">details in sections (5 and 7) in Supplementary material</a> and contextual information in Benchmark results table.</p>
+									<p>A Problem class specifies the format of ground truth annotations (e.g. skeleton binary mask), as well as the benchmark metrics to be evaluated on all annotated images available for that Problem. The annotation format is identical to the output expected by the workflows of a Problem. See <a href="https://neubias-wg5.github.io/assets/pdfs/Problem%20classes,%20ground%20truth%20annotations%20and%20reported%20metrics.pdf"> and contextual information in Benchmark results table.</p>
 									
                                 </div><!--//section-block-->
 								
@@ -140,8 +135,6 @@
 										<p>In case ground truth annotations are stored as image masks (this depends on the problem class), the masks can be displayed by toggling a filter (click on "Show filters" then select Type > Groundtruth). If ground truth annotations are in a different format (e.g. SWC or text file), they can be accessed through the Attached Files available from Image description (blue arrow).</p>
 
 										<p>Finally, all images can be downloaded from the <button class="button is-small is-fullwidth layer-field" disabled="disabled">Download</button> button.</p>
-
-										<p><u>Note</u>: To visualize 16 bit images, it is recommended to set Gamma from 0.1 to 0.2 (see Image Viewer section).</p>
     
                                 </div><!--//section-block-->
 								
@@ -328,7 +321,7 @@ For 2D images, it is also possible to switch to previous/next image using corres
 
   <p>If you want to add content to your own BIAFLOWS server, please <a href="index.html">read our other documents about "Populating ..." and "Creating workflows..."</a>.
 </p>    
-  <p>If you want to submit new content (image datasets, ground-truths, workflows, ...) to the official, curated, BIAFLOWS server, please <a href="mailto:biaflows@neubias.org?subject=New Content Submission BIAFLOWS">contact us</a>. </p>
+  <p>If you want to submit new content (image datasets, ground-truths, workflows, ...) to BIAFLOWS online instance, please <a href="mailto:biaflows@neubias.org?subject=New Content Submission BIAFLOWS">contact us</a>. </p>
 
 
 		
