@@ -17,10 +17,8 @@
     <!-- Plugins CSS -->    
     <link rel="stylesheet" href="assets/plugins/prism/prism.css">
     <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">  
-      
     <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
-    
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">   
 </head> 
 
 <body class="body-pink">
@@ -36,24 +34,7 @@
                         </a>
                     </h1>
                     
-                </div><!--//branding-->
-                <!--
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Quick Start</li>
-                </ol>
-				-->
-                <!--
-                <div class="top-search-box">
-	                 <form class="form-inline search-form justify-content-center" action="" method="get">
-	            
-			            <input type="text" placeholder="Search..." name="search" class="form-control search-input">
-			            
-			            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
-			            
-			        </form>
-                </div>-->
-                
+                </div>
             </div><!--//container-->
         </header><!--//header-->
         <div class="doc-wrapper">
@@ -62,7 +43,6 @@
                     <h1 class="doc-title"><i class="icon fa fa-book"></i> <span style="color:#fe7f7f;">BIA</span>FLOWS User Guide</h1>
                     <div class="meta"><i class="far fa-clock"></i> Last updated: October 16th, 2019</div>
                 </div>
-				
 				<!--//doc-header-->
                 <div class="doc-body row">
                     <div class="doc-content col-md-9 col-12 order-1">
@@ -80,15 +60,13 @@
                             <section id="login-section" class="doc-section">
                                 <h2 class="section-title">Login</h2>
                                 <div class="section-block">
-                                  <p>Login using guest/guest.
-				    <div class="screenshot-holder">
-						<img class="img-fluid" src="assets/images/biaflows-login.jpg" alt="screenshot" width="320">
-				    </div>
-                    </p>
+									<p>Login using guest/guest.
+									<div class="screenshot-holder">
+										<img class="img-fluid" src="assets/images/biaflows-login.jpg" alt="screenshot" width="320">
+									</div>
+									</p>
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
-							
-							
                             <section id="home-section" class="doc-section">
                                 <h2 class="section-title">Homepage</h2>
                                 <div class="section-block">
@@ -101,16 +79,12 @@
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
                             <section id="problems-section" class="doc-section">
-							
                                 <h2 class="section-title">Problems</h2>
-
-					<div class="screenshot-holder">
-                                        <img class="img-fluid" src="assets/images/biaflows-topmenu.jpg" alt="screenshot"></a>
-					</div>
-
-
-					<div id="problem-list" class="section-block">
-					<h4>Problem list</h4>
+								<div class="screenshot-holder">
+									<img class="img-fluid" src="assets/images/biaflows-topmenu.jpg" alt="screenshot"></a>
+								</div>
+								<div id="problem-list" class="section-block">
+								<h4>Problem list</h4>
 									<p>The Problems section brings an overview of all <acronym title="Bio Image Analysis">BIA</acronym> problems currently available in <span style="color:#fe7f7f;">BIA</span>FLOWS online instance. Each Problem recapitulates a common <acronym title="Bio Image Analysis">BIA</acronym> Problem by gathering a set of ground truth annotated images and compatible workflows to process them.</p>
 									<p>Clicking on a Problem redirects to the list of images available for this Problem.</p>
 									
@@ -121,26 +95,20 @@
 									<p>A Problem class (e.g. object segmentation) is associated to every Problem; <span style="color:#fe7f7f;">BIA</span>FLOWS currently supports 9 Problem classes: Object counting, Object detection, Landmark detection, Object segmentation, Particle tracking, Object tracking, Pixel classification, Filament tree tracing, and Filament networks tracing.</p>
 
 									<p>A Problem class specifies the format of ground truth annotations (e.g. skeleton binary mask), as well as the benchmark metrics to be evaluated on all annotated images available for that Problem. The annotation format is identical to the output expected by the workflows of a Problem. See <a href="https://neubias-wg5.github.io/assets/pdfs/Problem%20classes,%20ground%20truth%20annotations%20and%20reported%20metrics.pdf">this document</a> and the contextual help (information icons) from Benchmark results table.</p>
-									
                                 </div><!--//section-block-->
-								
 								<div id="problem-images" class="section-block">
-										<h4>Images</h4>
+									<h4>Images</h4>
                                     <p>This table lists all the images for the current Problem, where details can be displayed for each image.<br>
                                     <p> Images can be filtered by name by typing a keyword in the search bar and they can be visualized by clicking on their name or thumbnail.</p>
-				      <div class="screenshot-holder">
-					<img class="img-fluid" src="assets/images/biaflows-image-list.png" alt="screenshot" width="480">
-					</div>
-				    </p>
-										<p>In case ground truth annotations are stored as image masks (this depends on the problem class), the masks can be displayed by toggling a filter (click on "Show filters" then select Type > Groundtruth). If ground truth annotations are in a different format (e.g. SWC or text file), they can be accessed through the Attached Files available from Image description (blue arrow).</p>
-
-										<p>Finally, all images can be downloaded from the <button class="button is-small is-fullwidth layer-field" disabled="disabled">Download</button> button.</p>
-    
+									<div class="screenshot-holder">
+										<img class="img-fluid" src="assets/images/biaflows-image-list.png" alt="screenshot" width="480">
+									</div>
+									</p>
+									<p>In case ground truth annotations are stored as image masks (this depends on the problem class), the masks can be displayed by toggling a filter (click on "Show filters" then select Type > Groundtruth). If ground truth annotations are in a different format (e.g. SWC or text file), they can be accessed through the Attached Files available from Image description (blue arrow).</p>
+									<p>Finally, all images can be downloaded from the <button class="button is-small is-fullwidth layer-field" disabled="disabled">Download</button> button.</p>
                                 </div><!--//section-block-->
-								
 								<div id="problem-image-viewer" class="section-block">
 										<h4>Image Viewer</h4>
-
 										<p>You can click on an image in the image list to open the Image Viewer.
 										  <h5>Navigation</h5>
 										  Use mouse scroll to zoom in/out, click + drag to move around. <br>
@@ -148,148 +116,93 @@
 										  <div class="screenshot-holder">
 										    <img class="img-fluid" src="assets/images/biaflows-image-viewer.png" alt="screenshot" width="640">
 										    </div>
-					</p>
-
-
-
+										</p>
 										<h5>Layers</h5>
 										To overlay an annotation layer, click on <span class="fas fa-copy"></span> in the right toolbar. Annotation layers are generated from the results of a workflow run. Several layers can be overlaid on the original image, and they can be hidden by unselecting the checkbox under the <span class="far fa-eye"></span> symbol, or removed using <span class="fas fa-times"></span>. In addition, Layer opacity can be adjusted with the bottom slider. If you do not know which annotation layer to display, click on <button data-v-0c385051="" class="button is-small is-fullwidth layer-field" disabled="disabled">Add all favorites</button>. Favorite workflow runs were validated by their maintainer as providing representative results.<br>
-
-
 										<div class="screenshot-holder">
 										    <img class="img-fluid" src="assets/images/biaflows-image-viewer-layer.jpg" alt="screenshot" width="640">
-										    </div>
-
-</p>
-
-
+										</div>
 										<h5>Multiple viewers</h5>
 										  It is also possible to have multiple viewers opened at once and synchronized (e.g. 4 synchronized views where top left is the original image and others are workflow runs overlays):<br>
 										  <div class="screenshot-holder">
 										    <img class="img-fluid" src="assets/images/biaflows-image-multiple-viewer.jpg" alt="screenshot" width="640">
 										    </div>
-										  
-
 										  This feature can be used to open the same image several times and compare different workflow runs through the display of corresponding annotation layers. To do so, select an image from the upper left drop down menu and click on the big <span class="fas fa-plus"></span> blue button (bottom right corner), select a workflow in the annotation layers <span class="fas fa-copy"></span>, then use <span class="fas fa-link"></span> (in the right toolbar) to synchronize the views.</p>
-
-
 										<p>
-										  The current image can be downloaded by clicking on the image information panel <span class="fas fa-info"></span> in the right toolbar, then on <button class="button is-small is-fullwidth layer-field" disabled="disabled">Download</button> (next to More information).  
-For 2D images, it is also possible to switch to previous/next image using corresponding buttons (<button class="button is-small">Previous image</button> / <button class="button is-small">Next image</button>) from this panel. 
+										  The current image can be downloaded by clicking on the image information panel <span class="fas fa-info"></span> in the right toolbar, then on <button class="button is-small is-fullwidth layer-field" disabled="disabled">Download</button> (next to More information). For 2D images, it is also possible to switch to previous/next image using corresponding buttons (<button class="button is-small">Previous image</button> / <button class="button is-small">Next image</button>) from this panel. 
 										</p>
-
 										<p>Finally, clicking on an annotation in the viewer will display some information (e.g. annotation area and perimeter).</p>
-
-
 										<h5>Image adjustments</h5>
 										  Contrast and gamma correction can be adjusted from the panel <span class="fas fa-adjust"></span> (right toolbar). The image can also be video inverted from this panel.
-
-										   <div class="screenshot-holder">
-										    <img class="img-fluid" src="assets/images/biaflows-image-viewer-adjust.jpg" alt="screenshot" width="240">
-										    </div>
-										
-                                    
+										<div class="screenshot-holder">
+											<img class="img-fluid" src="assets/images/biaflows-image-viewer-adjust.jpg" alt="screenshot" width="240">
+										</div>    
                                 </div><!--//section-block-->
-					</section>			
+						</section>			
 
-<section id="workflows-section" class="doc-section">
-							
-
-
+						<section id="workflows-section" class="doc-section">
 								  <h2 class="section-title">Workflows</h2>
-
-								    
-								  <div class="screenshot-holder">
+									<div class="screenshot-holder">
                                         <img class="img-fluid" src="assets/images/biaflows-topmenu-workflow.jpg" alt="screenshot"></a>
-</div>
-<div id="workflows-list" class="section-block">
-								  <h4>Workflow list</h4>
-								  <p>This page lists all workflow currently available in the platform.  For each workflow, the most relevant workflow is the last executable version but all past versions can also be displayed ("Show filters", then Only Last Realeases -> No). Workflows can also be filtered by name or by number of executions from the search bar. 
+									</div>
+									<div id="workflows-list" class="section-block">
+									<h4>Workflow list</h4>
+									<p>This page lists all workflow currently available in the platform.  For each workflow, the most relevant workflow is the last executable version but all past versions can also be displayed ("Show filters", then Only Last Realeases -> No). Workflows can also be filtered by name or by number of executions from the search bar. 
 
 								    <div class="screenshot-holder">
 								      <img class="img-fluid" src="assets/images/biaflows-workflows-list.png" alt="screenshot">
 								    </div>
-
-								    Selecting a workflow (click on its name or Open) brings some useful information: 
-
+										Selecting a workflow (click on its name or Open) brings some useful information: 
 								    <div class="screenshot-holder">
 								      <img class="img-fluid" src="assets/images/biaflows-workflow-details.jpg" alt="screenshot">
 								    </div>
+										In particular, it is possible to inspect a workflow input parameters and associated default values (expandable list), the list of Problems this workflow is availble from (with links to problems), GitHub and DockerHub links respectively for the workflow source code and <acronym title="A file encapsulating a workflow and its execution environment to ensure its reproducibility">Workflow Docker image</acronym>, and finally the command line invoked by <span style="color:#fe7f7f;">BIA</span>FLOWS to launch the Workflow Docker image (Execute command). 
+									</p>
 
-								    In particular, it is possible to inspect a workflow input parameters and associated default values (expandable list), the list of Problems this workflow is availble from (with links to problems), GitHub and DockerHub links respectively for the workflow source code and <acronym title="A file encapsulating a workflow and its execution environment to ensure its reproducibility">Workflow Docker image</acronym>, and finally the command line invoked by <span style="color:#fe7f7f;">BIA</span>FLOWS to launch the Workflow Docker image (Execute command).
-								    
-								    
-								    
-								  </p>
-
-</div>
+									</div>
 
 								  <div id="workflows-workflow-runs" class="section-block">
 								  <h4>Workflow runs</h4>
-<p>
-  In user mode (the user account requires execution rights that are not provided by the guest account), a workflow can be launched by clicking on its name. This opens a workflow parameter dialog box where default parameters are set so as to bring meaningful results for the images of the project. Some parameter description can be obtained while moving the mouse cursor over its name. Click on the blue <button data-v-3442b694="" class="button is-link" disabled="disabled"> Run a workflow </button> button:
-  
-				      <div class="screenshot-holder">
-					<img class="img-fluid" src="assets/images/biaflows-workflow-run.png" alt="screenshot">
-				      </div>
-
-				      Upon launch, a job if flagged as "In queue", then "Running" in the job list and a progress bar displays information on the current execution step, as well as the number of annotations created so far. Upon completion, the job status should either turn to success (green) or failed (red). <br>
-				      <div class="screenshot-holder">
-					<img class="img-fluid" src="assets/images/biaflows-workflow-status-inqueue.jpg" alt="screenshot">
-				      </div>
-				      <div class="screenshot-holder">
-					<img class="img-fluid" src="assets/images/biaflows-workflow-status-running.jpg" alt="screenshot">
-				      </div>
-				      <div class="screenshot-holder">
-					<img class="img-fluid" src="assets/images/biaflows-workflow-status-success.jpg" alt="screenshot">
-				      </div>
-				      
-</p>
-
+									<p>
+										In user mode (the user account requires execution rights that are not provided by the guest account), a workflow can be launched by clicking on its name. This opens a workflow parameter dialog box where default parameters are set so as to bring meaningful results for the images of the project. Some parameter description can be obtained while moving the mouse cursor over its name. Click on the blue <button data-v-3442b694="" class="button is-link" disabled="disabled"> Run a workflow </button> button:
+									<div class="screenshot-holder">
+										<img class="img-fluid" src="assets/images/biaflows-workflow-run.png" alt="screenshot">
+									</div>
+									  Upon launch, a job if flagged as "In queue", then "Running" in the job list and a progress bar displays information on the current execution step, as well as the number of annotations created so far. Upon completion, the job status should either turn to success (green) or failed (red). <br>
+									  <div class="screenshot-holder">
+									<img class="img-fluid" src="assets/images/biaflows-workflow-status-inqueue.jpg" alt="screenshot">
+									  </div>
+									  <div class="screenshot-holder">
+									<img class="img-fluid" src="assets/images/biaflows-workflow-status-running.jpg" alt="screenshot">
+									  </div>
+									  <div class="screenshot-holder">
+									<img class="img-fluid" src="assets/images/biaflows-workflow-status-success.jpg" alt="screenshot">
+									  </div>
+									</p>
 								  <p>If a job is successful, workflow log, results (annotations), and benchmark metrics are available for this run.<br>
-
-								    The complete report (log file) of the job is can be shown (Execution log <button class="button is-small" disabled="disabled"><span>Show</span></button>):<br>
-				      
-				      <div class="screenshot-holder">
-					<img class="img-fluid" src="assets/images/biaflows-workflow-log.jpg" alt="screenshot">
-					</div>
-				      
+										The complete report (log file) of the job is can be shown (Execution log <button class="button is-small" disabled="disabled"><span>Show</span></button>):<br>
+									<div class="screenshot-holder">
+										<img class="img-fluid" src="assets/images/biaflows-workflow-log.jpg" alt="screenshot">
+									</div>
 								  </p>
-
-								  
-<p>
+								<p>
 								    Annotations created by this workflow run can be shown by clicking on Data -> XXX Annotations, opening the Annotations tab where one can filter annotations for all images or individual images: <br>
-
-				      <div class="screenshot-holder">
-					<img class="img-fluid" src="assets/images/biaflows-workflow-annotations.jpg" alt="screenshot">
-				      </div>
-</p>
-
+								  <div class="screenshot-holder">
+								<img class="img-fluid" src="assets/images/biaflows-workflow-annotations.jpg" alt="screenshot">
+								  </div>
+								</p>
 								  <p>One can then click on any annotation and further inspect it in the Image viewer where the Workflow layer is overlaid:
-
 								    <div class="screenshot-holder">
-					<img class="img-fluid" src="assets/images/biaflows-workflow-annotations-imageviewer.jpg" alt="screenshot">
-				      </div>
-								    
-
-				      
-</p>
-				      
-				      <p>Workflow metrics can be displayed as explained in the next Section.</p>
-
-								  
-								  
-				    
+									<img class="img-fluid" src="assets/images/biaflows-workflow-annotations-imageviewer.jpg" alt="screenshot">
+									  </div>
+								</p>
+								<p>Workflow metrics can be displayed as explained in the next Section.</p>
                                 </div><!--//section-block-->
 								
 								<div id="workflows-benchmarking" class="section-block">
-
 								  <h4>Benchmarking</h4>
-
 								  <p>The Benchmarking Section is located at the bottom of the Workflow runs page and it is where benchmark results (metrics) from past workflow runs can be inspected. 
-
-								  By default, a report is generated for all starred jobs (as defined by the project manager of this Problem) and all images from the Problem. Both selections can be refined using Filters (by Images, by Metrics) and metrics can be explored as aggregated for all images or selected for individual images:</p>
-								  
+								  By default, a report is generated for all starred jobs (as defined by the project manager of this Problem) and all images from the Problem. Both selections can be refined using Filters (by Images, by Metrics) and metrics can be explored as aggregated for all images or selected for individual images:</p>	  
 								    <div class="screenshot-holder">
 								      <img class="img-fluid" src="assets/images/biaflows-workflow-aggregated-results.png" alt="screenshot">
 								    </div>
@@ -299,149 +212,85 @@ For 2D images, it is also possible to switch to previous/next image using corres
 								      <img class="img-fluid" src="assets/images/biaflows-workflows-detailed-results.png" alt="screenshot">
 								    </div>
 								    </p>
-<p>A textual description of a metric is available by clicking on <span class="fas fa-info-circle"></span> next to the metric name:<br>
-
-
-  <div class="screenshot-holder">
-					<img class="img-fluid" src="assets/images/biaflows-workflows-metric-descr.jpg" alt="screenshot">
-				      </div>
-  
-  
-</p>
-								  
-
-                                    
+									<p>A textual description of a metric is available by clicking on <span class="fas fa-info-circle"></span> next to the metric name:<br>
+									  <div class="screenshot-holder">
+									<img class="img-fluid" src="assets/images/biaflows-workflows-metric-descr.jpg" alt="screenshot">
+									  </div>
+									</p>  
                                 </div><!--//section-block-->
-
-</section>
-
-  <div id="architecture" name="architecture">
-  <section id="architecture-section" class="doc-section">
-  <h2 class="section-title">Architecture</h2>
-  <p>This section describes BIAFLOWS architecture to deploy reproducible BIA workflows.</p>
-  <img src="assets/images/biaflows-architecture.png" height="560"></a>
-  
-  <p>Workflows are hosted in a trusted  code repository (GitHub) as a set of 4 files:</p>
-
-  <ul>
-  <li>a Dockerfile configuring execution environment (OS, installed software)</li>
-  <li>a JSON descriptor configuring problem class (e.g. object segmentation) and workflow parameters</li>
-  <li>the workflow source code</li>
-  <li>a common wrapper script sequencing all operations</li>
-  </ul>
-
-  <p>Workflow images (Docker images) are automatically built by DockerHub (cloud service) whenever a new workflow version is released from its code repository.</p>
-
-  <p>BIAFLOWS instances monitor DockerHub and pull new or updated workflow images to make them available from the web interface.</p> 
-
-  <p>Workflow images can alternatively be downloaded manually to process local image folders in a (Standalone Local).</p>
-
-  <p>See <a class="link" href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ" target="_blank"><span>this sample workflow repository</span></a>.</p>
-  
-  </section><!--//doc-section-->
-  </div>
-  
-  <section id="add-section" class="doc-section">
-  <h2 class="section-title">Add content</h2>
-  <p>If you want to add content to your own BIAFLOWS server, please <a href="index.html">read our other documents about "Populating ..." and "Creating workflows..."</a>.</p>    
-  <p>If you want to submit new content (image datasets, ground-truths, workflows, ...) to BIAFLOWS online instance, please <a href="mailto:biaflows@neubias.org?subject=New Content Submission BIAFLOWS">contact us</a>. </p>
-  </section><!--//doc-section-->
-	
+						</section>
+						  <div id="architecture" name="architecture">
+							  <section id="architecture-section" class="doc-section">
+							  <h2 class="section-title">Architecture</h2>
+							  <p>This section describes BIAFLOWS architecture to deploy reproducible BIA workflows.</p>
+							  <img src="assets/images/biaflows-architecture.png" height="560"></a>
+							  <p>Workflows are hosted in a trusted  code repository (GitHub) as a set of 4 files:</p>
+							  <ul>
+							  <li>a Dockerfile configuring execution environment (OS, installed software)</li>
+							  <li>a JSON descriptor configuring problem class (e.g. object segmentation) and workflow parameters</li>
+							  <li>the workflow source code</li>
+							  <li>a common wrapper script sequencing all operations</li>
+							  </ul>
+							  <p>Workflow images (Docker images) are automatically built by DockerHub (cloud service) whenever a new workflow version is released from its code repository.</p>
+							  <p>BIAFLOWS instances monitor DockerHub and pull new or updated workflow images to make them available from the web interface.</p> 
+							  <p>Workflow images can alternatively be downloaded manually to process local image folders in a (Standalone Local).</p>
+							  <p>See <a class="link" href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ" target="_blank"><span>this sample workflow repository</span></a>.</p>
+							  </section><!--//doc-section-->
+						  </div> 
+						  <section id="add-section" class="doc-section">
+						  <h2 class="section-title">Adding content</h2>
+						  <p>If you want to package your workflows as BIAFLOWS workflows, or populate a local instance of BIAFLOWS, please read <a href="index.html">"Installing and populating BIAFLOWS locally" and "Creating a BIA workflow..."</a>.</p>    
+						  <p>If you want to submit new content (image datasets, ground-truth annotations, workflows, ...) to BIAFLOWS online instance, please 
+						  write to <a class="link" href="https://forum.image.sc/tags/biaflows" target="_blank"><span>BIAFLOWS forum</span></a> or <a href="mailto:biaflows@neubias.org?subject=New Content Submission BIAFLOWS">contact us</a>. </p>
+						  </section><!--//doc-section-->
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
                     <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
                         <div id="doc-nav" class="doc-nav">
-	                        
 	                            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
 	                                <a class="nav-link scrollto" href="#introduction-section">Introduction</a>
-	                                <a class="nav-link scrollto" href="#login-section">BIAFLOWS Login</a>
-	                                <a class="nav-link scrollto" href="#home-section">BIAFLOWS Homepage</a>
+	                                <a class="nav-link scrollto" href="#login-section">Login</a>
+	                                <a class="nav-link scrollto" href="#home-section">Homepage</a>
 	                                <a class="nav-link scrollto" href="#problems-section">Problems</a>
-                                    <nav class="doc-sub-menu nav flex-column">
-                                        <a class="nav-link scrollto" href="#problem-list">List of Problems</a>
+									<nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#problem-list">Problem list</a>
                                         <a class="nav-link scrollto" href="#problem-images">Images</a>
                                         <a class="nav-link scrollto" href="#problem-image-viewer">Image Viewer</a>
-				    </nav><!--//nav-->
-				    <a class="nav-link scrollto" href="#workflows-section">Workflows</a>
+									</nav><!--//nav-->
+									<a class="nav-link scrollto" href="#workflows-section">Workflows</a>
                                     <nav class="doc-sub-menu nav flex-column">
-				        <a class="nav-link scrollto" href="#workflows-list">List of Workflows</a>
-                                        <a class="nav-link scrollto" href="#workflows-workflow-runs">Workflow runs</a>
-                                        <a class="nav-link scrollto" href="#workflows-benchmarking">Benchmarking</a>
-				    </nav>
-				    <a class="nav-link scrollto" href="#architecture-section">Architecture</a>
-                                    <nav class="doc-sub-menu nav flex-column">
-				    </nav>
-					<a class="nav-link scrollto" href="#add-section">Add content</a>
-                                    <nav class="doc-sub-menu nav flex-column">
-				    </nav>
+										<a class="nav-link scrollto" href="#workflows-list">Workflow list</a>
+										<a class="nav-link scrollto" href="#workflows-workflow-runs">Workflow runs</a>
+										<a class="nav-link scrollto" href="#workflows-benchmarking">Benchmarking</a>
+									</nav>
+									<a class="nav-link scrollto" href="#architecture-section">Architecture</a>
+									<a class="nav-link scrollto" href="#add-section">Adding content</a>
 	                            </nav><!--//doc-menu-->
-	                        
                         </div>
                     </div><!--//doc-sidebar-->
                 </div><!--//doc-body-->              
             </div><!--//container-->
         </div><!--//doc-wrapper-->
-        
-		
-		<!--
-        <div id="promo-block" class="promo-block">
-            <div class="container">
-                <div class="promo-block-inner">
-                    <h3 class="promo-title text-center"><i class="fas fa-heart"></i> <a href="https://themes.3rdwavemedia.com/bootstrap-templates/portfolio/instance-bootstrap-portfolio-theme-for-developers/" target="_blank">Want to participate?</a></h3>
-                    <div class="row">
-                        <div class="figure-holder col-lg-5 col-md-6 col-12">
-                            <div class="figure-holder-inner">
-                                <a href="https://themes.3rdwavemedia.com/bootstrap-templates/portfolio/instance-bootstrap-portfolio-theme-for-developers/" target="_blank"><img class="img-fluid" src="assets/images/demo/instance-promo.jpg" alt="Instance Theme" /></a>
-                                <a class="mask" href="https://themes.3rdwavemedia.com/bootstrap-templates/portfolio/instance-bootstrap-portfolio-theme-for-developers/"><i class="icon fa fa-heart pink"></i></a>
-                                
-                            </div>
-                        </div>
-						
-                        <div class="content-holder col-lg-7 col-md-6 col-12">
-                            <div class="content-holder-inner">
-                                <div class="desc">
-                                    <h4 class="content-title"><strong> Instance - Bootstrap 4 Portfolio Theme for Aspiring Developers</strong></h4>
-                                    <p>Check out <a href="https://themes.3rdwavemedia.com/bootstrap-templates/portfolio/instance-bootstrap-portfolio-theme-for-developers/" target="_blank">Instance</a> - a Bootstrap personal portfolio theme I created for developers. The UX design is focused on selling a developer’s skills and experience to potential employers or clients, and has <strong class="highlight">all the winning ingredients to get you hired</strong>. It’s not only a HTML site template but also a marketing framework for you to <strong class="highlight">build an impressive online presence with a high conversion rate</strong>. </p>
-                                    <p><strong class="highlight">[Tip for developers]:</strong> If your project is Open Source, you can use this area to promote your other projects or hold third party adverts like Bootstrap and FontAwesome do!</p>
-                                    <a class="btn btn-cta" href="https://themes.3rdwavemedia.com/bootstrap-templates/portfolio/instance-bootstrap-portfolio-theme-for-developers/" target="_blank"><i class="fas fa-external-link-alt"></i> View Demo</a>
-                                    
-                                </div>
-                                
-                                
-                                <div class="author"><a href="https://themes.3rdwavemedia.com">Xiaoying Riley</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        -->
     </div><!--//page-wrapper-->
-    
     <footer id="footer" class="footer text-center">
         <div class="container">
             <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->
             <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
-
             <p>
 		      <br><br>
-	      <a href="http://neubias.org/" target="_blank"><img src="assets/images/logo-neubias.png" height="50"></a>
-	      <a href="https://cost.eu/COST_Actions/ca/CA15124" target="_blank"><img src="assets/images/logo-cost.png" height="50"></a>
-	      <a href="https://cytomine.org"><img src="assets/images/logo-cytomine-org.png" height="50"></a>
-	      <a href="http://europe.wallonie.be/" target="_blank"><img src="assets/images/logo-feder.jpg" height="50"></a>
+			  <a href="http://neubias.org/" target="_blank"><img src="assets/images/logo-neubias.png" height="50"></a>
+			  <a href="https://cost.eu/COST_Actions/ca/CA15124" target="_blank"><img src="assets/images/logo-cost.png" height="50"></a>
+			  <a href="https://cytomine.org"><img src="assets/images/logo-cytomine-org.png" height="50"></a>
+			  <a href="http://europe.wallonie.be/" target="_blank"><img src="assets/images/logo-feder.jpg" height="50"></a>
 		      </p>
         </div><!--//container-->
     </footer><!--//footer-->
-    
-     
     <!-- Main Javascript -->          
     <script type="text/javascript" src="assets/plugins/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>    
     <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>      
     <script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>                                                             
-    <script type="text/javascript" src="assets/js/main.js"></script>
-    
+    <script type="text/javascript" src="assets/js/main.js"></script> 
 </body>
-</html> 
-
+</html>
