@@ -315,17 +315,37 @@ For 2D images, it is also possible to switch to previous/next image using corres
 
 </section>
 
-<section id="add-section" class="doc-section">
+  <div id="architecture" name="architecture">
+  <section id="architecture-section" class="doc-section">
+  <h2 class="section-title">Architecture</h2>
+  <p>This section describes BIAFLOWS architecture to deploy reproducible BIA workflows.</p>
+  <img src="assets/images/biaflows-architecture.png" height="560"></a>
+  
+  <p>Workflows are hosted in a trusted  code repository (GitHub) as a set of 4 files:</p>
 
+  <ul>
+  <li>a Dockerfile configuring execution environment (OS, installed software)</li>
+  <li>a JSON descriptor configuring problem class (e.g. object segmentation) and workflow parameters</li>
+  <li>the workflow source code</li>
+  <li>a common wrapper script sequencing all operations</li>
+  </ul>
+
+  <p>Workflow images (Docker images) are automatically built by DockerHub (cloud service) whenever a new workflow version is released from its code repository.</p>
+
+  <p>BIAFLOWS instances monitor DockerHub and pull new or updated workflow images to make them available from the web interface.</p> 
+
+  <p>Workflow images can alternatively be downloaded manually to process local image folders in a (Standalone Local).</p>
+
+  <p>See <a class="link" href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ" target="_blank"><span>this sample workflow repository</span></a>.</p>
+  
+  </section><!--//doc-section-->
+  </div>
+  
+  <section id="add-section" class="doc-section">
   <h2 class="section-title">Add content</h2>
-
-  <p>If you want to add content to your own BIAFLOWS server, please <a href="index.html">read our other documents about "Populating ..." and "Creating workflows..."</a>.
-</p>    
+  <p>If you want to add content to your own BIAFLOWS server, please <a href="index.html">read our other documents about "Populating ..." and "Creating workflows..."</a>.</p>    
   <p>If you want to submit new content (image datasets, ground-truths, workflows, ...) to BIAFLOWS online instance, please <a href="mailto:biaflows@neubias.org?subject=New Content Submission BIAFLOWS">contact us</a>. </p>
-
-
-		
-                            </section><!--//doc-section-->
+  </section><!--//doc-section-->
 	
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
@@ -348,7 +368,10 @@ For 2D images, it is also possible to switch to previous/next image using corres
                                         <a class="nav-link scrollto" href="#workflows-workflow-runs">Workflow runs</a>
                                         <a class="nav-link scrollto" href="#workflows-benchmarking">Benchmarking</a>
 				    </nav>
-				    <a class="nav-link scrollto" href="#add-section">Add content</a>
+				    <a class="nav-link scrollto" href="#architecture-section">Architecture</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+				    </nav>
+					<a class="nav-link scrollto" href="#add-section">Add content</a>
                                     <nav class="doc-sub-menu nav flex-column">
 				    </nav>
 	                            </nav><!--//doc-menu-->
