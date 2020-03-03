@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BIAFLOWS NEUBIAS-WG5 : user guide documentation</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="body-pink">
+<div class="page-wrapper">
+    <!-- ******Header****** -->
+    <header id="header" class="header">
+        <div class="container">
+            <div class="branding">
+                <h1 class="logo">
+                    <a href="index.html">
+                        <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                        <span class="text-highlight">BIA</span><span class="text-bold">FLOWS</span>
+                    </a>
+                </h1>
+
+            </div>
+        </div><!--//container-->
+    </header><!--//header-->
+    <div class="doc-wrapper">
+        <div class="container">
+            <div id="doc-header" class="doc-header text-center">
+                <h1 class="doc-title">Problem class, ground truth annotations and reported metrics</h1>
+                <div class="meta"><i class="far fa-clock"></i> Last updated: March 2nd, 2020</div>
+            </div>
+            <!--//doc-header-->
+            <div class="doc-body row">
+                <div class="doc-content col-md-9 col-12 order-1">
+                    <div class="content-inner">
+                        <section id="introduction-section" class="doc-section">
+                            <h2 class="section-title">Introduction</h2>
+                            <p class="section-block">
+                                <p>
+                                    To perform benchmarking, ground truth annotations should be encoded in a format
+                                    that is specific to the associated problem class.
+                                    <span style="color:#fe7f7f;">BIA</span> workflows are also expected to output
+                                    results in the same format.
+                                </p>
+                                <p>
+                                    Currently 9 problem classes are supported in
+                                    <span style="color:#fe7f7f;">BIA</span>FLOWS and their respective
+                                    annotation formats and computed benchmark metrics are described below.
+                                </p>
+                                <p>
+                                <ul><span style="color:#fe7f7f;">Notes</span>: each problem class has a long name (explicit)
+                                and short name (e.g. Object Segmentation / ObjSeg). The same hold for metrics (e.g. DICE / DC).</ul>
+                                </p>
+                                <p>
+                                    A description of each benchmark is available on the workflow runs result table by clicking on the
+                                    <i data-v-0503ad4e="" class="fas fa-info-circle"></i> symbol.
+                                </p>
+                                <div class="screenshot-holder">
+                                    <img class="img-fluid" src="assets/images/benchmark_01.png" alt="screenshot"></a>
+                                </div>
+                        </section><!--//doc-section-->
+                        <section id="steps-section" class="doc-section">
+                            <h2 class="section-title">Problem Class</h2>
+                            <div id="ObjSeg" class="section-block">
+                                <h4>Object Segmentation (ObjSeg)</h4>
+                                <h6>Task</h6>
+                                <p>Delineate objects or isolated regions</p>
+                                <h6>Object Encoding</h6>
+                                <p>2D/3D label masks with foreground > 0 (one unique ID per object), background = 0</p>
+                                <h6>Reported metrics</h6>
+                                <ul>
+                                    <li>DICE (DC) et AVERAGE_HAUSDORFF_DISTANCE (AHD), computed by
+                                        <a href="http://www.visceral.eu/resources/evaluatesegmentation-software/" target="_blank">VISCERAL</a>
+                                        executable (archived
+                                        <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities/blob/master/bin/Visceral" target="_blank" >here</a>)</li>
+                                    <li>Fraction overlap (FOVL) computed by <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities" target="_blank">custom</a> Python code</li>
+                                    <li>Mean Average Precision computed by <a href="https://www.kaggle.com/c/data-science-bowl-2018/overview/evaluation" target="_blank">Data Science Bowl 2018</a> Python code.</li>
+                                </ul>
+                            </div>
+
+                            <div id="SptCnt" class="section-block">
+                                <h4>Spot / object counting (SptCnt)</h4>
+                                <h6>Task</h6>
+                                <p>Estimate the number of objects</p>
+                                <h6>Object Encoding</h6>
+                                <p>2D/3D binary masks, exactly 1 spot/object per non null pixel</p>
+                                <h6>Reported metrics</h6>
+                                <ul>
+                                    <li>RELATIVE_ERROR_COUNT (REC), computed by <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities" target="_blank">custom</a> Python code.</li>
+                                </ul>
+                            </div>
+
+                            <div id="ObjDet" class="section-block">
+                                <h4>Spot / object detection (ObjDet)</h4>
+                                <h6>Task</h6>
+                                <p>Detect objects in an image (e.g. nucleus)</p>
+                                <h6>Object Encoding</h6>
+                                <p>2D/3D binary masks, exactly 1 object per non null pixel</p>
+                                <h6>Reported metrics</h6>
+                                <ul>
+                                    <li>CONFUSION_MATRIX (TP, FN, FP), F1_SCORE (F1), PRECISION (PR),
+                                        RECALL (RE), Distance RMSE (RMSE), computed by
+                                        <a href="http://bioimageanalysis.org/track/" target="_blank">Particle Tracking Challenge</a>
+                                        metric Java code (particle matching only, archived
+                                        <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities" target="_blank">here</a>
+                                        in <code>bin/DetectionPerformance.jar</code>)</li>
+                                </ul>
+                            </div>
+
+                            <div id="PixCla" class="section-block">
+                                <h4>Pixel/Voxel Classification (PixCla)</h4>
+                                <h6>Task</h6>
+                                <p>Estimate pixels class</p>
+                                <h6>Object Encoding</h6>
+                                <p>2D/3D class masks, gray level encodes pixel/voxel class, background = 0</p>
+                                <h6>Reported metrics</h6>
+                                <ul>
+                                    <li>F1_SCORE (F1), ACCURACY (ACC), PRECISION (PR), RECALL (RE), computed by
+                                        <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities" target="_blank">custom</a> Python code.</li>
+                                </ul>
+                            </div>
+
+                            <div id="TreTrc" class="section-block">
+                                <h4>Filament Tree Tracing (TreTrc)</h4>
+                                <h6>Task</h6>
+                                <p>Estimate the medial axis of a connected filament tree network (one per image)</p>
+                                <h6>Object Encoding</h6>
+                                <p>SWC file</p>
+                                <h6>Reported metrics</h6>
+                                <ul>
+                                    <li>UNMATCHED_VOXEL_RATE (UVR), computed by
+                                        <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities" target="_blank">custom</a> Python code.</li>
+                                    <li>NetMets metrics: Geometric False Negative rate (FNR),
+                                        Geometric False Positive rate (FPR) computed by
+                                        <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities/blob/master/neubiaswg5/metrics/netmets_obj.py" target="_blank">NetMets Python code</a>NetMets Python code</li>
+                                </ul>
+                                <h6>Metrics parameters</h6>
+                                <ul>
+                                    <li>GATING_DIST (UVR): Maximum distance between skeleton voxels in reference
+                                        and prediction skeletons to be considered as matched (default = 5 pix)</li>
+                                    <li>Sigma (NetMets): tolerance in centreline position (default: 5 pix)</li>
+                                </ul>
+                            </div>
+
+                            <div id="LooTrc)" class="section-block">
+                                <h4>Filament Networks Tracing (LooTrc)</h4>
+                                <h6>Task</h6>
+                                <p>Estimate the medial axis of one or several connected filament network(s)</p>
+                                <h6>Object Encoding</h6>
+                                <p>2D/3D skeleton binary masks with skeleton pixels > 0, background = 0</p>
+
+                                <h6>Reported metrics</h6>
+                                <ul>
+                                    <li>UNMATCHED_VOXEL_RATE (UVR), computed by
+                                        <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities" target="_blank">custom</a> Python code.</li>
+                                    <li>NetMets metrics: Geometric False Negative rate (FNR),
+                                        Geometric False Positive rate (FPR) computed by
+                                        <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities/blob/master/neubiaswg5/metrics/netmets_obj.py" target="_blank">NetMets Python code</a>NetMets Python code</li>
+                                </ul>
+                                <h6>Metrics parameters</h6>
+                                <ul>
+                                    <li>GATING_DIST (UVR): Maximum distance between skeleton voxels in reference
+                                        and prediction skeletons to be considered as matched (default = 5 pix)</li>
+                                    <li>Sigma (NetMets): tolerance in centreline position (default: 5 pix)</li>
+                                    <li>Skeleton sampling distance (NetMets): skeletons are sampled to be converted
+                                        to SWC models. (default: 3 voxels, default Z Ratio: 1)</li>
+                                </ul>
+                            </div>
+
+                            <div id="LndDet" class="section-block">
+                                <h4>Landmark Detection (LndDet)</h4>
+                                <h6>Task</h6>
+                                <p>Estimate the position of specific feature points</p>
+                                <h6>Object Encoding</h6>
+                                <p>2D/3D class masks, exactly 1 landmark per non null pixel, gray level encodes
+                                    landmark class (1 to N, N is the number of landmarks)</p>
+                                <h6>Reported metrics</h6>
+                                <ul>
+                                    <li>Number of reference / predicted landmarks (NREF, NPRED)</li>
+                                    <li>Mean distance from
+                                        predicted landmarks to closest reference landmarks with same class (MRE).</li>
+                                     All metrics computed by
+                                        <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities" target="_blank">custom</a> Python code.</li>
+                                </ul>
+                            </div>
+
+                            <div id="PrtTrk" class="section-block">
+                                <h4>Particle Tracking (PrtTrk)</h4>
+                                <h6>Task</h6>
+                                <p>Estimate the tracks followed by particles (no division)</p>
+                                <h6>Object Encoding</h6>
+                                <p>2D/3D label masks, exactly 1 particle per non null pixel, gray level encodes particle track ID</p>
+                                <h6>Reported metrics</h6>
+                                <ul>
+                                    <li>Normalized pairing score alpha (NPSA)</li>
+                                    <li>Full normalized pairing score beta (FNPSB)</li>
+                                    <li>Number of reference tracks (NRT)</li>
+                                    <li>Number of candidate tracks (NCT)</li>
+                                    <li>Jaccard Similarity Tracks (JST)</li>
+                                    <li>Number of paired tracks (NPT)</li>
+                                    <li>Number of missed tracks (NMT)</li>
+                                    <li>Number of spurious tracks (NST)</li>
+                                    <li>Number of reference detections (NRD)</li>
+                                    <li>Number of candidate detections (NCD)</li>
+                                    <li>Jaccard similarity detections (JSD)</li>
+                                    <li>Number of paired detections (NPD)</li>
+                                    <li>Number of missed detections (NMD)</li>
+                                    <li>Number of spurious detections (NSD)</li>
+                                    <p>
+                                        All metric computed by
+                                        <a href="http://bioimageanalysis.org/track/" target="_blank">Particle Tracking Challenge</a>
+                                        Java code (archived <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities/blob/master/bin/TrackingPerformance.jar" target="_blank">here</a>a)
+                                    </p>
+                                </ul>
+                                <h6>Metrics parameters</h6>
+                                <ul>
+                                    <li>GATING_DIST (default = 5, maximum distance between particle detections
+                                        in reference / prediction tracks to be considered as matching)</li>
+                                </ul>
+                            </div>
+
+                            <div id="ObjTrk" class="section-block">
+                                <h4>Object Tracking (ObjTrk)</h4>
+                                <h6>Task</h6>
+                                <p>Estimate object tracks and segmentation masks (with possible divisions)</p>
+                                <h6>Object Encoding</h6>
+                                <p>2D/3D TIFF label masks, gray level encodes object ID + division text file
+                                    (see Cell Tracking Challenge format)</p>
+                                <h6>Reported metrics</h6>
+                                <ul>
+                                    <li>Segmentation measure (SEG), implementation archived <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities/blob/master/bin/SEGMeasure" target="_blank">here</a></li>
+                                    <li>Tracking measure (TRA), implementation archived <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities/blob/master/bin/TRAMeasure" target="_blank">here</a></li>
+                                    All computed from
+                                    <a href="http://celltrackingchallenge.net/evaluation-methodology/" target="_blank">Cell Tracking Challenge</a> metric command-line executables
+                                </ul>
+                            </div>
+
+
+                        </section>
+
+                    </div><!--//content-inner-->
+                </div><!--//doc-content-->
+                <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                    <div id="doc-nav" class="doc-nav">
+                        <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+                            <a class="nav-link scrollto" href="#introduction-section">Introduction</a>
+                            <a class="nav-link scrollto" href="#steps-section">Steps</a>
+                            <nav class="doc-sub-menu nav flex-column">
+                                <a class="nav-link scrollto" href="#step-1">Install Docker</a>
+                                <a class="nav-link scrollto" href="#step-2">Get the docker image</a>
+                                <a class="nav-link scrollto" href="#step-3">Prepare the data folder</a>
+                                <a class="nav-link scrollto" href="#step-4">Run the workflow</a>
+                            </nav><!--//nav-->
+                        </nav><!--//doc-menu-->
+                    </div>
+                </div><!--//doc-sidebar-->
+            </div><!--//doc-body-->
+        </div><!--//container-->
+    </div><!--//doc-wrapper-->
+</div><!--//page-wrapper-->
+<footer id="footer" class="footer text-center">
+    <div class="container">
+        <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->
+        <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+        <p>
+            <br><br>
+            <a href="http://neubias.org/" target="_blank"><img src="assets/images/logo-neubias.png" height="50"></a>
+            <a href="https://cost.eu/COST_Actions/ca/CA15124" target="_blank"><img src="assets/images/logo-cost.png" height="50"></a>
+            <a href="https://cytomine.org"><img src="assets/images/logo-cytomine-org.png" height="50"></a>
+            <a href="http://europe.wallonie.be/" target="_blank"><img src="assets/images/logo-feder.jpg" height="50"></a>
+        </p>
+    </div><!--//container-->
+</footer><!--//footer-->
+<!-- Main Javascript -->
+<script type="text/javascript" src="assets/plugins/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/plugins/prism/prism.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+<script type="text/javascript" src="assets/js/main.js"></script>
+</body>
+</html>
