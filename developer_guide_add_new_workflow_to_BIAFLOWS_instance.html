@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BIAFLOWS NEUBIAS-WG5 : user guide documentation</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js"
+            integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH"
+            crossorigin="anonymous"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="body-pink">
+<div class="page-wrapper">
+    <!-- ******Header****** -->
+    <header id="header" class="header">
+        <div class="container">
+            <div class="branding">
+                <h1 class="logo">
+                    <a href="index.html">
+                        <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                        <span class="text-highlight">BIA</span><span class="text-bold">FLOWS</span>
+                    </a>
+                </h1>
+
+            </div>
+        </div><!--//container-->
+    </header><!--//header-->
+    <div class="doc-wrapper">
+        <div class="container">
+            <div id="doc-header" class="doc-header text-center">
+                <h1 class="doc-title">Creating a BIA workflow and adding it to a BIAFLOWS instance</h1>
+                <h2>(Developer guide)</h2>
+                <div class="meta"><i class="far fa-clock"></i> Last updated: March 17st, 2020</div>
+            </div>
+            <!--//doc-header-->
+            <div class="doc-body row">
+                <div class="doc-content col-md-9 col-12 order-1">
+                    <div class="content-inner">
+                        <section id="introduction-section" class="doc-section">
+                            <h2 class="section-title">Introduction</h2>
+                            <p class="section-block">
+                            <p>
+                                This section provides some more details on <span style="color:#fe7f7f;">BIA</span>FLOWS
+                                workflows and
+                                details how to compile and debug <span style="color:#fe7f7f;">BIA</span>FLOWS workflows
+                                Docker image
+                                locally and add them to an existing <span style="color:#fe7f7f;">BIA</span>FLOWS
+                                instance.
+                            </p>
+                        </section><!--//doc-section-->
+                        <section id="sequence-section" class="doc-section">
+                            <h2 class="section-title">Details on Python wrapper script and JSON descriptor</h2>
+                            <p class="section-block">
+                                The sequence of operations commonly performed by <span style="color:#fe7f7f;">BIA</span>FLOWS
+                                Python wrapper scripts is detailed in the following table. All workflows provided in
+                                <span style="color:#fe7f7f;">BIA</span>FLOWS repository follow this template.
+                                A complete reference to <span style="color:#fe7f7f;">BIA</span>FLOWS workflows
+                                JSON descriptor can be found
+                                <a href="https://doc.uliege.cytomine.org/display/ALGODOC/Software+JSON+descriptor+reference">online</a>.
+                            </p>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Phase</th>
+                                        <th scope="col">Actions</th>
+                                        <th scope="col">Notes</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th class="theme-bg-light">Initialization<span style="color:#fe7f7f">*</span>
+                                        </th>
+                                        <td>Connect to BIAFLOWS<br>Retrieve problem class<br>Retrieve jobs parameters
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="theme-bg-light">Prepare_data<span style="color:#fe7f7f">*</span></th>
+                                        <td>Create empty <code>in_folder</code>, <code>out_folder</code>,
+                                            <code>gt_folder</code>, <code>tmp_folder</code><br>
+                                            Download all images without <code>_lbl</code> suffix to
+                                            <code>in_folder</code><br>
+                                            Download all images with <code>_lbl</code> suffix to
+                                            <code>gt_folder</code><br>
+                                            Download all images with attachments to <code>gt_folder</code></td>
+                                        <td>Folders are created in user home folder (gt: ground truth).<br>
+                                            File names: annotation files must have the same name as input images +
+                                            <code>_attached</code></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="theme-bg-light">Workflow_call</th>
+                                        <td>Call workflow from command line and passing <code>in_folder</code>,
+                                            <code>out_folder</code> and parameters
+                                        </td>
+                                        <td>The images from <code>in_folder</code> are sequentially processed,
+                                            the results are stored in <code>out_folder</code></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="theme-bg-light">Upload_data<span style="color:#fe7f7f">*</span></th>
+                                        <td>Parse images from out_folder (typically binary masks) and for each
+                                            image/slice
+                                            create annotations (polygon/ or point) and export them to BIAFLOWS
+                                        </td>
+                                        <td>1- Plain objects: extract connected particles (2D/3D) from mask, create
+                                            polygon contours (slice by slice) and set contour ID (color LUT) to mask
+                                            object ID<br>
+                                            2- Points: find non null pixels/voxels. Create point annotation at this
+                                            position<br>
+                                            3- Skeleton: project mask (fully or by block), dilate, find contour around
+                                            skeleton <br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="theme-bg-light">Upload_metrics<span style="color:#fe7f7f">*</span>
+                                        </th>
+                                        <td>
+                                            For each input file: call Compute/Metrics passing pair of
+                                            out_file(s)/gt_file(s),
+                                            problem class (string) and optional metric parameters. Export metrics
+                                            key/values
+                                            to benchmark database.
+                                        </td>
+                                        <td>gt_file: same name as output_file<br>
+                                            If an attachment file is expected (e.g. division text file), it is assumed
+                                            at the same location as out_file/gt_file and with the same name as the
+                                            image + <code>_attached</code>.
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="callout-block callout-info">
+                                    <div class="icon-holder">
+                                        <svg class="svg-inline--fa fa-info-circle fa-w-16" aria-hidden="true"
+                                             focusable="false" data-prefix="fas" data-icon="info-circle" role="img"
+                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                  d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
+                                        </svg><!-- <i class="fas fa-info-circle"></i> -->
+                                    </div><!--//icon-holder-->
+                                    <div class="content">
+                                        <p>Phase <span style="color:#fe7f7f">*</span> can be skipped (depends on the
+                                            flags
+                                            passed to workflow container). For instance, for the local processing
+                                            (no BIAFLOWS server), all steps are skipped while for a local BIAFLOWS
+                                            instance upload_metrics may be skipped if the images to be processed are
+                                            not annotated.
+                                        </p>
+                                    </div><!--//content-->
+                                </div>
+
+                            </div>
+                        </section>
+
+
+                        <section id="installation-section" class="doc-section">
+                            <h2 class="section-title">Installing software required for development</h2>
+                            <p class="section-block">
+                                As workflows run inside a Docker container and since their Python wrapper script
+                                interacts with a <span style="color:#fe7f7f;">BIA</span>FLOWS instance, it is required
+                                to
+                                install Docker and Python 3 on your local machine. Our Python client is
+                                also required for development.
+                            </p>
+                            <div id="dockerInstallation" class="section-block">
+                                <h4>Docker installation</h4>
+                                <h6>For Linux</h6>
+                                <p>
+                                    <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04</a>
+                                </p>
+
+                                <h6>For Windows</h6>
+                                <p>
+                                    <a href="https://docs.docker.com/docker-for-windows/install/#install-docker-for-windows-desktop-app">https://docs.docker.com/docker-for-windows/install/#install-docker-for-windows-desktop-app</a>
+                                </p>
+                            </div>
+
+                            <div id="cytomineclientInstallation" class="section-block">
+                                <h4>Python 3 &amp; Cytomine Python client installation</h4>
+                                <p>
+                                    See <a
+                                        href="https://doc.uliege.cytomine.org/display/ALGODOC/Data+access+using+Python+client">
+                                    https://doc.uliege.cytomine.org/display/ALGODOC/Data+access+using+Python+client</a>
+                                </p>
+                                <p>
+                                    In the following steps, we will use the workflow
+                                    <a href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ">NucleiSegmentation-ImageJ</a>
+                                    as reference.
+                                </p>
+                            </div>
+                        </section>
+
+                        <section id="workflow-section" class="doc-section">
+                            <h2 class="section-title">Workflow development</h2>
+                            <div id="workflow_step1" class="section-block">
+                                <h4>1. Uploading a new workflow descriptor to BIAFLOWS</h4>
+                                <p>
+                                    Workflows have first to be described through a JSON descriptor, e.g.:
+                                    <a href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ/blob/master/descriptor.json">
+                                        https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ/blob/master/descriptor.json
+                                    </a>
+                                </p>
+                                <p>
+                                    Currently, some sections have to be customized manually, and some conventions
+                                    must be respected to allow automatic parsing by BIAFLOWS.
+                                    We recommend using <a
+                                        href="https://github.com/Neubias-WG5/W_Template/blob/master/descriptor.json">
+                                    https://github.com/Neubias-WG5/W_Template/blob/master/descriptor.json</a>
+                                    as template for your JSON descriptor.
+                                </p>
+                                <p>
+                                    Choose a workflow name without space. The description field
+                                    (supporting restricted HTML) should be filled to document the workflow
+                                    and it will be displayed from BIAFLOWS UI.
+                                </p>
+                                <p>
+                                    As inputs (workflow parameters), 5 parameters are mandatory:
+                                <ul>
+                                    <li>cytomine_host</li>
+                                    <li>cytomine_public_key</li>
+                                    <li>cytomine_private_key</li>
+                                    <li>cytomine_id_project</li>
+                                    <li>cytomine_id_software</li>
+                                </ul>
+
+                                </p>
+                                <p>
+                                    The workflow parameters should also be described:
+                                <ul>
+                                    <li><code>id</code> the parameter name (e.g : <code>ij_radius</code>)</li>
+                                    <li><code>value-key</code> a reference for the parameter in the command line.
+                                        Keep <code>@ID</code>, which is a shorthand meaning <em>replace by the parameter
+                                            id, in uppercase</em>.
+                                        In our example, it will be replaced at parsing time by <code>IJ_RADIUS</code>
+                                    </li>
+                                    <li><code>command-line-flag</code> At execution time, the value-key in the command
+                                        line will be
+                                        replaced by the command-line-flag followed by the parameter value. Keep <code>--@id</code>.
+                                        In our example, it will be replaced in the command line by
+                                        <code>--ij_radius</code>.
+                                    </li>
+                                    <li><code>name</code> a human readable name displayed in BIAFLOWS</li>
+                                    <li><code>type</code> Number, String, Boolean</li>
+                                    <li><code>optional</code> set to true only if the workflow execution is not
+                                        influenced by the presence or the absence of the parameter
+                                        (e.g a <em>verbose</em> parameter).
+                                        Workflow parameters having an influence on the results should never be optional.
+                                    </li>
+                                    <li><code>default-value</code> the default value of the parameter (in BIAFLOWS
+                                        interface).
+                                    </li>
+                                </ul>
+                                <div class="code-block">
+                                    <p>
+                                        Do not forget to update the command line, with the parameter value keys.
+                                        For instance, for workflow parameters <code>ij_radius</code> and <code>ij_threshold</code>
+                                    </p>
+                                    <pre class="language-bash"><code class="language-bash">
+python wrapper.py CYTOMINE_HOST CYTOMINE_PUBLIC_KEY CYTOMINE_PRIVATE_KEY \
+                  CYTOMINE_ID_PROJECT CYTOMINE_ID_SOFTWARE IJ_RADIUS IJ_THRESHOLD
+                                    </code></pre>
+                                    To make a workflow available from a BIAFLOWS instance, it is currently required to
+                                    publish its descriptor using Cytomine Python client. This can be performed by
+                                    running the following Python code inside the folder holding the JSON descriptor
+                                    you have created:
+                                    <pre class="language-python"><code class="language-python">
+from cytomine import Cytomine
+from cytomine.utilities.descriptor_reader import read_descriptor
+with Cytomine(host, public_key, private_key) as c:
+	read_descriptor("descriptor.json")
+                                    </code></pre>
+                                    <p>
+                                        <code>host</code> is the url of your BIAFLOWS server, e.g.
+                                        <a href="https://biaflows.neubias.org">https://biaflows.neubias.org</a>,
+                                        <code>public_key</code> and <code>private_key</code> can be found from user
+                                        Account page (section <a href="https://biaflows.neubias.org/#/account">API KEYS</a>).
+                                    </p>
+                                    <div class="screenshot-holder">
+                                        <img class="img-fluid" src="assets/images/doc_developper_guide_01.png" alt="screenshot" width="942">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="workflow_step2" class="section-block">
+                                <h4>2. Linking a new workflow to a BIAFLOWS project</h4>
+                                <ul>
+                                    <li>From <em>Problems</em>, select the problem to which you want to add the workflow</li>
+                                    <li>Go to <em>Problems > Configuration > Workflows</em> and enable the workflow</li>
+                                </ul>
+                                <p>
+                                    For now, as the workflow has been added manually, it will be referenced as Not
+                                    Runnable and no version information will be provided from the UI.
+                                </p>
+
+                                <div class="screenshot-holder">
+                                    <img class="img-fluid" src="assets/images/doc_developper_guide_02.png" alt="screenshot" width="744">
+                                </div>
+                                <p>Next, Go to <em>Projects > Configuration</em> and make sure that Jobs tab is activated (green)</p>
+
+                                <div id="workflow_step3" class="section-block">
+                                    <h4>3. Creating the Dockerfile</h4>
+                                    <p>
+                                        Docker files specify the execution environment.
+                                        They typically start by creating (FROM) a layer from an existing Docker
+                                        image with basic operating system. Then they execute commands (RUN)
+                                        to install specific software and libraries, and copy (ADD) files
+                                        (e.g. the Python wrapper script and workflow script) into the execution
+                                        environment the workflow will be called from. Finally, the ENTRYPOINT
+                                        is set to the wrapper script.
+                                    </p>
+                                    <p>
+                                        A sample DockerFile is available here:
+                                        <a href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ/blob/master/Dockerfile">
+                                            https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ/blob/master/Dockerfile
+                                        </a>
+                                    </p>
+                                    <p>
+                                        If you do not know how to configure the Dockerfile, it is recommended to adapt the
+                                        Dockerfile from an existing BIAFLOWS workflow using the same target software
+                                        (e.g. an ImageJ macro).
+                                    </p>
+
+
+                                    <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-info-circle fa-w-16" aria-hidden="true"
+                                                 focusable="false" data-prefix="fas" data-icon="info-circle" role="img"
+                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                                <path fill="currentColor"
+                                                      d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
+                                            </svg><!-- <i class="fas fa-info-circle"></i> -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <p>
+                                                If you create a Dockerfile from scratch, always use the most accurate
+                                                tag when referring to an existing Docker image
+                                                (e.g. prefer <code>python:3.6.9-stretch</code> over <code>python:3.6</code>).
+                                                If the tag is not accurate, the underlying docker image could change
+                                                over time, heavily impairing reproducibility!
+                                            </p>
+                                        </div><!--//content-->
+                                    </div>
+
+                                </div>
+                                <div id="workflow_step4" class="section-block">
+                                    <h4>4.Creating the wrapper script</h4>
+                                    <p>
+                                        It is recommended to adapt a wrapper script:
+                                        <ol>
+                                            <li>from same problem class</li>
+                                            <li>processing image of same dimensionality (e.g. 3D)</li>
+                                            <li>matching the software you are planning to use (e.g. ImageJ macro).</li>
+                                        </ol>
+                                        In this case, only the workflow call (command line) needs to be adapted.
+                                        A sample wrapper script is available here:
+                                        <a href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ/blob/master/wrapper.py">https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ/blob/master/wrapper.py</a>
+                                    </p>
+                                    <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-info-circle fa-w-16" aria-hidden="true"
+                                                 focusable="false" data-prefix="fas" data-icon="info-circle" role="img"
+                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                                <path fill="currentColor"
+                                                      d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
+                                            </svg><!-- <i class="fas fa-info-circle"></i> -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <p>
+                                                The flag <code>is_2</code> should be used to specify if the images are
+                                                strictly 2D or multidimensional.
+                                            </p>
+                                        </div><!--//content-->
+                                    </div>
+
+                                </div>
+                                <div id="workflow_step5" class="section-block">
+                                    <h4>5. Building the workflow image, running it in a local container and debugging</h4>
+                                    <p>
+                                        A new workflow can be directly pushed to GitHub and be built in DockerHub,
+                                        but it is preferable to test it locally beforehand. For this,
+                                        it is required to build and run the Docker image locally:
+                                    </p>
+                                    <h6>Building the container (you need at least around 5GB disk space for this operation)</h6>
+                                    <p>
+                                    From a directory where you gathered the 4 files required to describe the workflow:
+                                    <pre class="language-bash"><code class="language-bash">
+cd ~/Documents/Code/NEUBIAS/W_NucleiSegmentation-ImageJ
+sudo docker build -t seg2d .
+                                    </code></pre>
+                                    Here <code>seg2d</code> is the name of the Docker image to build locally.
+                                    </p>
+                                    <h6>Running the Docker image</h6>
+                                    <b>TODO CORRECT THAT WITH software_id/workflow_id and project_id/problem_id</b>
+
+                                    <pre class="language-bash"><code class="language-bash">
+sudo docker run -it seg2d --host host --public_key public_key --private_key private_key --software_id workflow_id --project_id problem_id --ij_threshold 15 --ij_radius 4
+                                    </code></pre>
+                                    <p>
+                                        The list of command-line parameters should exactly match the parameters
+                                        defined in the JSON descriptor file. BIAFLOWS instance URL and credentials
+                                        should also be filled, as well as valid <code>workflow_id</code> (using <code>--software_id</code>)
+                                        and <code>problem_id</code> (using <code>--projet_id</code>).
+                                    </p>
+                                    <p>
+                                        These IDs can be retrieved from the URL bar while respectively clicking on a
+                                        problem (from BIAFLOWS Problems tab) and on a workflow (from BIAFLOWS Workflows tab):
+                                    </p>
+                                    <div class="screenshot-holder">
+                                        <img class="img-fluid" src="assets/images/doc_developper_guide_04.png" alt="screenshot">
+                                        <p>In this example, <code>workflow_id</code> is 23771763.</p>
+                                    </div>
+                                    <div class="screenshot-holder">
+                                        <img class="img-fluid" src="assets/images/doc_developper_guide_03.png" alt="screenshot">
+                                        <p>In this example, <code>problem_id</code> is 5955.</p>
+                                    </div>
+                                    So in our example it will be:
+                                    <pre class="language-bash"><code class="language-bash">
+sudo docker run -it seg2d --host host --public_key public_key --private_key private_key --software_id 23771763 --project_id 5955 --ij_threshold 15 --ij_radius 4
+                                    </code></pre>
+                                    <p>
+                                        If a workflow fails at execution this is reported in <b>Workflow runs</b> section.
+                                        Some <b>Execution log</b> can be downloaded by expanding a workflow run from the blue arrow
+                                        <span style="color:#3273dc" class="icon is-expanded fas fa-angle-right fa-lg"></span>.
+                                    </p>
+                                    <div class="screenshot-holder">
+                                        <img class="img-fluid" src="assets/images/doc_developper_guide_05.png" alt="screenshot">
+                                    </div>
+                                    <p>
+                                        In that case, no associated benchmark metric is associated to this run.
+                                        There is hence no risk that this would be left unnoticed by the user.
+                                        For debugging, Docker can be run with an interactive session:
+                                    </p>
+                                    <pre class="language-bash"><code class="language-bash">
+sudo docker run --entrypoint bash -it seg2d</code></pre>
+                                    <p>
+                                    If needed, it is also possible to launch the Docker with X enabled,
+                                        e.g. to debug imageJ macro more easily by adding the option
+                                        <code>-e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix</code>
+                                    </p>
+                                    <pre class="language-bash"><code class="language-bash">
+xhost + sudo docker run --entrypoint bash -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -it seg2d</code></pre>
+                                    <p>
+                                        If you want to access local images without having to download them each time from
+                                        BIAFLOWS, you can also attach a local folder to a folder inside the Docker
+                                        container (<code>-v</code> option), for instance:
+                                    </p>
+                                    <pre class="language-bash"><code class="language-bash">
+sudo docker run --entrypoint bash -v /home/yourusername/tmp/test:/data -it seg2d
+</code></pre>
+                                    <h6>Some other useful Docker commands</h6>
+                                    <ul>
+                                        <li>Check if an image is running:   <code>ps -a</code></li>
+                                        <li>Kill a running container:		<code>sudo docker rm 65e88b2015df</code></li>
+                                        <li>Kill all running containers:    <code>sudo docker rm $(sudo docker ps -a -q)</code></li>
+                                        <li>Download a specific container 	<code>sudo docker pull neubiaswg5/fiji-base:latest</code></li>
+                                    </ul>
+
+                                    <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-info-circle fa-w-16" aria-hidden="true"
+                                                 focusable="false" data-prefix="fas" data-icon="info-circle" role="img"
+                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                                <path fill="currentColor"
+                                                      d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
+                                            </svg><!-- <i class="fas fa-info-circle"></i> -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <p>
+                                                To download a recently updated workflow image, it is necessary to first
+                                                remove older versions manually.
+                                            </p>
+                                        </div><!--//content-->
+                                    </div>
+
+                                </div>
+                                <div id="workflow_step6" class="section-block">
+                                    <h4>6. Title</h4>
+                                    <h6>Task</h6>
+                                    <p>
+                                        Once your workflow is running properly, you can officially publish it with
+                                        version control.
+                                    </p>
+                                    <p>
+                                        To allow automatic import to BIAFLOWS, the set of files previously
+                                        described should be stored in a GitHub repository (linked to DockerHub)
+                                        from an account trusted by the target BIAFLOWS instance.
+                                    <p>
+                                        The Github repository name must be given by <code>{prefix}{workflow_name}</code>
+                                    </p>
+                                    <ul>
+                                        <li><code>{prefix}</code> is an optional prefix for the trusted source
+                                            (see Installing and populating BIAFLOWS locally)</li>
+                                        <li><code>{workflow_name}</code> is the name of the workflow as given in
+                                            the <em>name</em> field in the JSON descriptor (see
+                                            <a class="scrollto" href="#workflow_step1">Step 1</a>).
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        For instance, for a trusted source with a prefix <code>W_</code>: <code>W_NucleiSegmentation-ImageJ</code>.
+                                    </p>
+                                    <p>
+                                        Adding/editing trusted sources is performed from Admin / Trusted sources
+                                        (Installing and populating BIAFLOWS locally).
+                                    </p>
+                                    <div class="screenshot-holder">
+                                        <img class="img-fluid" src="assets/images/doc_developper_guide_06.png" alt="screenshot">
+                                    </div>
+                                </div>
+                                <div id="workflow_step7" class="section-block">
+                                    <h4>7. Linking a GitHub repository to DockerHub (only once)</h4>
+                                    <p>
+                                        We assume that you created a trusted GitHub organization (e.g. neubias-wg5)
+                                        and a workflow repository holding the 4 workflows files.
+                                        It is now required to link DockerHub to GitHub. Fortunately,
+                                        this operation has to be performed only once for a given GitHub organization:
+                                    </p>
+                                    <ol>
+                                        <li>Create an account on DockerHub : <a href="https://hub.docker.com/">https://hub.docker.com/</a> and login</li>
+                                        <li>Create an automatic build by linking Docker account to GitHub organization account</li>
+                                        <li>In DockerHub website, click on <em>Create > Create Automated Build</em></li>
+                                        <div class="screenshot-holder">
+                                            <img class="img-fluid" src="assets/images/doc_developper_guide_07.png" alt="screenshot">
+                                        </div>
+                                        <li>In <em>Linked Accounts</em>, click on <em>Link Github</em></li>
+                                        <div class="screenshot-holder">
+                                            <img class="img-fluid" src="assets/images/doc_developper_guide_08.png" alt="screenshot">
+                                        </div>
+                                        <li>Click <em>Select</em></li>
+                                        <li>Ensure that Organization access (e.g. <em>Neubias-WG5</em>) is selected
+                                            (<span style="color:#CCEF94">green check mark</span>) and click on <em>Authorize docker</em></li>
+                                        <li>Enter your GitHub password to enable access</li>
+                                    </ol>
+                                </div>
+                                <div id="workflow_step8" class="section-block">
+                                    <h4>8. Associating a new workflow repository to DockerHub</h4>
+                                    <p>
+                                        Once your Github organization account and DockerHub are linked,
+                                        it is possible to create an automated build procedure for each workflow.
+                                        This procedure will build a workflow Docker image each time a new release
+                                        is triggered from a GitHub workflow repository. This image is automatically
+                                        downloaded by the BIAFLOWS instance and the new workflow version will be
+                                        available for the target problem.
+                                    </p>
+                                    <p>
+                                        To do so, from DockerHub:
+                                    </p>
+                                    <ol>
+                                        <li>Click on Create > Create Repository+</li>
+                                        <li>In build settings click on GitHub icon</li>
+                                        <li>3.	Select organization (e.g. <em>neubiaswg5</em>) and workflow Github repository
+                                            (e.g. <em>W_NucleiSegmentation-ImageJ</em>) at the bottom of the page</li>
+                                        <li>Choose the Docker registry repository name. In practice,
+                                            keep the same as Github repository (DockerHub will convert
+                                            uppercase letters into lowercase).</li>
+                                        <li>Enter a short description (less than 100 characters) and click <em>Create</em></li>
+                                        <li>Click on <em>Click here to customize the build settings</em> and configure as in figure below</li>
+                                        <li>Click on <em>Save</em></li>
+                                    </ol>
+                                    <div class="screenshot-holder">
+                                        <img class="img-fluid" src="assets/images/doc_developper_guide_09.png" alt="screenshot">
+                                    </div>
+                                    <p>
+                                        The DockerHub repository name must be reflected in the JSON descriptor
+                                        image = <code>{dockerhub_organization}/{github_repo_name.toLowerCase()}</code>
+                                    </p>
+                                    <pre class="language-json"><code class="language-json">
+container-image:
+{
+	image: "neubiaswg5/w_nucleisegmentation-imagej",
+	type: "singularity"
+},
+</code></pre>
+                                </div>
+                                <div id="workflow_step9" class="section-block">
+                                    <h4>9. Creating a versioned release on GitHub</h4>
+                                <p>To create versioned releases of the workflow, go to GitHub and draft a new release
+                                    (see <a href="https://doc.uliege.cytomine.org/display/ALGODOC/%5BHOWTO%5D+Develop+and+share+a+new+software#id-[HOWTO]Developandshareanewsoftware-Step9-Makenewrelease" target="_blank">doc</a>).
+                                    This will add a new tag to the last commit.
+                                    As we configured automatic build in previous step, a new Docker image will be built
+                                    and published with the same tag. BIAFLOWS instances trusting this GitHub / DockerHub
+                                    repository will now automatically fetch and make this new version available from the
+                                    UI (possibly after up to 5/10 minutes).</p>
+                                </div>
+                        </section>
+
+                    </div><!--//content-inner-->
+                </div><!--//doc-content-->
+                <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                    <div id="doc-nav" class="doc-nav">
+                        <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+                            <a class="nav-link scrollto" href="#introduction-section">Introduction</a>
+                            <a class="nav-link scrollto" href="#sequence-section">Details on Python wrapper script and JSON descriptor</a>
+                            <a class="nav-link scrollto" href="#installation-section">Installing software required for development</a>
+                            <nav class="doc-sub-menu nav flex-column">
+                                <a class="nav-link scrollto" href="#dockerInstallation">Docker Installation</a>
+                                <a class="nav-link scrollto" href="#cytomineclientInstallation">Python 3 & Cytomine Python client installation</a>
+                            </nav>
+                            <a class="nav-link scrollto" href="#workflow-section">Workflow development</a>
+                            <nav class="doc-sub-menu nav flex-column">
+                                <a class="nav-link scrollto" href="#workflow_step1">1. Uploading a new workflow descriptor to BIAFLOWS</a>
+                                <a class="nav-link scrollto" href="#workflow_step2">2. Linking a new workflow to a BIAFLOWS project</a>
+                                <a class="nav-link scrollto" href="#workflow_step3">3. Creating the Dockerfile</a>
+                                <a class="nav-link scrollto" href="#workflow_step4">4. Creating the wrapper script</a>
+                                <a class="nav-link scrollto" href="#workflow_step5">5. Building the workflow image, running it in a local container and debugging</a>
+                                <a class="nav-link scrollto" href="#workflow_step6">6. Publishing a workflow with version control</a>
+                                <a class="nav-link scrollto" href="#workflow_step7">7. Linking a GitHub repository to DockerHub (only once)</a>
+                                <a class="nav-link scrollto" href="#workflow_step8">8. Associating a new workflow repository to DockerHub</a>
+                                <a class="nav-link scrollto" href="#workflow_step9">9. Creating a versioned release on GitHub</a>
+                            </nav><!--//nav-->
+                        </nav><!--//doc-menu-->
+                    </div>
+                </div><!--//doc-sidebar-->
+            </div><!--//doc-body-->
+        </div><!--//container-->
+    </div><!--//doc-wrapper-->
+</div><!--//page-wrapper-->
+<footer id="footer" class="footer text-center">
+    <div class="container">
+        <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->
+        <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a
+                href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+        <p>
+            <br><br>
+            <a href="http://neubias.org/" target="_blank"><img src="assets/images/logo-neubias.png" height="50"></a>
+            <a href="https://cost.eu/COST_Actions/ca/CA15124" target="_blank"><img src="assets/images/logo-cost.png"
+                                                                                   height="50"></a>
+            <a href="https://cytomine.org"><img src="assets/images/logo-cytomine-org.png" height="50"></a>
+            <a href="http://europe.wallonie.be/" target="_blank"><img src="assets/images/logo-feder.jpg"
+                                                                      height="50"></a>
+        </p>
+    </div><!--//container-->
+</footer><!--//footer-->
+<!-- Main Javascript -->
+<script type="text/javascript" src="assets/plugins/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/plugins/prism/prism.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+<script type="text/javascript" src="assets/js/main.js"></script>
+</body>
+</html>
