@@ -44,7 +44,7 @@
         <div class="container">
             <div id="doc-header" class="doc-header text-center">
                 <h1 class="doc-title">Creating a BIA workflow and adding it to a BIAFLOWS instance</h1>
-                <div class="meta"><i class="far fa-clock"></i> Last updated: March 17st, 2020</div>
+                <div class="meta"><i class="far fa-clock"></i> Last updated: March 18st, 2020</div>
             </div>
             <!--//doc-header-->
             <div class="doc-body row">
@@ -89,7 +89,7 @@
                         </section>
 
 
-                        <section id="creation-section" class="doc-section">
+                        <section id="workflow-section" class="doc-section">
                             <h2 class="section-title">Workflow creation</h2>
 
                             <div id="workflow_step1" class="section-block">
@@ -142,7 +142,7 @@
                                 </p>
                                 </div>
                             <div id="workflow_step3" class="section-block">
-                                <h4>3. Update the following sections of the Descriptor</h4>
+                                <h4>3. Update sections of the Descriptor</h4>
                                 <h6>Workflow and associated Docker image names</h6>
 <pre class="language-json"><code class="language-json">
 {
@@ -303,32 +303,28 @@ for(i=0; i < images.length; i++) {
                                     <img class="img-fluid" src="assets/images/doc_workflow_guide_04.png" alt="screenshot">
                                 </div>
                             </div>
-
                         </section>
-
                     </div><!--//content-inner-->
                 </div><!--//doc-content-->
                 <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
                     <div id="doc-nav" class="doc-nav">
                         <nav id="doc-menu" class="nav doc-menu flex-column sticky">
                             <a class="nav-link scrollto" href="#introduction-section">Introduction</a>
-                            <a class="nav-link scrollto" href="#sequence-section">Details on Python wrapper script and JSON descriptor</a>
-                            <a class="nav-link scrollto" href="#installation-section">Installing software required for development</a>
+                            <a class="nav-link scrollto" href="#requirement-section">BIA workflow requirements</a>
+                            <a class="nav-link scrollto" href="#workflow-section">Workflow creation</a>
                             <nav class="doc-sub-menu nav flex-column">
-                                <a class="nav-link scrollto" href="#dockerInstallation">Docker Installation</a>
-                                <a class="nav-link scrollto" href="#cytomineclientInstallation">Python 3 & Cytomine Python client installation</a>
-                            </nav>
-                            <a class="nav-link scrollto" href="#workflow-section">Workflow development</a>
-                            <nav class="doc-sub-menu nav flex-column">
-                                <a class="nav-link scrollto" href="#workflow_step1">1. Uploading a new workflow descriptor to BIAFLOWS</a>
-                                <a class="nav-link scrollto" href="#workflow_step2">2. Linking a new workflow to a BIAFLOWS project</a>
-                                <a class="nav-link scrollto" href="#workflow_step3">3. Creating the Dockerfile</a>
-                                <a class="nav-link scrollto" href="#workflow_step4">4. Creating the wrapper script</a>
-                                <a class="nav-link scrollto" href="#workflow_step5">5. Building the workflow image, running it in a local container and debugging</a>
-                                <a class="nav-link scrollto" href="#workflow_step6">6. Publishing a workflow with version control</a>
-                                <a class="nav-link scrollto" href="#workflow_step7">7. Linking a GitHub repository to DockerHub (only once)</a>
+                                <a class="nav-link scrollto" href="#workflow_step1">1. Create a workflow GitHub repository</a>
+                                <a class="nav-link scrollto" href="#workflow_step2">2. Add the 4 required files to the workflow repository</a>
+                                <a class="nav-link scrollto" href="#workflow_step3">3. Update sections of the Descriptor</a>
+                                <a class="nav-link scrollto" href="#workflow_step4">4. Update DockerFile</a>
+                                <a class="nav-link scrollto" href="#workflow_step5">5. Update wrapper script</a>
+                                <a class="nav-link scrollto" href="#workflow_step6">6. Adapt your workflow script</a>
+                                <a class="nav-link scrollto" href="#workflow_step7">7. Create Docker image in DockerHub</a>
                                 <a class="nav-link scrollto" href="#workflow_step8">8. Associating a new workflow repository to DockerHub</a>
-                                <a class="nav-link scrollto" href="#workflow_step9">9. Creating a versioned release on GitHub</a>
+                                <a class="nav-link scrollto" href="#workflow_step9">9. Trigger a workflow release</a>
+                                <a class="nav-link scrollto" href="#workflow_step10">10. Workflow Docker image build</a>
+                                <a class="nav-link scrollto" href="#workflow_step11">11. Add workflow to BIAFLOWS problem</a>
+                                <a class="nav-link scrollto" href="#workflow_step12">12. Run the workflow</a>
                             </nav><!--//nav-->
                         </nav><!--//doc-menu-->
                     </div>
