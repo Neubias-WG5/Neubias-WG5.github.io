@@ -56,7 +56,7 @@
                                 It is possible to install <span style="color:#fe7f7f;">BIA</span>FLOWS on a local server or a
                                 desktop computer. This might be useful to manage and analyse images locally.
                                 The procedure is described below and should take less than 30 minutes
-                                (UNIX based system recommended).
+                                (UNIX-like based system recommended).
                             </p>
                         </section><!--//doc-section-->
                         <section id="installing-section" class="doc-section">
@@ -68,7 +68,7 @@
                                 OS can be found <a href="https://doc.uliege.cytomine.org/display/PubOp/Install+Cytomine+on+MacOS">online</a>.
                             </p>
                             <div id="installing_step1" class="section-block">
-                                <h4>1. Install requirement</h4>
+                                <h4>1. Installation requirements</h4>
                                 <p>
                                     BIAFLOWS runs in Docker containers, the only requirement is to install Docker.
                                     Check <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository">official Docker documentation</a>
@@ -78,6 +78,7 @@
                             </div>
                             <div id="installing_step2" class="section-block">
                                 <h4>2. Retrieve BIAFLOWS installation files</h4>
+                                <p>Enter the following commands in a terminal:</p>
 <pre class="language-bash"><code class="language-bash">
 mkdir Biaflows
 cd Biaflows
@@ -159,7 +160,7 @@ SERVER_SSHKEYS_PATH
                             <div id="installing_step7" class="section-block">
                                 <h4>7. Install sample projects (images and ground-truth data)</h4>
                                 <p>
-                                    After BIAFLOWS successfully installed locally, the local instance is empty.
+                                    After BIAFLOWS is successfully installed locally, the local instance is empty.
                                     All projects available in BIAFLOWS online instance can be imported to the local
                                     instance. For this, get the public and private keys of the admin account
                                     (Account page), then run:
@@ -169,7 +170,7 @@ cd Biaflows-bootstrap
 sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
 </code></pre>
                                 <p>where <code>ADMIN_PUBLIC_KEY</code> and <code>ADMIN_PRIVATE_KEY</code>
-                                    have been substituted by their respective values.
+                                    have been substituted with their respective values.
                                 </p>
                                 <p>
                                     The script starts to download projects and import them in your local BIAFLOWS.
@@ -189,7 +190,7 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                             <div id="newproblem_step1" class="section-block">
                             <h4>1. Create a new problem</h4>
                             <p>
-                                To create a new problem, connect as regular user or admin, go to the <em>Connect</em>
+                                To create a new problem, connect as regular user or admin, go to the <em>Problems</em>
                                 tab
                                 <div class="screenshot-holder">
                                     <img class="img-fluid" src="assets/images/doc_biaflow_locally_01.png" alt="screenshot">
@@ -247,6 +248,109 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                         </section>
 
 
+                        <section id="uploading_images" class="doc-section">
+                            <h2 class="section-title">Uploading images to a local BIAFLOWS instance</h2>
+                            <div id="uploading_images_step1" class="section-block">
+                                <h4>1. Connect as regular user or admin</h4>
+                            </div>
+                            <div id="uploading_images_step2" class="section-block">
+                                <h4>2. Supported format</h4>
+                                <ul>
+                                    <li><b>2D images</b>: 8-bit/16-bit TIFF (or <a href="https://docs.openmicroscopy.org/ome-model/latest/ome-tiff/">OME-TIFF</a> files)</li>
+                                    <li><b>Multi-dimensional images (Z, C, T)</b>: single file 8-bit/16-bit <a href="https://docs.openmicroscopy.org/ome-model/latest/ome-tiff/">OME-TIFF</a></li>
+                                </ul>
+                            </div>
+                            <div class="callout-block callout-info">
+                                <div class="icon-holder">
+                                    <svg class="svg-inline--fa fa-info-circle fa-w-16" aria-hidden="true"
+                                         focusable="false" data-prefix="fas" data-icon="info-circle" role="img"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                        <path fill="currentColor"
+                                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
+                                    </svg><!-- <i class="fas fa-info-circle"></i> -->
+                                </div><!--//icon-holder-->
+                                <div class="content">
+                                    <p>
+                                        The text string <code>_lbl</code> should not be used in image names since it is a reserved string for ground truth annotation images.
+                                    </p>
+                                </div><!--//content-->
+                            </div>
+
+                            <div id="uploading_images_step3" class="section-block">
+                                <h4>3. Go to storage section</h4>
+                                <p>
+                                    <img class="img-fluid" src="assets/images/doc_biaflow_locally_07_03.png" alt="screenshot">
+                                </p>
+                            </div>
+                            <div id="uploading_images_step4" class="section-block">
+                                <h4>4. Select the Problem</h4>
+                                <p>
+                                    Select the Problem to which the images should be associated with (Link with problem).
+                                    <img class="img-fluid" src="assets/images/doc_biaflow_locally_07_04.png" alt="screenshot">
+                                </p>
+                            </div>
+
+                            <div class="callout-block callout-info">
+                                <div class="icon-holder">
+                                    <svg class="svg-inline--fa fa-info-circle fa-w-16" aria-hidden="true"
+                                         focusable="false" data-prefix="fas" data-icon="info-circle" role="img"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                        <path fill="currentColor"
+                                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
+                                    </svg><!-- <i class="fas fa-info-circle"></i> -->
+                                </div><!--//icon-holder-->
+                                <div class="content">
+                                    <p>
+                                        If a problem is not in the list, make sure you are a member for this problem.
+                                    </p>
+                                </div><!--//content-->
+                            </div>
+
+                            <div id="uploading_images_step5" class="section-block">
+                                <h4>5. Add the images</h4>
+                                <p>
+                                    Click on <em>Add files…</em> and select the files from the file browser.
+                                </p>
+                            </div>
+
+                            <div id="uploading_images_step6" class="section-block">
+                                <h4>6. Upload the images</h4>
+                                <p>
+                                    Start upload with Start upload and wait until completion
+                                </p>
+                                <p>
+                                    The status can be:
+                                    <ul>
+                                <li><code>DEPLOYED/CONVERTED</code>: The image is correctly imported to BIAFLOWS</li>
+                                <li><code>ERROR FORMAT</code>: The file format is not supported</li>
+                                <li><code>ERROR EXTRACTION</code>: Something went wrong during metadata extraction</li>
+                                <li><code>ERROR CONVERSION</code>: Something went wrong during the conversion of the image into the BIAFLOWS internal image format</li>
+                                <li><code>ERROR DEPLOYMENT</code>: Something went wrong during the communication with BIAFLOWS API. It can be due to access rights, or other unexpected error</li>
+                                    </ul>
+                                </p>
+
+
+                                <div class="callout-block callout-info">
+                                    <div class="icon-holder">
+                                        <svg class="svg-inline--fa fa-info-circle fa-w-16" aria-hidden="true"
+                                             focusable="false" data-prefix="fas" data-icon="info-circle" role="img"
+                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                  d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
+                                        </svg><!-- <i class="fas fa-info-circle"></i> -->
+                                    </div><!--//icon-holder-->
+                                    <div class="content">
+                                        <p>
+                                            Images uploaded to storage can also be associated to a Problem after upload
+                                            (<em>Problem > Add image</em>). This can be useful to associate the same image to several Problems.
+                                        </p>
+                                    </div><!--//content-->
+                                </div>
+                            </div>
+
+                        </section>
+
+
                         <section id="uploading_gt-section" class="doc-section">
                             <h2 class="section-title">Uploading ground truth annotations to an existing BIAFLOWS problem</h2>
                             <p class="section-block">
@@ -280,13 +384,13 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                                 It is possible to integrate existing BIAFLOWS workflows to any BIAFLOWS instance.
                                 This operation requires configuring an external trusted source made of:
                                 <ol>
-                                    <li>A source code registry (typically a Github user space)</li>
+                                    <li>A source code registry (typically a GitHub user space)</li>
                                     <li>An execution environment registry (typically a DockerHub user space)</li>
                                 </ol>
                             </p>
                             <p class="section-block">
                                 If your workflow repositories are mixed with other repositories in your user space,
-                                you can specify a prefix to distinguish workflows repositories. For instance,
+                                you can specify a prefix to distinguish workflow repositories. For instance,
                                 all bioimage analysis workflows developed by NEUBIAS are prefixed by <code>W_</code> and
                                 available from this user space: <a href="https://github.com/Neubias-WG5">https://github.com/Neubias-WG5</a>.
                             </p>
@@ -318,7 +422,7 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                             <div id="adding_workflow_step2" class="section-block">
                                 <h4>2. Add trusted source</h4>
                                 <p>
-                                    In administration page, go to <em>Trusted sources</em> tab and click <em>New trusted source</em>.
+                                    In the administration page, go to <em>Trusted sources</em> tab and click <em>New trusted source</em>.
                                 </p>
                                 <div class="screenshot-holder">
                                     <img class="img-fluid" src="assets/images/doc_biaflow_locally_09_02.png" alt="screenshot">
@@ -389,7 +493,7 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                                 <a class="nav-link scrollto" href="#installing_step6">6. Check the running instance</a>
                                 <a class="nav-link scrollto" href="#installing_step7">7. Install sample projects</a>
                             </nav><!--//nav-->
-                            <a class="nav-link scrollto" href="#newproblem-section">Creating a new problem (project) in a local BIAFLOWS instance</a>
+                            <a class="nav-link scrollto" href="#newproblem-section">Creating a new problem (project)</a>
                             <nav class="doc-sub-menu nav flex-column">
                                 <a class="nav-link scrollto" href="#newproblem_step1">1. Create a new problem</a>
                                 <a class="nav-link scrollto" href="#newproblem_step2">2. Choose a meaningful problem name</a>
@@ -398,6 +502,15 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                                 <a class="nav-link scrollto" href="#newproblem_step5">5. Configure project members</a>
                                 <a class="nav-link scrollto" href="#newproblem_step6">6. Custom the User Interface</a>
                                 <a class="nav-link scrollto" href="#newproblem_step7">7. Add a description to the problem</a>
+                            </nav><!--//nav-->
+                            <a class="nav-link scrollto" href="#uploading_images">Uploading images</a>
+                            <nav class="doc-sub-menu nav flex-column">
+                                <a class="nav-link scrollto" href="#uploading_images_step1">1. Connect as regular user or admin</a>
+                                <a class="nav-link scrollto" href="#uploading_images_step2">2. Supported format</a>
+                                <a class="nav-link scrollto" href="#uploading_imagesstep3">3. Go to storage section</a>
+                                <a class="nav-link scrollto" href="#uploading_images_step4">4. Select the Problem</a>
+                                <a class="nav-link scrollto" href="#uploading_images_step5">5. Add the images</a>
+                                <a class="nav-link scrollto" href="#uploading_images_step6">5. Upload the images</a>
                             </nav><!--//nav-->
                             <a class="nav-link scrollto" href="#uploading_gt-section">Uploading ground truth annotations</a>
                             <a class="nav-link scrollto" href="#adding_workflow-section">Adding existing workflows from trusted source</a>

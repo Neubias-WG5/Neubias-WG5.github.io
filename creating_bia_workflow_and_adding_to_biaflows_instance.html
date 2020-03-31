@@ -62,7 +62,7 @@
                             GitHub repository:
                             <a href="https://github.com/neubias-wg5" target="_blank">https://github.com/neubias-wg5</a>.
                             The procedure to package a workflow and add it to a <span style="color:#fe7f7f;">BIA</span>FLOWS
-                            instance is described in this section. Users willing to get help can write to
+                            instance is described in this section. Users wishing to get help can write to
                             <a href="https://forum.image.sc">https://forum.image.sc</a> forum or contact
                             <a href="mailto:biaflows@neubias.org">biaflows@neubias.org</a>.
                             </p>
@@ -85,6 +85,27 @@
                                     <li>A Python script (wrapper.py), sequencing operations (Docker image entry point)</li>
                                     <li>A descriptor (descriptor.json) specifying workflow parameters and default values.</li>
                                 </ul>
+
+                            <div class="callout-block callout-info">
+                                <div class="icon-holder">
+                                    <svg class="svg-inline--fa fa-info-circle fa-w-16" aria-hidden="true"
+                                         focusable="false" data-prefix="fas" data-icon="info-circle" role="img"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                        <path fill="currentColor"
+                                              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
+                                    </svg><!-- <i class="fas fa-info-circle"></i> -->
+                                </div><!--//icon-holder-->
+                                <div class="content">
+                                    <p>
+                                        A wizard is available to add new workflows. This tool is useful if you plan
+                                        to add a new workflow for an existing BIA problem class and target BIA platform
+                                        (e.g. Object segmentation 2D + ImageJ).
+                                    </p>
+                                    <p>
+                                        Please refer to:
+                                        <a href="https://github.com/Neubias-WG5/biaflows-workflow-utilities" target="_blank">https://github.com/Neubias-WG5/biaflows-workflow-utilities</a> for details.</p>
+                                </div><!--//content-->
+                            </div>
                             </p>
                         </section>
 
@@ -98,7 +119,7 @@
                                     Create a workflow repository in a GitHub source trusted by the BIAFLOWS
                                     instance you plan to add the workflow to. The names of workflow repositories
                                     should start by a fixed prefix (<em>W_</em> recommended since it is the convention used by
-                                    BIAFLOWS online instance) and hold no space.
+                                    BIAFLOWS online instance) and contain no space.
                                 </p>
                             </div>
 
@@ -126,8 +147,8 @@
                                 </div><!--//icon-holder-->
                                 <div class="content">
                                     <p>
-                                        The flag <code>is_2d</code> should be used to specify if the images are
-                                        strictly 2D or multidimensional.
+                                        The flag <code>is_2d</code> specifies if the images from the Problem hold
+                                        two spatial dimensions (three spatial dimensions if set to <em>false</em>).
                                     </p>
                                 </div><!--//content-->
                             </div>
@@ -185,7 +206,7 @@
                                     <li><em>id</em>: should match parameter name in command line call (lower case)</li>
                                     <li><em>name</em>: name that will appear in BIAFLOWS user interface (parameter dialog box)</li>
                                     <li><em>description</em>: context help in BIAFLOWS user interface (parameter dialog box)</li>
-                                    <li><em>type</em>: String or Number</li>
+                                    <li><em>type</em>: <em>"String"</em> or <em>"Number"</em></li>
                                     <li><em>default-value</em>: the default value in BIAFLOWS user interface (parameter dialog box).</li>
                                 </ul>
                             </div>

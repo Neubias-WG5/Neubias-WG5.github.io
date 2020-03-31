@@ -226,7 +226,7 @@
                                     as template for your JSON descriptor.
                                 </p>
                                 <p>
-                                    Choose a workflow name without space. The description field
+                                    Choose a workflow name that does not contain space. The description field
                                     (supporting restricted HTML) should be filled to document the workflow
                                     and it will be displayed from BIAFLOWS UI.
                                 </p>
@@ -242,7 +242,7 @@
 
                                 </p>
                                 <p>
-                                    The workflow parameters should also be described:
+                                    The fields associated to workflow parameters are described here:
                                 <ul>
                                     <li><code>id</code> the parameter name (e.g : <code>ij_radius</code>)</li>
                                     <li><code>value-key</code> a reference for the parameter in the command line.
@@ -436,14 +436,14 @@ sudo docker run -it seg2d --host host --public_key public_key --private_key priv
                                     </code></pre>
                                     <p>
                                         If a workflow fails at execution this is reported in <b>Workflow runs</b> section.
-                                        Some <b>Execution log</b> can be downloaded by expanding a workflow run from the blue arrow
+                                        Some <b>Execution log</b> information can be downloaded by expanding a workflow run from the blue arrow
                                         <span style="color:#3273dc" class="icon is-expanded fas fa-angle-right fa-lg"></span>.
                                     </p>
                                     <div class="screenshot-holder">
                                         <img class="img-fluid" src="assets/images/doc_developper_guide_05.png" alt="screenshot">
                                     </div>
                                     <p>
-                                        In that case, no associated benchmark metric is associated to this run.
+                                        In this case, no associated benchmark metric is associated to this run.
                                         There is hence no risk that this would be left unnoticed by the user.
                                         For debugging, Docker can be run with an interactive session:
                                     </p>
@@ -451,7 +451,7 @@ sudo docker run -it seg2d --host host --public_key public_key --private_key priv
 sudo docker run --entrypoint bash -it seg2d</code></pre>
                                     <p>
                                     If needed, it is also possible to launch the Docker with X enabled,
-                                        e.g. to debug imageJ macro more easily by adding the option
+                                        e.g. to debug ImageJ macro more easily by adding the option
                                         <code>-e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix</code>
                                     </p>
                                     <pre class="language-bash"><code class="language-bash">
@@ -467,8 +467,8 @@ sudo docker run --entrypoint bash -v /home/yourusername/tmp/test:/data -it seg2d
                                     <h6>Some other useful Docker commands</h6>
                                     <ul>
                                         <li>Check if an image is running:   <code>ps -a</code></li>
-                                        <li>Kill a running container:		<code>sudo docker rm 65e88b2015df</code></li>
-                                        <li>Kill all running containers:    <code>sudo docker rm $(sudo docker ps -a -q)</code></li>
+                                        <li>Remove a running container:		<code>sudo docker rm CONTAINER_ID</code></li>
+                                        <li>Remove all running containers:    <code>sudo docker rm $(sudo docker ps -a -q)</code></li>
                                         <li>Download a specific container 	<code>sudo docker pull neubiaswg5/fiji-base:latest</code></li>
                                     </ul>
 
@@ -534,7 +534,7 @@ sudo docker run --entrypoint bash -v /home/yourusername/tmp/test:/data -it seg2d
                                     <ol>
                                         <li>Create an account on DockerHub : <a href="https://hub.docker.com/">https://hub.docker.com/</a> and login</li>
                                         <li>Create an automatic build by linking Docker account to GitHub organization account</li>
-                                        <li>In DockerHub website, click on <em>Create > Create Automated Build</em></li>
+                                        <li>On DockerHub website, click on <em>Create > Create Automated Build</em></li>
                                         <div class="screenshot-holder">
                                             <img class="img-fluid" src="assets/images/doc_developper_guide_07.png" alt="screenshot">
                                         </div>
@@ -551,7 +551,7 @@ sudo docker run --entrypoint bash -v /home/yourusername/tmp/test:/data -it seg2d
                                 <div id="workflow_step8" class="section-block">
                                     <h4>8. Associating a new workflow repository to DockerHub</h4>
                                     <p>
-                                        Once your Github organization account and DockerHub are linked,
+                                        Once your GitHub organization account and DockerHub are linked,
                                         it is possible to create an automated build procedure for each workflow.
                                         This procedure will build a workflow Docker image each time a new release
                                         is triggered from a GitHub workflow repository. This image is automatically
@@ -596,7 +596,7 @@ container-image:
                                     As we configured automatic build in previous step, a new Docker image will be built
                                     and published with the same tag. BIAFLOWS instances trusting this GitHub / DockerHub
                                     repository will now automatically fetch and make this new version available from the
-                                    UI (possibly after up to 5/10 minutes).</p>
+                                    UI (possibly tis may take up to 5/10 minutes).</p>
                                 </div>
                             </div>
                         </section>
