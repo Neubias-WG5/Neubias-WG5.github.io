@@ -118,9 +118,38 @@
 										    </div>
 										</p>
 										<h5>Layers</h5>
-										To overlay an annotation layer, click on <span class="fas fa-copy"></span> in the right toolbar. Annotation layers are generated from the results of a workflow run. Several layers can be overlaid on the original image, and they can be hidden by unselecting the checkbox under the <span class="far fa-eye"></span> symbol, or removed using <span class="fas fa-times"></span>. In addition, Layer opacity can be adjusted with the bottom slider. If you do not know which annotation layer to display, click on <button data-v-0c385051="" class="button is-small is-fullwidth layer-field" disabled="disabled">Add all favorites</button>. Favorite workflow runs were validated by their maintainer as providing representative results.<br>
+										<p>
+										To overlay an annotation layer, click on <span class="fas fa-copy"></span> in
+									the right toolbar.
+										</p>
+										<p>
+									Annotation layers are generated from the results of a workflow run.
+									Several layers can be overlaid on the original image, and they can be hidden by unselecting
+									the checkbox under the <span class="far fa-eye"></span> symbol, or removed using
+											<span class="fas fa-times"></span>.</p>
+									<p>By default, the ground truth layer is selected and visible in <span style="color:#13A1FF">blue</span></p>
+									<div class="screenshot-holder">
+										<img class="img-fluid" src="assets/images/doc_biaflow_user_guide_benchmark_layout.png" alt="screenshot" width="640">
+									</div>
+									<p>You can add as many annotation layer as you want. By default, each layer is displayed
+										with a unique color.</p>
+									<div class="screenshot-holder">
+										<img class="img-fluid" src="assets/images/doc_biaflow_user_guide_benchmark_layout_02.png" alt="screenshot" width="640">
+									</div>
+									<p>If you uncheck  the check box <em>COLOR ANNOTATION PER LAYER</em>, a unique color is set by object instead of by layer.</p>
+									<div class="screenshot-holder">
+										<img class="img-fluid" src="assets/images/doc_biaflow_user_guide_benchmark_layout_03.png" alt="screenshot" width="640">
+									</div>
+									<p>In addition, <em>LAYER OPACITY</em> can be adjusted with the bottom slider.</p>
+									<div class="screenshot-holder">
+										<img class="img-fluid" src="assets/images/doc_biaflow_user_guide_benchmark_layout_06.png" alt="screenshot" width="640">
+									</div>
+									<p>
+									If you do not know which annotation layer to display, click on
+										<button data-v-0c385051="" class="button is-small is-fullwidth layer-field" disabled="disabled">Add all favorites</button>.
+										Favorite workflow runs were validated by their maintainer as providing representative results.</p>
 										<div class="screenshot-holder">
-										    <img class="img-fluid" src="assets/images/biaflows-image-viewer-layer.jpg" alt="screenshot" width="640">
+										    <img class="img-fluid" src="assets/images/doc_biaflow_user_guide_benchmark_layout_07.png" alt="screenshot" width="640">
 										</div>
 										<h5>Multiple viewers</h5>
 										  It is also possible to have multiple viewers opened at once and synchronized (e.g. 4 synchronized views where top left is the original image and others are workflow runs overlays):<br>
@@ -135,7 +164,7 @@
 										<h5>Image adjustments</h5>
 										  Contrast and gamma correction can be adjusted from the panel <span class="fas fa-adjust"></span> (right toolbar). The image can also be video inverted from this panel.
 										<div class="screenshot-holder">
-											<img class="img-fluid" src="assets/images/biaflows-image-viewer-adjust.jpg" alt="screenshot" width="240">
+											<img class="img-fluid" src="assets/images/doc_biaflow_user_guide_bright_and_contrast.png" alt="screenshot">
 										</div>    
                                 </div><!--//section-block-->
 						</section>			
@@ -201,16 +230,24 @@
 								
 								<div id="workflows-benchmarking" class="section-block">
 								  <h4>Benchmarking</h4>
-								  <p>The Benchmarking Section is located at the bottom of the Workflow runs page and it is where benchmark results (metrics) from past workflow runs can be inspected. 
-								  By default, a report is generated for all starred jobs (as defined by the project manager of this Problem) and all images from the Problem. Both selections can be refined using Filters (by Images, by Metrics) and metrics can be explored as aggregated for all images or selected for individual images:</p>	  
+								  <p>The Benchmarking Section is located at the bottom of the Workflow runs page and it
+									  is where benchmark results (metrics) from past workflow runs can be inspected.</p>
+									<p>
+									  By default, a report is generated for all starred jobs (as defined by the project
+									  manager of this Problem) and all images from the Problem and aggregated by average.
+										The main metric is displayed in black and the other in  <span style="color:#7A7A7A">gray</span>.
+									</p>
+									<p>
+									  Both selections can be refined using Filters (by Images, by Metrics) and metrics can be explored as
+									  aggregated for all images or selected for individual images:</p>
 								    <div class="screenshot-holder">
-								      <img class="img-fluid" src="assets/images/biaflows-workflow-aggregated-results.png" alt="screenshot">
+								      <img class="img-fluid" src="assets/images/doc_biaflow_user_guide_benchmark_01.png" alt="screenshot">
 								    </div>
 								    </p>
 								    <p>The detailed results by image view is useful to, e.g., find jobs with poor metrics and inspect the associated annotation layer to understand where the workflow has failed. To quickly access an image, its thumbnail can be clicked from the list.
-								    <div class="screenshot-holder">
-								      <img class="img-fluid" src="assets/images/biaflows-workflows-detailed-results.png" alt="screenshot">
-								    </div>
+									<div class="screenshot-holder">
+										<img class="img-fluid" src="assets/images/doc_biaflow_user_guide_benchmark_02.png" alt="screenshot">
+									</div>
 								    </p>
 									<p>A textual description of a metric is available by clicking on <span class="fas fa-info-circle"></span> next to the metric name:<br>
 									  <div class="screenshot-holder">
