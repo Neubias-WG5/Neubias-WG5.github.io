@@ -44,7 +44,7 @@
         <div class="container">
             <div id="doc-header" class="doc-header text-center">
                 <h1 class="doc-title">Installing and populating BIAFLOWS locally</h1>
-                <div class="meta"><i class="far fa-clock"></i> Last updated: March 18st, 2020</div>
+                <div class="meta"><i class="far fa-clock"></i> Last updated: April 1<sup>st</sup>, 2020</div>
             </div>
             <!--//doc-header-->
             <div class="doc-body row">
@@ -89,33 +89,45 @@ cd Biaflows-bootstrap
                             <div id="installing_step3" class="section-block">
                                 <h4>3. Configure the local instance</h4>
                                 <p>
-                                    Edit configuration.sh and, if needed, update URLs
-                                    (CORE_URL, IMS_URL, UPLOAD_URL).
-                                    Make sure to use URLs that are not already used by other applications
-                                    (avoid localhost) to prevent conflicts. In <em>/etc/hosts</em> of the host machine,
-                                    add the following lines, adapting them accordingly to chosen XXX_URL in configuration.sh.
+                                    Edit <em>configuration.sh</em> and, if needed, update URLs
+                                    (CORE_URL, IMS_URL, UPLOAD_URL).Make sure to use URLs that are not already used by other applications
+                                    (avoid localhost) to prevent conflicts.
+                                </p>
+<pre class="language-bash"><code class="language-bash">
+# These URLs have to be accessible (add them to /etc/hosts if you run it locally)
+CORE_URL=biaflows
+IMS_URL=biaflows-ims
+UPLOAD_URL=biaflows-upload
+</code></pre>
+                                <p>
+                                In <em>/etc/hosts</em> of the host machine,
+                                    add the following lines, adapting them accordingly to chosen XXX_URL in <em>configuration.sh</em>, for example:
                                 </p>
 <pre class="language-bash"><code class="language-bash">
 127.0.0.1 biaflows
 127.0.0.1 biaflows-ims
 127.0.0.1 biaflows-upload
-127.0.0.1 rabbitmq
 </code></pre>
                                 <p>
-                                    If needed, update data path variables (IMS_STORAGE_PATH …).
-                                    All data paths must be valid and mappable in the Docker engine.
-                                    If they don't exist, create all the directories (<code>mkdir</code>) corresponding to
-                                    the following variables:
+                                    If needed, update data path variables (<em>IMS_STORAGE_PATH</em> …).
                                 </p>
 <pre class="language-bash"><code class="language-bash">
-IMS_STORAGE_PATH
-IMS_BUFFER_PATH
-FAST_DATA_PATH
-PROXY_CACHE_PATH
-SOFTWARE_CODE_PATH
-SOFTWARE_DOCKER_IMAGES_PATH
-JOBS_PATH
-SERVER_SSHKEYS_PATH
+# These paths must exist
+IMS_STORAGE_PATH=/biaflows/data/images
+IMS_BUFFER_PATH=/biaflows/data/_buffer
+SOFTWARE_DOCKER_IMAGES_PATH=/biaflows/data/workflows
+SERVER_SSHKEYS_PATH=/biaflows/data/ssh
+</code></pre>
+                                <p>
+                                    All data paths must be valid and mappable in the Docker engine.
+                                    If they don't exist, create all the directories (<code>mkdir</code>) corresponding to
+                                    the above variables, for example:
+                                </p>
+<pre class="language-bash"><code class="language-bash">
+mdkir -p /biaflows/data/images
+mdkir -p /biaflows/data/_buffer
+mdkir -p /biaflows/data/workflows
+mdkir -p /biaflows/data/ssh
 </code></pre>
                                 <p>
                                     A reference to these URLs and paths is provided here:
