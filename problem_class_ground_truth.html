@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="assets/plugins/prism/prism.css">
     <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">
     <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">	  
 </head>
 
 <body class="body-pink">
@@ -38,7 +38,7 @@
         </div><!--//container-->
     </header><!--//header-->
     <div class="doc-wrapper">
-        <div class="container">
+        <div class="container" style="max-width:1600px">
             <div id="doc-header" class="doc-header text-center">
                 <h1 class="doc-title">Problem class, ground truth annotations and reported metrics</h1>
                 <div class="meta"><i class="far fa-clock"></i> Last updated: March 2nd, 2020</div>
@@ -250,7 +250,308 @@
                             </div>
 
 
-                        </section>
+                        </section><!--//doc-section-->
+                        <section id="steps-section" class="doc-section">
+                            <h2 class="section-title">Problem Class</h2>
+							
+							<div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>                                        
+                                        <th scope="col">Problem Class</th>
+                                        <th scope="col">Tasks</th>
+                                        <th scope="col">Annotation</th>
+                                        <th scope="col">Example</th>
+                                        <th scope="col">Metrics</th>
+                                        <th scope="col">Tools</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th class="theme-bg-light">Object Segmentation</th>
+                                        <td>Delineate objects or isolated regions</td>
+                                        <td>
+										<figure class="figure docs-figure py-3">
+						               <a href="assets/images/class-01-label_mask.png" data-title="2D/3D label masks with foreground > 0 (one unique ID per object), background = 0" data-toggle="lightbox"><img class="figure-img img-fluid shadow rounded" src="assets/images/class-01-label_mask.png" alt="Label masks" style="width: 600px;"></a></figure></br>Label masks
+										
+										</td>
+                                        <td style="white-space: nowrap;">
+										
+										<a class="theme-link" href="assets/images/01-Pixel-classification.zip" target="_blank">sample <svg class="svg-inline--fa fa-external-link-alt fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path></svg> </a>
+										</td>
+                                        <td>
+										<ul>
+											<li>DICE (DC) et AVERAGE_HAUSDORFF_DISTANCE (AHD), computed by
+												<a href="http://www.visceral.eu/resources/evaluatesegmentation-software/" target="_blank">VISCERAL</a>
+												executable (archived
+												<a href="https://github.com/Neubias-WG5/neubiaswg5-utilities/blob/master/bin/Visceral" target="_blank" >here</a>)</li>
+											<li>Fraction overlap (FOVL) computed by <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities" target="_blank">custom</a> Python code</li>
+											<li>Mean Average Precision computed by <a href="https://www.kaggle.com/c/data-science-bowl-2018/overview/evaluation" target="_blank">Data Science Bowl 2018</a> Python code</li>
+										</ul>
+									</td>
+                                        <td>
+										<ul>
+										  <li><a href="https://github.com/saalfeldlab/paintera">Paintera (3D)</a></li>
+										  <li><a href="http://www.itksnap.org/pmwiki/pmwiki.php">ITK-snap (3D)</a></li>
+										  <li><a href="https://qupath.readthedocs.io/en/latest/docs/starting/annotating.html">QuPath (2D)</a></li>
+										  <li><a href="http://www.3d-cell-annotator.org/index.html">3D Cell annotator</a></li>
+										  <li><a href="https://www.ilastik.org/index.html">Ilastik (3D)</a></li>
+										</ul>
+										</td>
+                                    </tr>
+									
+									
+                                    <tr>
+                                        <th class="theme-bg-light">Pixel/Voxel classification</th>
+                                        <td>Estimate pixels class</td>
+                                        <td>
+										<figure class="figure docs-figure py-3">
+						               <a href="assets/images/class-01-label_mask.png" data-title="2D/3D class masks, gray level encodes pixel/voxel class, background = 0" data-toggle="lightbox"><img class="figure-img img-fluid shadow rounded" src="assets/images/class-01-label_mask.png" alt="Label masks" style="width: 600px;"></a></figure></br>Label masks
+										</td>
+                                        <td style="white-space: nowrap;">										
+										<a class="theme-link" href="assets/images/00-Pixel-classification.zip" target="_blank">sample <svg class="svg-inline--fa fa-external-link-alt fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path></svg> </a>
+										</td>
+                                        <td>
+										<ul>
+											<li>F1_SCORE (F1), ACCURACY (ACC), PRECISION (PR), RECALL (RE), computed by
+                                        <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities" target="_blank">custom</a> Python code</li>
+										</ul>
+									</td>
+                                        <td>
+										<ul>
+										  <li><a href="https://github.com/saalfeldlab/paintera">Paintera (3D)</a></li>
+										  <li><a href="http://www.itksnap.org/pmwiki/pmwiki.php">ITK-snap (3D)</a></li>
+										  <li><a href="https://qupath.readthedocs.io/en/latest/docs/starting/annotating.html">QuPath (2D)</a></li>
+										  <li><a href="http://www.3d-cell-annotator.org/index.html">3D Cell annotator</a></li>
+										  <li><a href="https://www.ilastik.org/index.html">Ilastik (3D)</a></li>
+										</ul>
+										</td>
+                                    </tr>
+									
+									
+                                    <tr>
+                                        <th class="theme-bg-light">Spot/Object Detection</th>
+                                        <td>Detect objects in an image (e.g. nucleus)</td>
+                                        <td>
+											<figure class="figure docs-figure py-3">
+										   <a href="assets/images/class-03-spot_detection.png" data-title="2D/3D binary masks, exactly 1 object per non null pixel" data-toggle="lightbox"><img class="figure-img img-fluid shadow rounded" src="assets/images/class-03-spot_detection.png" alt="Label masks" style="width: 600px;"></a></figure></br>Binary masks
+										</td>
+										<td style="white-space: nowrap;">										
+											<a class="theme-link" href="assets/images/03-spot-detection.zip" target="_blank">sample <svg class="svg-inline--fa fa-external-link-alt fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path></svg> </a>
+										</td>
+                                        <td>
+										<ul>
+											<li>CONFUSION_MATRIX (TP, FN, FP), F1_SCORE (F1), PRECISION (PR),
+                                        RECALL (RE), Distance RMSE (RMSE), computed by
+                                        <a href="http://bioimageanalysis.org/track/" target="_blank">Particle Tracking Challenge</a>
+                                        metric Java code (particle matching only, archived
+                                        <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities" target="_blank">here</a>
+                                        in <code>bin/DetectionPerformance.jar</code></li>
+										</ul>
+									</td>
+                                        <td>
+										<ul>
+										  <li><a href="https://github.com/saalfeldlab/paintera">Paintera (3D)</a></li>
+										  <li><a href="http://www.itksnap.org/pmwiki/pmwiki.php">ITK-snap (3D)</a></li>
+										  <li><a href="https://qupath.readthedocs.io/en/latest/docs/starting/annotating.html">QuPath (2D)</a></li>
+										  <li><a href="https://www.ilastik.org/index.html">Ilastik (3D)</a></li>
+										  <li><a href="https://imagej.nih.gov/ij/docs/guide/146-19.html#toc-Subsection-19.6">ImageJ with Multi-point Tool</a></li>
+										</ul>
+										</td>
+                                    </tr>
+									
+									
+                                    <tr>
+                                        <th class="theme-bg-light">Filament Tree Tracing</th>
+                                        <td>Estimate the medial axis of a connected filament tree network (one per image)</td>
+                                        <td>
+											<figure class="figure docs-figure py-3">
+												<a href="assets/images/class-07-filament_tracing.png" data-title="SWC file" data-toggle="lightbox"><img class="figure-img img-fluid shadow rounded" src="assets/images/class-07-filament_tracing_small.png" alt="SWC" style="width: 600px;"></a></figure></br>
+											SWC
+										</td>
+                                        <td style="white-space: nowrap;">										
+											<a class="theme-link" href="assets/images/07-Filament-tracing-tree.zip" target="_blank">sample <svg class="svg-inline--fa fa-external-link-alt fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path></svg> </a></br>
+										
+											<a class="theme-link" href="http://www.neuronland.org/NLMorphologyConverter/MorphologyFormats/SWC/Spec.html" target="_blank">SWC format <svg class="svg-inline--fa fa-external-link-alt fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path></svg> </a>
+										</td>
+                                        <td>
+											<ul>
+												<li>UNMATCHED_VOXEL_RATE (UVR), computed by
+												<a href="https://github.com/Neubias-WG5/neubiaswg5-utilities" target="_blank">custom</a> Python code</li>
+												<li>NetMets metrics: Geometric False Negative rate (FNR),
+												Geometric False Positive rate (FPR) computed by
+												<a href="https://github.com/Neubias-WG5/neubiaswg5-utilities/blob/master/neubiaswg5/metrics/netmets_obj.py" target="_blank">NetMets Python code.</a></li>
+											</ul>
+											<ul>
+												<li>GATING_DIST (UVR): Maximum distance between skeleton voxels in reference
+												and prediction skeletons to be considered as matched (default = 5 pix)</li>
+												<li>Sigma (NetMets): tolerance in centreline position (default: 5 pix).</li>
+											</ul>
+										</td>
+                                        <td>
+											<ul>
+												<li><a href="https://imagej.net/SNT">ImageJ / SNT</a></li>
+												<li><a href="https://alleninstitute.org/what-we-do/brain-science/research/products-tools/vaa3d/">Vaa3D</a></li>
+											  <li><a href="https://www.google.com/search?client=firefox-b-d&q=neutube">Neutube (2D)</a></li>
+											  <li><a href="https://www.mbfbioscience.com/neurolucida">Neurolucida</a></li>
+											</ul>
+										</td>
+                                    </tr>
+									
+									
+									
+									
+									
+                                    <tr>
+                                        <th class="theme-bg-light">Filament Networks Tracing</th>
+                                        <td>Estimate the medial axis of one or several connected filament network(s)</td>
+                                        <td>
+											<figure class="figure docs-figure py-3">
+										   <a href="assets/images/class-08-filament_tracing_network.png" data-title="2D/3D skeleton binary masks with skeleton pixels > 0, background = 0" data-toggle="lightbox"><img class="figure-img img-fluid shadow rounded" src="assets/images/class-08-filament_tracing_network_small.png" alt="Skeleton binary masks" style="width: 600px;"></a></figure></br>
+										   Skeleton binary masks
+										</td>
+                                        <td style="white-space: nowrap;">										
+											<a class="theme-link" href="assets/images/08-Filament-tracing-networks.zip" target="_blank">sample <svg class="svg-inline--fa fa-external-link-alt fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path></svg> </a></br>
+										</td>
+                                        <td>
+											<ul>
+												<li>UNMATCHED_VOXEL_RATE (UVR), computed by
+												<a href="https://github.com/Neubias-WG5/neubiaswg5-utilities" target="_blank">custom</a> Python code</li>
+												<li>NetMets metrics: Geometric False Negative rate (FNR),
+													Geometric False Positive rate (FPR) computed by
+													<a href="https://github.com/Neubias-WG5/neubiaswg5-utilities/blob/master/neubiaswg5/metrics/netmets_obj.py" target="_blank">NetMets Python code.</a></li>
+													</ul>
+													<ul>
+												<li>GATING_DIST (UVR): Maximum distance between skeleton voxels in reference
+													and prediction skeletons to be considered as matched (default = 5 pix)</li>
+												<li>Sigma (NetMets): tolerance in centreline position (default: 5 pix)</li>
+												<li>Skeleton sampling distance (NetMets): skeletons are sampled to be converted
+													to SWC models. (default: 3 voxels, default Z Ratio: 1).</li>
+											</ul>
+										</td>
+                                        <td>
+										<ul>
+										  <li></li>
+										</ul>
+										</td>
+                                    </tr>
+									
+									
+									
+									
+                                    <tr>
+                                        <th class="theme-bg-light">Landmark Detection</th>
+                                        <td>Estimate the position of specific feature points</td>
+                                        <td>
+											<figure class="figure docs-figure py-3">
+										   <a href="assets/images/class-04-Landmark-detection.png" data-title="2D/3D class masks, exactly 1 landmark per non null pixel, gray level encodes landmark class (1 to N, N is the number of landmarks) > 0, background = 0" data-toggle="lightbox"><img class="figure-img img-fluid shadow rounded" src="assets/images/class-04-Landmark-detection_small2.png" alt="2D/3D class masks, exactly 1 landmark per non null pixel, gray level encodes landmark class (1 to N, N is the number of landmarks)" style="width: 600px;"></a></figure></br>
+									   Label masks
+										</td>
+                                        <td style="white-space: nowrap;">										
+											<a class="theme-link" href="assets/images/04-Landmark-detection.zip" target="_blank">sample <svg class="svg-inline--fa fa-external-link-alt fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path></svg> </a></br>
+										</td>
+                                        <td>
+											<ul>
+												<li>Number of reference / predicted landmarks (NREF, NPRED)</li>
+												<li>Mean distance from
+											predicted landmarks to closest reference landmarks with same class (MRE).</li>
+												<li>
+										 All metrics computed by
+											<a href="https://github.com/Neubias-WG5/neubiaswg5-utilities" target="_blank">custom</a> Python code.</li>
+											</ul>
+										</td>
+                                        <td>
+											<ul>
+											  <li></li>
+											</ul>
+										</td>
+                                    </tr>
+									
+									
+									
+									
+                                    <tr>
+                                        <th class="theme-bg-light">Particle Tracking</th>
+                                        <td>Estimate the tracks followed by particles (no division)</td>
+                                        <td>
+											<figure class="figure docs-figure py-3">
+										   <a href="assets/images/class-01-label_mask.png" data-title="2D/3D label masks, exactly 1 particle per non null pixel, gray level encodes particle track ID" data-toggle="lightbox"><img class="figure-img img-fluid shadow rounded" src="assets/images/class-01-label_mask.png" alt="2D/3D label masks, exactly 1 particle per non null pixel, gray level encodes particle track ID" style="width: 600px;"></a></figure></br>
+										   Label masks
+										</td>
+                                        <td style="white-space: nowrap;">										
+											<a class="theme-link" href="assets/images/05-Object-Tracking.zip" target="_blank">sample <svg class="svg-inline--fa fa-external-link-alt fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path></svg> </a></br>
+										</td>
+                                        <td>
+											<ul>
+												<li>Normalized pairing score alpha (NPSA)</li>
+												<li>Full normalized pairing score beta (FNPSB)</li>
+												<li>Number of reference tracks (NRT)</li>
+												<li>Number of candidate tracks (NCT)</li>
+												<li>Jaccard Similarity Tracks (JST)</li>
+												<li>Number of paired tracks (NPT)</li>
+												<li>Number of missed tracks (NMT)</li>
+												<li>Number of spurious tracks (NST)</li>
+												<li>Number of reference detections (NRD)</li>
+												<li>Number of candidate detections (NCD)</li>
+												<li>Jaccard similarity detections (JSD)</li>
+												<li>Number of paired detections (NPD)</li>
+												<li>Number of missed detections (NMD)</li>
+												<li>Number of spurious detections (NSD)</li>
+												<p>
+													All metric computed by
+													<a href="http://bioimageanalysis.org/track/" target="_blank">Particle Tracking Challenge</a>
+													Java code (archived <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities/blob/master/bin/TrackingPerformance.jar" target="_blank">here</a>).
+												</p>
+											</ul>
+											<ul>
+												<li>GATING_DIST (default = 5, maximum distance between particle detections
+													in reference / prediction tracks to be considered as matching)</li>
+											</ul>
+										</td>
+                                        <td>										
+											<ul>
+											  <li><a href="https://imagej.nih.gov/ij/plugins/track/track.html">ImageJ Manual Tracking</a></li>										  
+											  <li><a href="https://imagej.net/TrackMate">ImageJ TrackMate</a></li>
+											</ul>
+										</td>
+                                    </tr>
+									
+									
+									
+									<tr>
+                                        <th class="theme-bg-light">Object Tracking</th>
+                                        <td>Estimate object tracks and segmentation masks (with possible divisions)</td>
+                                        <td>
+											<figure class="figure docs-figure py-3">
+										   <a href="assets/images/class-01-label_mask.png" data-title="2D/3D label masks, gray level encodes object ID + division text file
+										(see Cell Tracking Challenge format)" data-toggle="lightbox"><img class="figure-img img-fluid shadow rounded" src="assets/images/class-01-label_mask.png" alt="2D/3D label masks, gray level encodes object ID + division text file
+										(see Cell Tracking Challenge format)" style="width: 600px;"></a></figure></br>
+										   Label masks + <a href="http://celltrackingchallenge.net/datasets/">Division text file</a>
+										</td>
+                                        <td style="white-space: nowrap;">										
+											<a class="theme-link" href="assets/images/06-Object_tracking_with_division.zip" target="_blank">sample <svg class="svg-inline--fa fa-external-link-alt fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path></svg> </a></br>
+										</td>
+                                        <td>
+											<ul>
+												<li>Segmentation measure (SEG), implementation archived <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities/blob/master/bin/SEGMeasure" target="_blank">here</a></li>
+												<li>Tracking measure (TRA), implementation archived <a href="https://github.com/Neubias-WG5/neubiaswg5-utilities/blob/master/bin/TRAMeasure" target="_blank">here</a></li>
+												<p>
+												All computed from
+												<a href="http://celltrackingchallenge.net/evaluation-methodology/" target="_blank">Cell Tracking Challenge</a> metric command-line executables.
+												</p>
+											</ul>
+										</td>
+                                    <td>
+										<ul>
+										  <li><a href="https://imagej.nih.gov/ij/plugins/track/track.html">ImageJ Manual Tracking</a></li>										  
+										  <li><a href="https://imagej.net/TrackMate">ImageJ TrackMate</a></li>
+										</ul>
+									</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+							
+                        </section><!--//doc-section-->
 
                     </div><!--//content-inner-->
                 </div><!--//doc-content-->
@@ -291,11 +592,20 @@
     </div><!--//container-->
 </footer><!--//footer-->
 <!-- Main Javascript -->
+
+
 <script type="text/javascript" src="assets/plugins/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="assets/plugins/lightbox/dist/ekko-lightbox.min.js"></script>
+
 <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>
 <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
 <script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
 <script type="text/javascript" src="assets/js/main.js"></script>
+
+
+
+
 </body>
 </html>
