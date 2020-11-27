@@ -222,6 +222,11 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                                 <div class="screenshot-holder">
                                     <img class="img-fluid" src="assets/images/doc_biaflow_locally_04.png" alt="screenshot">
                                 </div>
+								<p>Note that it is also possible to specificy if annotations from workflow results should be uploaded 
+								to BIAFLOWS and if metrics should be computed. To perform benchmarking and visually inspect the results, both options should be ticked.</p>
+								<p>If you do not have ground truth annotations for your images or do not want to perform benchmarking, untick the second option.</p>
+								<p><u>Note</u>: Currently, the display of ground truth annotations as a layer is not automated but requires to run
+								a Python script, this will be automated in a future release.</p>
                             </div>
                             <div id="newproblem_step4" class="section-block">
                                 <h4>4. Assign the problem to a problem class</h4>
@@ -244,7 +249,7 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                                 </p>
                             </div>
                             <div id="newproblem_step6" class="section-block">
-                                <h4>6. Custom the User Interface</h4>
+                                <h4>6. Customize the User Interface</h4>
                                 <p>
                                     The problem can be fully configured to display or hide panels / tabs / tools in the
                                     user interface. This is achieved from the Custom UI tab in the problem configuration.

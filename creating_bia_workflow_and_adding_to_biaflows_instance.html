@@ -104,6 +104,11 @@
                                     <p>
                                         Please refer to:
                                         <a href="https://github.com/Neubias-WG5/biaflows-workflow-utilities" target="_blank">https://github.com/Neubias-WG5/biaflows-workflow-utilities</a> for details.</p>
+									<p><b>When using an existing workflow as template, check that this workflow
+									uses the latest versions of biaflows libraries. For this, refer to this 
+									<a href="https://docs.google.com/document/d/1NltQauJAbO4RGDHBR-NRgd_fs2FCDlmtda9m_XlFryI/edit" target="_blank">guide</a>.
+									</b>
+									</p>
                                 </div><!--//content-->
                             </div>
                             </p>
@@ -124,18 +129,27 @@
                             </div>
 
                             <div id="workflow_step2" class="section-block">
-                                <h4>2. Add the 4 required files to the workflow repository</h4>
-                                <p>
-                                    It is recommended to reuse existing files from similar workflow repositories in
-                                    <a href="https://github.com/Neubias-WG5">https://github.com/Neubias-WG5</a>.
-                                    For this, follow these guidelines:
+									<h4>2. Add the required files to the workflow repository</h4>
+									<p>
+                                    It is recommended to reuse existing files from similar workflow repositories.
+                                    The following workflow types have already been tested:                                   ImageJ / FIJI macro, ImageJ Python script, ICY protocol, CellProfiler pipeline,
+                                    Octave script, ilastik pipeline, Vaa3D plugin, Python 2.X or 3.X script based on
+                                    Scikit-learn, Keras, Pytorch and MXNet.
+									</p>
+									<p>
+									They are all available from:
+                                    <a href="https://github.com/Neubias-WG5">https://github.com/Neubias-WG5</a>
+									</p>
+									<p>
+                                    The necessary files are:
+									</p>
                                     <ul>
                                     <li>A descriptor from the <a href="/problem_class_ground_truth.html">Problem Class</a>
                                         you target (e.g. Object Segmentation)</li>
                                     <li>A DockerFile configuring the BIA platform you target (e.g ImageJ)</li>
                                     <li>A wrapper script from the <a href="/problem_class_ground_truth.html">Problem Class</a> and the workflow type you target.</li>
+									<li>A file holding the workflow code (e.g. an ImageJ macro), unless some code is directly called from the wrapper script.</li>
                                     </ul>
-                                </p>
                                 <div class="callout-block callout-info">
                                 <div class="icon-holder">
                                     <svg class="svg-inline--fa fa-info-circle fa-w-16" aria-hidden="true"
@@ -151,36 +165,26 @@
                                         two spatial dimensions (three spatial dimensions if set to <em>false</em>).
                                     </p>
                                 </div><!--//content-->
-                            </div>
-                                <p>
-                                    The following workflow types have already been tested and are available from
-                                    <a href="https://github.com/Neubias-WG5">https://github.com/Neubias-WG5:</a>
-                                </p>
-                                <p>
-                                    ImageJ / FIJI macro, ImageJ Python script, ICY protocol, CellProfiler pipeline,
-                                    Octave script, ilastik pipeline, Vaa3D plugin, Python 2.X or 3.X script based on
-                                    Scikit-learn or Keras/Pytorch.
-                                </p>
-                                </div>
+							</div>
                             <div id="workflow_step3" class="section-block">
                                 <h4>3. Update sections of the Descriptor</h4>
                                 <h6>Workflow and associated Docker image names</h6>
-<pre class="language-json"><code class="language-json">
+								<pre class="language-json"><code class="language-json">
 {
-    "name": "NucleiTracking-ImageJ",
-    "container-image": {
-        "image": "neubiaswg5/w_nucleitracking-imagej",
-        "type": "singularity"
-    }
-</code></pre>
+	"name": "NucleiTracking-ImageJ",
+	"container-image": {
+		"image": "neubiaswg5/w_nucleitracking-imagej",
+		"type": "singularity"
+}
+								</code></pre>
                                 <ul>
                                     <li>Update <em>name</em> to match GitHub workflow repository name (without prefix)</li>
                                     <li>Update <em>image</em> to match the name of your workflow GitHub repository (lower case only)</li>
                                 </ul>
                                 <h6>Command line call of the Docker image</h6>
 <pre class="language-json"><code class="language-json">
-    "description": "Track nuclei in a time series by doing 3D segmentation.",
-    "command-line": "python wrapper.py CYTOMINE_HOST CYTOMINE_PUBLIC_KEY CYTOMINE_PRIVATE_KEY CYTOMINE_ID_PROJECT CYTOMINE_ID_SOFTWARE IJ_RADIUS IJ_THRESHOLD IJ_ERODE_RADIUS ",
+	"description": "Track nuclei in a time series by doing 3D segmentation.",
+	"command-line": "python wrapper.py CYTOMINE_HOST CYTOMINE_PUBLIC_KEY CYTOMINE_PRIVATE_KEY CYTOMINE_ID_PROJECT CYTOMINE_ID_SOFTWARE IJ_RADIUS IJ_THRESHOLD IJ_ERODE_RADIUS ",
 </code></pre>
                                 <ul>
                                     <li><em>Description</em>: Update workflow description</li>
@@ -188,16 +192,16 @@
                                 </ul>
                                 <h6>Workflow parameter sections</h6>
 <pre class="language-json"><code class="language-json">
-    {
-        "id": "ij_radius",
-        "value-key": "@ID",
-        "command-line-flag": "--@id",
-        "name": "Radius",
-        "description": "Radius of the Gaussian filter",
-        "type": "Number",
-        "default-value": 3,
-        "optional": true
-    },
+	{
+		"id": "ij_radius",
+		"value-key": "@ID",
+		"command-line-flag": "--@id",
+		"name": "Radius",
+		"description": "Radius of the Gaussian filter",
+		"type": "Number",
+		"default-value": 3,
+		"optional": true
+	},
 </code></pre>
                                 <p>
                                     Update / add as many parameter sections as required to match the parameter list from command line call.
@@ -213,7 +217,7 @@
                             <div id="workflow_step4" class="section-block">
                                 <h4>4. Update DockerFile</h4>
                                 <p>
-                                    Update the line copying the workflow from the <a href="https://github.com/Neubias-WG5/W_NucleiTracking-ImageJ/blob/master/Dockerfile" target="_blank">GitHub repository</a> to the workflow Docker image, for instance:
+                                    If applicable, update the line copying the workflow from the <a href="https://github.com/Neubias-WG5/W_NucleiTracking-ImageJ/blob/master/Dockerfile" target="_blank">GitHub repository</a> to the workflow Docker image, for instance:
                                 </p>
 <pre class="language-json"><code class="language-json">
 ADD NucleiTracking.ijm /fiji/macros/macro.ijm
@@ -230,8 +234,8 @@ ADD NucleiTracking.ijm /fiji/macros/macro.ijm
                                 </p>
 <pre class="language-python"><code class="language-python">
 command = "/usr/bin/xvfb-run ./ImageJ-linux64 -macro macro.ijm " \
-                  "\"input={}, output={}, ij_radius={}, ij_threshold={}, ij_erode_radius={}\" -batch".format(
-            in_path, out_path, nj.parameters.ij_radius, nj.parameters.ij_threshold, nj.parameters.ij_erode_radius)
+				  "\"input={}, output={}, ij_radius={}, ij_threshold={}, ij_erode_radius={}\" -batch".format(
+			in_path, out_path, nj.parameters.ij_radius, nj.parameters.ij_threshold, nj.parameters.ij_erode_radius)
 </code></pre>
                                 <p>
                                     Update/add parameters to match parameters defined in JSON descriptor (<a class="scrollto" href="#workflow_step2">Step 2</a>).
@@ -241,11 +245,11 @@ command = "/usr/bin/xvfb-run ./ImageJ-linux64 -macro macro.ijm " \
                             <div id="workflow_step6" class="section-block">
                                 <h4>6. Adapt your workflow script</h4>
                                 <p>
-                                    Adapt your workflow script to fulfil workflow requirements and parse parameters
+                                    If applicable, adapt your workflow script to fulfil workflow requirements and parse parameters
                                     from command line. For instance for an ImageJ macro:
                                 </p>
 <pre class="language-java">
-    <code class="language-java">
+	<code class="language-java">
 for(i=0; i < parts.length; i++) {
 	nameAndValue = split(parts[i], "=");
 	if (indexOf(nameAndValue[0], "input") > -1) inputDir=nameAndValue[1];
@@ -259,27 +263,30 @@ images = getFileList(inputDir);
 for(i=0; i < images.length; i++) {
   //DO SOMETHING
 }
-    </code>
+	</code>
 </pre>
                             </div>
                             <div id="workflow_step7" class="section-block">
                                 <h4>7. Create Docker image in DockerHub</h4>
                                 <p>
                                     Sign in to DockerHub and create a new public repository. The repository name must match the container-image name used in
-                                    <a class="scrollto" href="#workflow_step3">Step 3</a>.
+                                    <a class="scrollto" href="#workflow_step3">Step 3</a>. Once configured, click Create.
                                 </p>
                             </div>
                             <div id="workflow_step8" class="section-block">
-                                <h4>8. Link repository to workflow GitHub repository & configure workflow Docker image automated build according to the following example:</h4>
-                                <div class="screenshot-holder">
+                                <h4>8. Link repository to workflow GitHub repository & configure workflow Docker image automated build</h4>
+                                <p>Click on the <b>Builds</b> tab and then the <b>Configure Automated Builds</b> blue button.</p>
+								<p>Configure the build according to the following example:</p>
+								<div class="screenshot-holder">
                                     <img class="img-fluid" src="assets/images/doc_workflow_guide_01.png" alt="screenshot">
                                 </div>
+								<p>Especially, note that <b>source</b> is <b>./*/</b> and <b>Docker Tag</b> is <b>{sourceref}</b>.
                             </div>
                             <div id="workflow_step9" class="section-block">
                                 <h4>9. Trigger a workflow release</h4>
                                 <p>
                                     Trigger a release from GitHub workflow repository with version tag such as
-                                    <em>0.1</em>, <em>0.2</em>, <em>1.0</em>...
+                                    <em>v0.1</em>, <em>v0.2</em>, <em>v1.0</em>...
                                 </p>
                             </div>
                             <div id="workflow_step10" class="section-block">
@@ -295,7 +302,7 @@ for(i=0; i < images.length; i++) {
                                 <p>
                                     Once the <em>Docker</em> image is built, a BIAFLOWS instance fetches the image
                                     from the trusted source and make it available (possibly after up to 5/10 minutes).
-                                    Sign in as administrator to BIAFLOWS and browse to the <em>Problem</em> you want to
+                                    Sign in as administrator to BIAFLOWS (or regular sandbox user) and browse to the <em>Problem</em> you want to
                                     add the workflow to. Then, click on the
                                     <a data-v-1b79a3b0="" href="#/project/3347506/configuration">
                                         <i data-v-1b79a3b0="" class="fas fa-cogs"></i>
