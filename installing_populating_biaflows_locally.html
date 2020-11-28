@@ -198,11 +198,11 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
 
 
                         <section id="newproblem-section" class="doc-section">
-                            <h2 class="section-title">Creating a new problem (project) in a local BIAFLOWS instance</h2>
+                            <h2 class="section-title">Creating a new problem in a local BIAFLOWS instance (or sandbox)</h2>
                             <div id="newproblem_step1" class="section-block">
                             <h4>1. Create a new problem</h4>
                             <p>
-                                To create a new problem, connect as regular user or admin, go to the <em>Problems</em>
+                                To create a new problem, provided your user has rights, go to the <em>Problems</em>
                                 tab
                                 <div class="screenshot-holder">
                                     <img class="img-fluid" src="assets/images/doc_biaflow_locally_01.png" alt="screenshot">
@@ -218,15 +218,13 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                             </div>
                             <div id="newproblem_step3" class="section-block">
                                 <h4>3. Problem configuration</h4>
-                                <p>The problem is ready to be configured, the following configuration is recommended:</p>
+                                <p>The problem is ready to be configured, if you hold annotations <b>for all the images of the problem</b> and plan to perform benchmarking the following configuration is recommended:</p>
                                 <div class="screenshot-holder">
                                     <img class="img-fluid" src="assets/images/doc_biaflow_locally_04.png" alt="screenshot">
                                 </div>
-								<p>Note that it is also possible to specificy if annotations from workflow results should be uploaded 
-								to BIAFLOWS and if metrics should be computed. To perform benchmarking and visually inspect the results, both options should be ticked.</p>
-								<p>If you do not have ground truth annotations for your images or do not want to perform benchmarking, untick the second option.</p>
-								<p><u>Note</u>: Currently, the display of ground truth annotations as a layer is not automated but requires to run
-								a Python script, this will be automated in a future release.</p>
+								<p>If you do not hold ground truth annotations for your images or do not want to perform benchmarking, untick the next to last option.</p>
+								<p>It is also possible to specificy if annotations from workflow results should be created and uploaded to BIAFLOWS after every workflow run with the last option.</p>
+								<p><u>Note</u>: Currently, the ground truth annotations layer is not created automatically but by a specific Python script, this will be automated in a future release. It however does not affect the whole benchmarking process in any way.</p>
                             </div>
                             <div id="newproblem_step4" class="section-block">
                                 <h4>4. Assign the problem to a problem class</h4>
@@ -268,13 +266,13 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                         <section id="uploading_images" class="doc-section">
                             <h2 class="section-title">Uploading images to a local BIAFLOWS instance</h2>
                             <div id="uploading_images_step1" class="section-block">
-                                <h4>1. Connect as regular user or admin</h4>
+                                <h4>1. Connect as user with image upload rights</h4>
                             </div>
                             <div id="uploading_images_step2" class="section-block">
                                 <h4>2. Supported format</h4>
                                 <ul>
-                                    <li><b>2D images</b>: 8-bit/16-bit TIFF (or <a href="https://docs.openmicroscopy.org/ome-model/latest/ome-tiff/">OME-TIFF</a> files)</li>
-                                    <li><b>Multi-dimensional images (Z, C, T)</b>: single file 8-bit/16-bit <a href="https://docs.openmicroscopy.org/ome-model/latest/ome-tiff/">OME-TIFF</a></li>
+                                    <li><b>2D images</b>: 8-bit/16-bit <a href="https://docs.openmicroscopy.org/ome-model/latest/ome-tiff/">OME-TIFF</a> files (or TIFF files)</li>
+                                    <li><b>Multi-dimensional images (Z, C, T)</b>: 8-bit/16-bit Multi-TIFF <a href="https://docs.openmicroscopy.org/ome-model/latest/ome-tiff/">OME-TIFF</a> files.</li>
                                 </ul>
                             </div>
                             <div class="callout-block callout-info">
@@ -346,7 +344,6 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                                     </ul>
                                 </p>
 
-
                                 <div class="callout-block callout-info">
                                     <div class="icon-holder">
                                         <svg class="svg-inline--fa fa-info-circle fa-w-16" aria-hidden="true"
@@ -367,9 +364,8 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
 
                         </section>
 
-
                         <section id="uploading_gt-section" class="doc-section">
-                            <h2 class="section-title">Uploading ground truth annotations to an existing BIAFLOWS problem</h2>
+                            <h2 class="section-title">Uploading ground truth annotations to a BIAFLOWS problem</h2>
                             <p class="section-block">
                                 If you plan to perform benchmarking, ground truth annotations should also be uploaded and
                                 associated to every image of a problem. The format of these annotations depends on the
@@ -377,10 +373,9 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                                 <a href="problem_class_ground_truth.html">Problem Class, ground truth annotations and reported metrics</a>).
                             </p>
                             <p>
-                                Image annotations (e.g. binary masks) should be uploaded as 16-bit TIFF (or
-                                <a href="https://docs.openmicroscopy.org/ome-model/latest/ome-tiff/" target="_blank">OME-TIFF</a>)
-                                for 2D images and as single file 16-bit
-                                <a href="https://docs.openmicroscopy.org/ome-model/latest/ome-tiff/" target="_blank">OME-TIFF</a>
+                                Image annotations (e.g. binary masks) should be uploaded as 16-bit <a href="https://docs.openmicroscopy.org/ome-model/latest/ome-tiff/" target="_blank">OME-TIFF</a> (or TIFF) files
+                                for 2D images and as Multi-TIFF 16-bit
+                                <a href="https://docs.openmicroscopy.org/ome-model/latest/ome-tiff/" target="_blank">OME-TIFF</a> files
                                 for multidimensional (C,Z,T) images. They should be uploaded by following the procedure
                                 described in the previous section and by setting the same name as their corresponding
                                 image + <code>_lbl</code> suffix (e.g. <em>myImage.ome.tif and myImage<b>_lbl</b>.ome.tif</em>).
@@ -428,7 +423,7 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                                 </div><!--//content-->
                             </div>
                             <div id="adding_workflow_step1" class="section-block">
-                                <h4>1. Connect as administrator</h4>
+                                <h4>1. Connect with a user having project management rights</h4>
                                 <p>
                                     Connect as administrator by clicking <em>Open admin session</em>.
                                 </p>
