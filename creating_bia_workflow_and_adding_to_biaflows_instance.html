@@ -52,7 +52,6 @@
                     <div class="content-inner">
                         <section id="introduction-section" class="doc-section">
                             <h2 class="section-title">Introduction</h2>
-                            <p class="section-block">
                             <span style="color:#fe7f7f;">BIA</span>FLOWS workflows are Docker images encapsulating a complete
                             execution environment together with a workflow addressing a BIA Problem.
                             These Docker images can be compiled automatically online. <span style="color:#fe7f7f;">BIA</span>FLOWS
@@ -65,12 +64,18 @@
                             instance is described in this section. Users wishing to get help can write to
                             <a href="https://forum.image.sc">https://forum.image.sc</a> forum or contact
                             <a href="mailto:biaflows@neubias.org">biaflows@neubias.org</a>.
-                            </p>
                         </section><!--//doc-section-->
                         <section id="requirement-section" class="doc-section">
                             <h2 class="section-title">BIA workflow requirements</h2>
-                            <p class="section-block">
-                                BIAFLOWS workflows must:
+							<br/>
+							<h3>Accounts requirement:</h3>
+								
+								<span>In order to create a new workflow, you will need to have:</span>
+                                <ul>
+                                    <li>A <a href="https://github.com/"  target="_blank">Github account</a>, to store the workflow</li>
+                                    <li>A <a href="https://hub.docker.com/"  target="_blank">DockerHub account</a>, to create and store the docker image online</li>
+                                </ul>
+							<h3>BIAFLOWS workflows must:</h3>
                                 <ul>
                                     <li>Run headless from command line</li>
                                     <li>Take an input folder of 8 bit/16 bit TIFF (2D) or single file OME-TIFF (C,Z,T) images</li>
@@ -78,12 +83,16 @@
                                     <li>Export results to an output folder in a format specified for the Problem Class
                                         (see <a href="/problem_class_ground_truth.html">Problem Class, ground truth annotations and reported metrics</a>).</li>
                                 </ul>
-                                    The workflow and its software execution environment are fully defined from a set of 4 files:
+								<p>
+								N.B.: have a look at the worflow <a href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ/blob/master/.github/workflows/docker-image.yml"  target="_blank">W_NucleiSegmentation-ImageJ</a> to see an example of workflow
+								</p>
+                                    The workflow and its software execution environment are fully defined from a set of 5 files:
                                 <ul>
-                                    <li>A Dockerfile configuring software execution environment (OS, libraries, software...)</li>
-                                    <li>The workflow executable or, more commonly, a script running on a BIA platform</li>
-                                    <li>A Python script (wrapper.py), sequencing operations (Docker image entry point)</li>
-                                    <li>A descriptor (descriptor.json) specifying workflow parameters and default values.</li>
+                                    <li>A <a href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ/blob/master/Dockerfile"  target="_blank">Dockerfile</a> configuring software execution environment (OS, libraries, software...)</li>
+                                    <li>The workflow executable or, more commonly, a <a href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ/blob/master/macro.ijm" target="_blank">script</a> running on a BIA platform</li>
+                                    <li>A Python script (<a href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ/blob/master/wrapper.py" target="_blank">wrapper.py</a>), sequencing operations (Docker image entry point)</li>
+                                    <li>A descriptor (<a href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ/blob/master/descriptor.json" target="_blank">descriptor.json</a>) specifying workflow parameters and default values.</li>
+									<li>A  <a href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ/blob/master/.github/workflows" target="_blank">.github/workflows</a> directory containing a <a href="https://github.com/Neubias-WG5/W_NucleiSegmentation-ImageJ/blob/master/.github/workflows/docker-image.yml" target="_blank">docker-image.yml</a> script identical for all the workflows</li>
                                 </ul>
 
                             <div class="callout-block callout-info">
@@ -111,7 +120,6 @@
 									</p>
                                 </div><!--//content-->
                             </div>
-                            </p>
                         </section>
 
 
@@ -157,6 +165,7 @@
                                     <li>A DockerFile configuring the BIA platform you target (e.g ImageJ)</li>
                                     <li>A wrapper script from the <a href="/problem_class_ground_truth.html">Problem Class</a> and the workflow type you target.</li>
 									<li>A file holding the workflow code (e.g. an ImageJ macro), unless some code is directly called from the wrapper script.</li>
+									<li>A .github/workflows directory containing a docker-image.yml script identical for all the workflows</li>
                                     </ul>
                                 <div class="callout-block callout-info">
                                 <div class="icon-holder">
@@ -274,15 +283,102 @@ for(i=0; i < images.length; i++) {
 	</code>
 </pre>
                             </div>
-                            <div id="workflow_step7" class="section-block">
-                                <h4>7. Create Docker image in DockerHub</h4>
+							<div id="workflow_step7" class="section-block">
+                                <h4>7. Create the .github/workflows/docker-image.yml file</h4>
                                 <p>
-                                    Sign in to DockerHub and create a new public repository. The repository name must match the container-image name used in
+                                   This file is identical for all workflows
+                                </p>
+<pre class="language-java">
+	<code class="language-java">
+name: Docker Image CI
+on:
+  release:
+    types: [published]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk '{print tolower($0)}' | tr -d -)" >> $GITHUB_ENV
+      shell: bash
+    - name: Get the version
+      id: vars
+      run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
+    - name: Build the tagged Docker image
+      run: docker build . --file Dockerfile --tag  ${{ env.REPOSITORY_NAME }}:${{ steps.vars.outputs.tag }}
+    - name: Push the tagged Docker image
+      run: docker push ${{ env.REPOSITORY_NAME }}:${{ steps.vars.outputs.tag }}
+	</code>
+</pre>
+                            </div>
+							
+							 <div id="workflow_step8" class="section-block">
+                                <h4>8. Connect DockerHub and the workflow on Github</h4>
+                                <p>
+                                    <b>On DockerHub, Sign in</b>
+								<p>
+								    Create an <b>Acces Token</b> to manage the access to the dockerhub account using the GitHub action mechanism
+								</p>
+								<div class="screenshot-holder">
+                                    <img class="img-fluid" src="assets/images/doc_workflow_guide_C.png" alt="screenshot">
+                                </div>
+								<div class="screenshot-holder">
+                                    <img class="img-fluid" src="assets/images/doc_workflow_guide_D.png" alt="screenshot">
+                                </div>
+								<div class="screenshot-holder">
+                                    <img class="img-fluid" src="assets/images/doc_workflow_guide_E.png" alt="screenshot">
+                                </div>
+                                </p>
+								<p>Set the token to Read & Write access and name it for instance <b>BIAFLOWS_Token</B></p>
+								<p>Copy the token (value copied will be copied in Actions secret on Github)</p>
+								<p>Now go back to the <b>GitHub repository</b> of the workflow and create 2 secrets <b>DOCKERHUB_USERNAME</b> and <b>DOCKERHUB_TOKEN</b> for the workflow repository</p>
+								
+								<div class="screenshot-holder">
+                                    <img class="img-fluid" src="assets/images/doc_workflow_guide_F.png" alt="screenshot">
+                                </div>
+								<div class="screenshot-holder">
+                                    <img class="img-fluid" src="assets/images/doc_workflow_guide_G.png" alt="screenshot">
+                                </div>
+								<div class="screenshot-holder">
+                                    <img class="img-fluid" src="assets/images/doc_workflow_guide_H.png" alt="screenshot">
+                                </div>
+								<div class="screenshot-holder">
+                                    <img class="img-fluid" src="assets/images/doc_workflow_guide_I.png" alt="screenshot">
+                                </div>
+								<div class="screenshot-holder">
+                                    <img class="img-fluid" src="assets/images/doc_workflow_guide_J.png" alt="screenshot">
+                                </div>
+								<p>You should see the following Action Secret now:</p>
+								
+								<div class="screenshot-holder">
+                                    <img class="img-fluid" src="assets/images/doc_workflow_guide_M.png" alt="screenshot">
+                                </div>
+								<p>
+								With this configuration, the docker-images will be built and pushed to DockerHub for each new release created from the repository and BIA</span>FLOWS will fetch the new releases if the related Github and DockerHub repositories were correctly added as trusted sources of the server.
+								</p>
+								
+                            </div>
+							
+							
+                            <div id="workflow_step8" class="section-block">
+                                <h4>9. Create Docker image in DockerHub</h4>
+                                <p>
+                                    On DockerHub, create a new public repository. The repository name must match the container-image name used in
                                     <a class="scrollto" href="#workflow_step3">Step 3</a>. Once configured, click <b>Create</b>.
                                 </p>
                             </div>
-                            <div id="workflow_step8" class="section-block">
-                                <h4>8. Link repository to workflow GitHub repository & configure workflow Docker image automated build</h4>
+							
+                            <div id="workflow_step9" class="section-block">
+                                <h4>10. Link repository to workflow GitHub repository & configure workflow Docker image automated build</h4>
                                 <p>Click on the <b>Builds</b> tab and then the <b>Configure Automated Builds</b> blue button.</p>
 								<p>Configure the build according to the following example:</p>
 								<div class="screenshot-holder">
@@ -290,23 +386,23 @@ for(i=0; i < images.length; i++) {
                                 </div>
 								<p>Especially, note that <b>Source Type</b> must be set to <b>Tag</b>, <b>Source</b> is <b>/.*/</b> and <b>Docker Tag</b> is <b>{sourceref}</b>.
                             </div>
-                            <div id="workflow_step9" class="section-block">
+                            <div id="workflow_step10" class="section-block">
                                 <h4>9. Trigger a workflow release</h4>
                                 <p>
                                     Trigger a release from GitHub workflow repository with version tag such as
                                     <em>v0.1</em>, <em>v0.2</em>, <em>v1.0</em>...
                                 </p>
                             </div>
-                            <div id="workflow_step10" class="section-block">
-                                <h4>10. Workflow Docker image build</h4>
+                            <div id="workflow_step11" class="section-block">
+                                <h4>11. Workflow Docker image build</h4>
                                 <p>
                                     Check from DockerHub that the workflow <em>Docker image</em> has built successfully.
                                     If not, parse the log and fix issues by modifying DockerFile and re-triggering a
                                     new release.
                                 </p>
                             </div>
-                            <div id="workflow_step11" class="section-block">
-                                <h4>11. Add workflow to BIAFLOWS problem</h4>
+                            <div id="workflow_step12" class="section-block">
+                                <h4>12. Add workflow to BIAFLOWS problem</h4>
                                 <p>
                                     Once the <em>Docker</em> image is built, a BIAFLOWS instance fetches the image
                                     from the trusted source and make it available (possibly after up to 5/10 minutes).
@@ -325,8 +421,8 @@ for(i=0; i < images.length; i++) {
                                     <img class="img-fluid" src="assets/images/doc_workflow_guide_02.png" alt="screenshot">
                                 </div>
                             </div>
-                            <div id="workflow_step12" class="section-block">
-                                <h4>12. Run the workflow</h4>
+                            <div id="workflow_step13" class="section-block">
+                                <h4>13. Run the workflow</h4>
                                 <p>Test the workflow by running it from BIAFLOWS / Workflow runs
                                     (requires execution rights).</p>
                                 <div class="screenshot-holder">
@@ -355,12 +451,14 @@ for(i=0; i < images.length; i++) {
                                 <a class="nav-link scrollto" href="#workflow_step4">4. Update DockerFile</a>
                                 <a class="nav-link scrollto" href="#workflow_step5">5. Update wrapper script</a>
                                 <a class="nav-link scrollto" href="#workflow_step6">6. Adapt your workflow script</a>
-                                <a class="nav-link scrollto" href="#workflow_step7">7. Create Docker image in DockerHub</a>
-                                <a class="nav-link scrollto" href="#workflow_step8">8. Associating a new workflow repository to DockerHub</a>
-                                <a class="nav-link scrollto" href="#workflow_step9">9. Trigger a workflow release</a>
-                                <a class="nav-link scrollto" href="#workflow_step10">10. Workflow Docker image build</a>
-                                <a class="nav-link scrollto" href="#workflow_step11">11. Add workflow to BIAFLOWS problem</a>
-                                <a class="nav-link scrollto" href="#workflow_step12">12. Run the workflow</a>
+                                <a class="nav-link scrollto" href="#workflow_step6">7. Create the .github/workflows/docker-image.yml file</a>
+                                <a class="nav-link scrollto" href="#workflow_step6">8. Connect DockerHub and the workflow on Github</a>
+                                <a class="nav-link scrollto" href="#workflow_step8">9. Create Docker image in DockerHub</a>
+                                <a class="nav-link scrollto" href="#workflow_step9">10. Associating a new workflow repository to DockerHub</a>
+                                <a class="nav-link scrollto" href="#workflow_step10">11. Trigger a workflow release</a>
+                                <a class="nav-link scrollto" href="#workflow_step11">12. Workflow Docker image build</a>
+                                <a class="nav-link scrollto" href="#workflow_step12">13. Add workflow to BIAFLOWS problem</a>
+                                <a class="nav-link scrollto" href="#workflow_step13">14. Run the workflow</a>
                             </nav><!--//nav-->
                         </nav><!--//doc-menu-->
                     </div>
