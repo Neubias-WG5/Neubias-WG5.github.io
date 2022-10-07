@@ -284,7 +284,7 @@ for(i=0; i < images.length; i++) {
 </pre>
                             </div>
 							<div id="workflow_step7" class="section-block">
-                                <h4>7. Create the .github/workflows/docker-image.yml file</h4>
+                                <h4>7. Reuse the .github/workflows/docker-image.yml file as it is</h4>
                                 <p>
                                    This file is identical for all workflows
                                 </p>
@@ -376,7 +376,7 @@ jobs:
 								
                             </div>
 							
-							
+<!--							
                             <div id="workflow_step9" class="section-block">
                                 <h4>9. Create Docker image in DockerHub</h4>
                                 <p>
@@ -394,14 +394,15 @@ jobs:
                                 </div>
 								<p>Especially, note that <b>Source Type</b> must be set to <b>Tag</b>, <b>Source</b> is <b>/.*/</b> and <b>Docker Tag</b> is <b>{sourceref}</b>.
                             </div>
-                            <div id="workflow_step11" class="section-block">
+-->
+                            <div id="workflow_step9" class="section-block">
                                 <h4>9. Trigger a workflow release</h4>
                                 <p>
                                     Trigger a release from GitHub workflow repository with version tag such as
                                     <em>v0.1</em>, <em>v0.2</em>, <em>v1.0</em>...
                                 </p>
                             </div>
-                            <div id="workflow_step12" class="section-block">
+                            <div id="workflow_step10" class="section-block">
                                 <h4>11. Workflow Docker image build</h4>
                                 <p>
                                     Check from DockerHub that the workflow <em>Docker image</em> has built successfully.
@@ -409,7 +410,7 @@ jobs:
                                     new release.
                                 </p>
                             </div>
-                            <div id="workflow_step13" class="section-block">
+                            <div id="workflow_step11" class="section-block">
                                 <h4>12. Add workflow to BIAFLOWS problem</h4>
                                 <p>
                                     Once the <em>Docker</em> image is built, a BIAFLOWS instance fetches the image
@@ -429,7 +430,7 @@ jobs:
                                     <img class="img-fluid" src="assets/images/doc_workflow_guide_02.png" alt="screenshot">
                                 </div>
                             </div>
-                            <div id="workflow_step14" class="section-block">
+                            <div id="workflow_step12" class="section-block">
                                 <h4>13. Run the workflow</h4>
                                 <p>Test the workflow by running it from BIAFLOWS / Workflow runs
                                     (requires execution rights).</p>
@@ -461,12 +462,10 @@ jobs:
                                 <a class="nav-link scrollto" href="#workflow_step6">6. Adapt your workflow script</a>
                                 <a class="nav-link scrollto" href="#workflow_step7">7. Create the .github/workflows/docker-image.yml file</a>
                                 <a class="nav-link scrollto" href="#workflow_step8">8. Connect DockerHub and the workflow on Github</a>
-                                <a class="nav-link scrollto" href="#workflow_step9">9. Create Docker image in DockerHub</a>
-                                <a class="nav-link scrollto" href="#workflow_step10">10. Associating a new workflow repository to DockerHub</a>
-                                <a class="nav-link scrollto" href="#workflow_step11">11. Trigger a workflow release</a>
-                                <a class="nav-link scrollto" href="#workflow_step12">12. Workflow Docker image build</a>
-                                <a class="nav-link scrollto" href="#workflow_step13">13. Add workflow to BIAFLOWS problem</a>
-                                <a class="nav-link scrollto" href="#workflow_step14">14. Run the workflow</a>
+                                <a class="nav-link scrollto" href="#workflow_step9">9. Trigger a workflow release</a>
+                                <a class="nav-link scrollto" href="#workflow_step10">10. Workflow Docker image build</a>
+                                <a class="nav-link scrollto" href="#workflow_step11">11. Add workflow to BIAFLOWS problem</a>
+                                <a class="nav-link scrollto" href="#workflow_step12">12. Run the workflow</a>
                             </nav><!--//nav-->
                         </nav><!--//doc-menu-->
                     </div>
