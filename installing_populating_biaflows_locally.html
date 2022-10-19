@@ -372,6 +372,8 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                                 associated problem class (see
                                 <a href="problem_class_ground_truth.html">Problem Class, ground truth annotations and reported metrics</a>).
                             </p>
+							<div id="uploading_gt_step1" class="section-block">
+							<h4>1. Add the Ground Truth Images</h4>
                             <p>
                                 Image annotations (e.g. binary masks) should be uploaded as 16-bit <a href="https://docs.openmicroscopy.org/ome-model/latest/ome-tiff/" target="_blank">OME-TIFF</a> (or TIFF) files
                                 for 2D images and as Multi-TIFF 16-bit
@@ -388,6 +390,74 @@ sudo bash ./inject_demo_data.sh ADMIN_PUBLIC_KEY ADMIN_PRIVATE_KEY
                             <div class="screenshot-holder">
                                 <img class="img-fluid" src="assets/images/doc_biaflow_locally_08.png" alt="screenshot">
                             </div>
+							</div>
+							<div id="uploading_gt_step2" class="section-block">
+							<h4>2. Convert the Ground Truth Images to Annotations</h4>
+							<p class="section-block">
+                                In order to use the ground truth uploader tool you need the following tool:
+								<ul>
+								<li>git</li>
+								<li>docker</li>
+								</ul>
+							</p>
+							<h5>2.1 Get the tool</h5>
+<pre class="language-bash"><code class="language-bash">
+git clone https://github.com/Neubias-WG5/ground-truth-uploader.git
+</code>
+</pre>
+							<h5>2.2 Install the tool</h5>
+<pre class="language-bash"><code class="language-bash">
+git clone https://github.com/Neubias-WG5/ground-truth-uploader.git
+cd ground-truth-uploader/
+sudo docker build -t gt_uploader .
+</code>
+</pre>
+
+							<h5>2.3 Generate the ground truth</h5>
+							<p>
+							To run the tool, you need the following information:
+							</p>
+							
+							<p>
+							<b>Cytomine host name :</b>
+							</p>
+							<p>
+							Enter the domain name where is installed biaflows, e.g. biaflows-sandbox.neubias.org
+							</p>
+							
+							<p>
+							<b>Biaflows public/private keys:</b>
+							</p>
+							<p>
+							Go to your account setting:
+							<div class="screenshot-holder">
+                              <img class="img-fluid" src="assets/images/uploading_gt_01.png" alt="screenshot">
+                            </div>
+							Copy the public /private key from there
+							<div class="screenshot-holder">
+                              <img class="img-fluid" src="assets/images/uploading_gt_02.png" alt="screenshot">
+                            </div>
+							</p>
+							
+							<p>
+							<b>Project ID number :</b>
+							</p>
+							<p>
+							Go to the project and copy from the URL the project number
+							<div class="screenshot-holder">
+                              <img class="img-fluid" src="assets/images/uploading_gt_03.png" alt="screenshot">
+                            </div>							
+							</p>
+							<p>
+							You can now generate the ground truth annotation from the labels by running the following command:
+							
+							<pre class="language-bash">
+docker run -t TAG --cytomine_host CYTOMINE_HOST --cytomine_public_key PUBLIC_KEY --cytomine_private_key PRIVATE_KEY --cytomine_project_id PROJECT_ID							
+							</pre>
+							where <code>CYTOMINE_HOST</code> in this example is <code>biaflows-sandbox.neubias.org</code>, <code>PROJECT_ID</code> is <code>14740414</code>
+							</p>
+							
+						</div>
                         </section>
 
                         <section id="adding_workflow-section" class="doc-section">
