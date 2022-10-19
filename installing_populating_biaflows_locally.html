@@ -409,7 +409,7 @@ git clone https://github.com/Neubias-WG5/ground-truth-uploader.git
 <pre class="language-bash"><code class="language-bash">
 git clone https://github.com/Neubias-WG5/ground-truth-uploader.git
 cd ground-truth-uploader/
-sudo docker build -t gt_uploader .
+docker build -t gt_uploader .
 </code>
 </pre>
 
@@ -454,7 +454,7 @@ sudo docker build -t gt_uploader .
 							<pre class="language-bash">
 docker run -t TAG --cytomine_host CYTOMINE_HOST --cytomine_public_key PUBLIC_KEY --cytomine_private_key PRIVATE_KEY --cytomine_project_id PROJECT_ID							
 							</pre>
-							where <code>CYTOMINE_HOST</code> in this example is <code>biaflows-sandbox.neubias.org</code>, <code>PROJECT_ID</code> is <code>14740414</code>
+	    where,  in this example, <code>TAG</code> is <code>gt_uploader</code> <code>CYTOMINE_HOST</code> is <code>biaflows-sandbox.neubias.org</code>, <code>PROJECT_ID</code> is <code>14740414</code>
 							</p>
 							
 						</div>
