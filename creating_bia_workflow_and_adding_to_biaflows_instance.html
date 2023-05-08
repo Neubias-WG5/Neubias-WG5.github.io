@@ -71,9 +71,9 @@
 							<h3>Accounts requirement:</h3>
 								
 								<span>In order to create a new workflow, you will need to have:</span>
-                                <ul>
-                                    <li>A <a href="https://github.com/"  target="_blank">Github account</a>, to store the workflow</li>
-                                    <li>A <a href="https://hub.docker.com/"  target="_blank">DockerHub account</a>, to create and store the docker image online</li>
+                                <ul>				
+                                    <li>A <a href="https://github.com/"  target="_blank">Github account</a>, to store the code of the workflow and build it as a Docker image</li>
+                                    <li>A <a href="https://hub.docker.com/"  target="_blank">DockerHub account</a>, to store the Docker image and make it available online</li>
                                 </ul>
 							<h3>BIAFLOWS workflows must:</h3>
                                 <ul>
@@ -403,7 +403,7 @@ jobs:
                                 </p>
                             </div>
                             <div id="workflow_step10" class="section-block">
-                                <h4>11. Workflow Docker image build</h4>
+                                <h4>10. Workflow Docker image build</h4>
                                 <p>
                                     Check from DockerHub that the workflow <em>Docker image</em> has built successfully.
                                     If not, parse the log and fix issues by modifying DockerFile and re-triggering a
@@ -411,7 +411,7 @@ jobs:
                                 </p>
                             </div>
                             <div id="workflow_step11" class="section-block">
-                                <h4>12. Add workflow to BIAFLOWS problem</h4>
+                                <h4>11. Add workflow to BIAFLOWS problem</h4>
                                 <p>
                                     Once the <em>Docker</em> image is built, a BIAFLOWS instance fetches the image
                                     from the trusted source and make it available (possibly after up to 5/10 minutes).
@@ -431,7 +431,7 @@ jobs:
                                 </div>
                             </div>
                             <div id="workflow_step12" class="section-block">
-                                <h4>13. Run the workflow</h4>
+                                <h4>12. Run the workflow</h4>
                                 <p>Test the workflow by running it from BIAFLOWS / Workflow runs
                                     (requires execution rights).</p>
                                 <div class="screenshot-holder">
